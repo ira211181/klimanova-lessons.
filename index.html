@@ -1,85 +1,221 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>8 клас. Пристрої введення</title>
-<meta name="description" content="Інтерактивний урок інформатики: Пристрої введення">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8 клас · Урок 14 · Конфігурація комп’ютера під потребу</title>
 <style>
-:root{--bg:#f4f8ff;--card:#fff;--ink:#14243b;--muted:#52657e;--blue:#1769ff;--dark:#082e78;--yellow:#ffd43b;--green:#159b62;--red:#c83d48;--line:#d8e4f3}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
-button,input,textarea{font:inherit}button{min-height:44px;cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #ff9f1c;outline-offset:2px}
-.hero{color:#fff;padding:48px 6vw;background:radial-gradient(circle at 82% 15%,#22c7f255,transparent 25%),linear-gradient(135deg,#062d7d,#1769ff 65%,#24a8e8)}
-.wrap{max-width:1120px;margin:auto}.tag{display:inline-block;padding:7px 12px;border:1px solid #ffffff55;border-radius:99px;background:#ffffff18;font-weight:900}.hero h1{font-size:clamp(42px,7vw,72px);line-height:1;margin:18px 0 10px}.hero p{max-width:780px;font-size:19px}.meta{display:flex;gap:9px;flex-wrap:wrap}.meta span{background:#ffffff18;padding:8px 11px;border-radius:10px;font-weight:800}
-.nav{position:sticky;top:0;z-index:10;background:#ffffffed;border-bottom:1px solid var(--line);backdrop-filter:blur(8px);overflow:auto}.navin{display:flex;gap:5px;padding:8px 5vw}.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);font-weight:800;padding:9px 11px;border-radius:10px}.nav a:hover{background:#eaf1ff}
-main{padding:24px 5vw 60px}.sec{margin:30px auto}.k{color:var(--blue);font-weight:950;text-transform:uppercase;letter-spacing:.08em;font-size:12px}h2{font-size:clamp(27px,4vw,37px);line-height:1.15}h3{margin-top:0}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 12px 35px #16467a14}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:15px}.call{padding:16px;background:#edf4ff;border-left:5px solid var(--blue);border-radius:12px}.warn{background:#fff7df;border-left-color:#e2aa00}.choice{width:100%;text-align:left;background:#ffffff18;color:#fff;border:1px solid #ffffff55;border-radius:12px;padding:12px;margin:5px 0}.choice.sel{background:#fff;color:var(--ink);border-color:var(--yellow)}.heroq{background:linear-gradient(145deg,#0b3b91,#1769ff);color:#fff}.device{padding:18px;text-align:left}.device .ico{font-size:44px}.device.sel{border:2px solid var(--blue);background:#edf4ff}.device.correct{border-color:var(--green)}.device.wrong{border-color:var(--red)}
-.btn{border:0;background:var(--blue);color:#fff;padding:11px 15px;border-radius:11px;font-weight:900}.btn.y{background:var(--yellow);color:var(--ink)}.btn.s{background:#edf4ff;color:var(--ink);border:1px solid var(--line)}.msg{min-height:26px;margin-top:12px;font-weight:900}
-.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.flow span{background:#edf4ff;padding:10px 12px;border-radius:10px;font-weight:900}.flow b{color:var(--blue)}
-table{width:100%;border-collapse:collapse;background:#fff}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left}th{background:#eaf1ff}.table{overflow:auto;border:1px solid var(--line);border-radius:15px}
-.mission{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.mission .card{box-shadow:none}.level{font-size:12px;color:var(--blue);font-weight:900;text-transform:uppercase}
-.cer{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.cer textarea{width:100%;min-height:115px;padding:11px;border:1px solid var(--line);border-radius:10px}.cer label{font-weight:900}
-.gate{max-width:700px;margin:auto}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;margin-top:5px}.error{color:var(--red);font-weight:800;min-height:24px}.hidden{display:none!important}
-.quiz{display:grid;gap:14px}.q{padding:19px}.ans{display:grid;gap:8px;margin-top:10px}.ans button{padding:11px;text-align:left;background:#edf4ff;color:var(--ink);border:1px solid var(--line);border-radius:10px}.ans button.on{border-color:var(--blue);background:#dceaff}.order{display:grid;gap:7px}.ord{padding:11px;border:2px solid var(--line);border-radius:10px;background:#fff;text-align:left}.ord.on{border-color:var(--blue)}
-.result{text-align:center}.score{font-size:60px;color:var(--blue);font-weight:950;line-height:1}.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.rgrid div{background:#edf4ff;padding:10px;border-radius:10px}
-footer{text-align:center;padding:25px;color:var(--muted)}
-@media(max-width:760px){.twocol,.mission,.cer,.form{grid-template-columns:1fr}.hero{padding:38px 6vw}.hero h1{font-size:44px}}
-@media print{.nav,.hero,#testGate,#quizArea,.noprint{display:none!important}.card{box-shadow:none;break-inside:avoid}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+:root{--ink:#172554;--muted:#52617a;--blue:#2563eb;--cyan:#0891b2;--paper:#f5f8ff;--line:#dbe5f4;--white:#fff;--green:#15803d;--orange:#c2410c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--paper);color:#172033;line-height:1.55}
+header{background:linear-gradient(125deg,#10265f,#1767c7 65%,#06a6b5);color:white;padding:34px 20px 28px}
+.wrap{max-width:1100px;margin:auto}.eyebrow{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;opacity:.88;font-weight:700}
+h1{font-size:clamp(1.8rem,4vw,3.1rem);line-height:1.1;margin:.5rem 0 1rem;max-width:850px}
+header p{max-width:760px;font-size:1.08rem;margin:0 0 18px}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{border:1px solid #ffffff55;background:#ffffff17;border-radius:999px;padding:6px 12px;font-size:.9rem}
+nav{background:white;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+nav .wrap{display:flex;gap:8px;overflow-x:auto;padding:10px 16px}nav a{color:#17418d;text-decoration:none;font-weight:650;white-space:nowrap;padding:7px 10px;border-radius:9px}nav a:hover{background:#eaf2ff}
+main{padding:24px 16px 55px}.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,1fr);gap:18px;align-items:start}
+.card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px;box-shadow:0 6px 20px #19396d08}
+h2{font-size:1.4rem;color:var(--ink);margin:0 0 12px}h3{margin:0 0 8px;color:#183b77;font-size:1.08rem}
+p{margin:.45rem 0 .8rem}.muted{color:var(--muted)}.tag{display:inline-block;background:#e7f0ff;color:#1949a0;font-size:.8rem;font-weight:750;padding:4px 9px;border-radius:7px;margin-bottom:8px}
+.goals{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.goal{background:#f3f7ff;border-radius:12px;padding:13px}.goal b{display:block;color:#17418d;margin-bottom:4px}
+.steps{display:grid;gap:10px}.step{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:start}.num{width:38px;height:38px;border-radius:12px;background:#e5efff;color:#174bb2;display:grid;place-items:center;font-weight:850}
+table{border-collapse:collapse;width:100%;font-size:.94rem}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f0f5ff;color:#1d3c76}
+.callout{border-left:4px solid var(--cyan);background:#e9fbff;padding:12px 15px;border-radius:0 12px 12px 0;margin:12px 0}
+.warning{border-left-color:#f59e0b;background:#fff8e8}.success{border-left-color:#22a06b;background:#ecfdf5}
+label{font-weight:650;display:block;margin:12px 0 5px}select,input[type=number]{width:100%;padding:10px 12px;border:1px solid #bdcbe1;border-radius:10px;background:white;color:#172033;font:inherit}
+button{border:0;border-radius:10px;padding:10px 15px;background:var(--blue);color:white;font:inherit;font-weight:750;cursor:pointer}button:hover{filter:brightness(.93)}button.secondary{background:#e8efff;color:#1c4598}button.green{background:var(--green)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.result{background:#f1f7ff;border:1px solid #c9dcff;padding:13px;border-radius:12px;margin-top:12px;min-height:48px}
+.task{border:1px solid var(--line);border-radius:13px;padding:15px;margin:12px 0}.task-title{display:flex;justify-content:space-between;gap:10px;align-items:center}.points{font-size:.8rem;color:#1949a0;background:#e7f0ff;border-radius:8px;padding:4px 8px;white-space:nowrap}
+.checklist label{font-weight:500;display:flex;gap:9px;align-items:flex-start;margin:10px 0}.checklist input{margin-top:5px;transform:scale(1.1)}
+.question{padding:14px 0;border-bottom:1px solid var(--line)}.question:last-child{border-bottom:0}.question p{font-weight:700}.question label{font-weight:500;display:flex;gap:8px;align-items:flex-start;margin:7px 0}.question input{margin-top:5px}
+.score{font-size:1.3rem;font-weight:850;color:var(--ink)}.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.timebox{padding:11px 8px;border-radius:10px;background:#eef4ff;text-align:center;font-size:.9rem}.timebox b{display:block;color:#16449d}
+footer{text-align:center;padding:22px;color:#64748b;font-size:.9rem}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.goals{grid-template-columns:1fr}.timeline{grid-template-columns:repeat(2,1fr)}.card{padding:17px}header{padding-top:26px}}
+@media print{nav,.actions,button{display:none!important}body{background:white}.card{box-shadow:none;break-inside:avoid}header{background:#17418d!important;print-color-adjust:exact}}
 </style>
 </head>
 <body>
-<header class="hero" id="start"><div class="wrap"><span class="tag">💻 Інформатика • 8 клас</span><h1>Пристрої введення</h1><p>Досліджуй, перевіряй гіпотези, працюй із доказами та навчися аргументовано визначати, чи є пристрій пристроєм введення.</p><div class="meta"><span>⏱ 35 хв</span><span>🧠 Дія → докази → теорія</span><span>🏆 Тест /10</span></div></div></header>
-<div class="nav"><div class="wrap navin"><a href="#problem">Старт</a><a href="#action">Дія</a><a href="#evidence">Докази</a><a href="#mission">Місія</a><a href="#theory">Теорія</a><a href="#debate">Двобій</a><a href="#summary">Висновок</a><a href="#test">Тест</a></div></div>
+<header>
+ <div class="wrap">
+  <div class="eyebrow">Інформатика · 8 клас · Урок 14</div>
+  <h1>Конфігурація комп’ютера під потребу</h1>
+  <p>Навчимося добирати комплектуючі не «найдорожчі», а ті, що найкраще відповідають конкретному завданню та бюджету.</p>
+  <div class="chips"><span class="chip">⏱ 35 хвилин</span><span class="chip">💻 Практика за комп’ютером</span><span class="chip">🎯 Група результатів 3</span><span class="chip">🛡 Інструктаж з БЖД</span></div>
+ </div>
+</header>
+<nav><div class="wrap">
+ <a href="#goal">Мета</a><a href="#theory">Коротко про головне</a><a href="#practice">Практика</a><a href="#check">Перевір себе</a><a href="#reflection">Рефлексія</a>
+</div></nav>
 <main class="wrap">
-<section class="sec" id="problem"><div class="twocol"><div class="card heroq"><div class="k" style="color:#bfe9ff">0–3 хв • проблемний старт</div><h2>🕵️ Чи є монітор пристроєм введення?</h2><p>Учень каже: «Монітор — пристрій введення, бо через нього я працюю з інформацією».</p><button class="choice" data-h="0">Так, монітор вводить інформацію.</button><button class="choice" data-h="1">Ні, монітор виводить інформацію.</button><button class="choice" data-h="2">Залежить від ситуації.</button><div id="hf" class="msg"></div></div><div class="card"><div class="k">Мета</div><h2>🎯 Ключове питання</h2><p>Не просто назвати пристрій, а <strong>довести</strong>, чому він належить до введення.</p><div class="call"><strong>Перевір:</strong> дані або команди рухаються <strong>до комп’ютера</strong> чи <strong>від комп’ютера</strong>?</div></div></div></section>
-<section class="sec" id="action"><div class="k">3–7 хв • швидка дія</div><h2>⚡ Обери пристрої введення</h2><p>Натисни на всі пристрої, які можуть передавати дані або команди <strong>до комп’ютера</strong>.</p><div class="grid" id="devices">
-<button class="card device" data-i="1"><span class="ico">⌨️</span><h3>Клавіатура</h3><span>текст і команди</span></button>
-<button class="card device" data-i="0"><span class="ico">🖥️</span><h3>Монітор</h3><span>зображення від ПК</span></button>
-<button class="card device" data-i="1"><span class="ico">🎤</span><h3>Мікрофон</h3><span>звук</span></button>
-<button class="card device" data-i="0"><span class="ico">🔊</span><h3>Колонки</h3><span>звук від ПК</span></button>
-<button class="card device" data-i="1"><span class="ico">🖱️</span><h3>Миша</h3><span>команди керування</span></button>
-<button class="card device" data-i="1"><span class="ico">📷</span><h3>Камера</h3><span>зображення</span></button></div><button class="btn" id="checkD">Перевірити</button> <button class="btn s" id="resetD">Скинути</button><div class="msg" id="dm"></div></section>
-<section class="sec" id="evidence"><div class="k">7–10 хв • лабораторія доказів</div><h2>🔎 Докази важливіші за назву</h2><div class="card"><div class="table"><table><tr><th>Ситуація</th><th>Що надходить?</th><th>Чому це введення?</th></tr><tr><td>Ти диктуєш текст</td><td>Звук</td><td>Мікрофон передає звукові дані до ПК.</td></tr><tr><td>Ти фотографуєш документ</td><td>Зображення</td><td>Камера передає зображення до ПК.</td></tr><tr><td>Ти натискаєш клавішу</td><td>Символ/команда</td><td>Клавіатура передає введені дані.</td></tr></table></div></div></section>
-<section class="sec" id="mission"><div class="k">10–15 хв • різнорівнева місія</div><h2>🎯 Обери рівень</h2><div class="mission"><div class="card"><div class="level">Базовий</div><h3>Знайди ознаку</h3><p>Чому клавіатура — пристрій введення?</p><button class="btn s reveal">Еталон</button><div class="msg"></div><template>Клавіатура передає введені символи та команди до комп’ютера.</template></div><div class="card"><div class="level">Достатній</div><h3>Порівняй</h3><p>Чим мікрофон відрізняється від колонок?</p><button class="btn s reveal">Еталон</button><div class="msg"></div><template>Мікрофон передає звук до комп’ютера, а колонки — від комп’ютера до людини. Важливий напрямок даних.</template></div><div class="card"><div class="level">Високий</div><h3>Перевір межу</h3><p>Чи достатньо сказати «пристрій працює з інформацією»?</p><button class="btn s reveal">Еталон</button><div class="msg"></div><template>Ні. Треба встановити напрямок: чи надходять дані або команди до комп’ютера.</template></div></div></section>
-<section class="sec" id="theory"><div class="k">19–29 хв • теорія після дії</div><h2>🧠 Як працюють пристрої введення?</h2><div class="twocol"><div class="card"><h3>1. Поняття</h3><p><strong>Пристрій введення</strong> — пристрій, за допомогою якого дані або команди надходять <strong>до комп’ютера</strong>.</p><div class="flow"><span>людина/середовище</span><b>→</b><span>пристрій</span><b>→</b><span>комп’ютер</span></div></div><div class="card"><h3>2. Механізм</h3><p>Фізична дія або сигнал перетворюється на дані, які комп’ютер може прийняти й опрацювати.</p><div class="flow"><span>сигнал</span><b>→</b><span>дані</span><b>→</b><span>опрацювання</span></div></div><div class="card"><h3>3. Приклади</h3><p>⌨️ клавіатура — текст; 🖱️ миша — команди; 🎤 мікрофон — звук; 📷 камера/сканер — зображення; 🎮 контролер — команди.</p></div><div class="card"><h3>4. Типова помилка</h3><p>«Працює з інформацією» — недостатній критерій. Потрібно визначити <strong>напрямок руху даних</strong>.</p></div></div><div class="call" style="margin-top:15px"><strong>Алгоритм:</strong> назви пристрій → визнач, що він отримує → визнач напрямок → зроби висновок.</div></section>
-<section class="sec" id="debate"><div class="k">29–33 хв • логічний двобій</div><h2>⚔️ Детектор хибного висновку</h2><div class="card"><h3>«Камера не є пристроєм введення, бо вона не вводить текст».</h3><p>Який критерій треба перевірити?</p><button class="btn y deb" data-x="0">Чи вводить текст?</button> <button class="btn y deb" data-x="1">Чи надходять дані до комп’ютера?</button> <button class="btn y deb" data-x="0">Чи має екран?</button><div class="msg" id="bm"></div></div></section>
-<section class="sec" id="summary"><div class="k">33–35 хв • фінал</div><h2>📝 CER: твердження → доказ → пояснення</h2><div class="card"><div class="cer"><label>Твердження<textarea id="cl" placeholder="...є пристроєм введення, тому що..."></textarea></label><label>Доказ<textarea id="ev" placeholder="Конкретна дія або властивість"></textarea></label><label>Пояснення<textarea id="re" placeholder="Чому доказ підтверджує твердження?"></textarea></label></div><button class="btn" id="cerb">Перевірити</button><div class="msg" id="crm"></div></div></section>
-<section class="sec" id="test"><div class="k">Підсумковий тест • /10</div><h2>🏆 Перевір себе</h2><div class="card" id="testGate"><h3>Перед тестом</h3><div class="form"><label>Ім’я та прізвище<input id="nm" placeholder="Іван Петренко"></label><label>Клас<input id="cls" placeholder="8-А"></label></div><div class="error" id="ge"></div><button class="btn" id="start">Почати тест</button></div><div id="qa" class="quiz hidden"></div><div id="te" class="error"></div><button class="btn hidden noprint" id="finish">Завершити тест</button><div id="res" class="hidden"></div></section>
-</main><footer>💙💛 Інформатика • 8 клас • Пристрої введення</footer>
-<script>
-"use strict";
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-$$(".choice").forEach(b=>b.onclick=()=>{$$(".choice").forEach(x=>x.classList.remove("sel"));b.classList.add("sel");$("#hf").textContent=b.dataset.h==="1"?"✅ Так: монітор виводить інформацію. Важливий напрямок даних.":"⚠️ Перевір критерій: сам факт роботи з інформацією не визначає введення."});
-$$(".device").forEach(b=>b.onclick=()=>b.classList.toggle("sel"));
-$("#checkD").onclick=()=>{let s=$$(".device.sel"),r=$$(".device[data-i='1']"),ok=s.length===r.length&&s.every(x=>x.dataset.i==="1");$("#dm").textContent=ok?"🎯 Правильно: клавіатура, мікрофон, миша й камера передають дані/команди до ПК.":"🔎 Перевір кожну картку питанням: «Дані рухаються до комп’ютера?»";$("#dm").style.color=ok?"var(--green)":"var(--red)"};
-$("#resetD").onclick=()=>{$$(".device").forEach(x=>x.classList.remove("sel"));$("#dm").textContent=""};
-$$(".reveal").forEach(b=>b.onclick=()=>b.nextElementSibling.textContent="💡 "+b.parentElement.querySelector("template").content.textContent);
-$$(".deb").forEach(b=>b.onclick=()=>{let ok=b.dataset.x==="1";$("#bm").textContent=ok?"✅ Саме так. Камера вводить зображення, хоча не вводить текст.":"❌ Це не визначальний критерій. Важливий напрямок даних.";$("#bm").style.color=ok?"var(--green)":"var(--red)"});
-$("#cerb").onclick=()=>{let ok=[$("#cl"),$("#ev"),$("#re")].every(x=>String(x.value||"").trim().length>=15);$("#crm").textContent=ok?"✅ Є всі три частини CER. Перевір, чи доказ показує напрямок даних до комп’ютера.":"⚠️ Заповни всі три частини змістовно.";$("#crm").style.color=ok?"var(--green)":"var(--red)"};
+ <section class="card" id="goal">
+  <span class="tag">На початку уроку</span><h2>Що сьогодні навчимося робити?</h2>
+  <div class="goals">
+   <div class="goal"><b>🔎 Аналізувати потребу</b><span>З’ясовувати, для яких завдань потрібен комп’ютер.</span></div>
+   <div class="goal"><b>🧩 Добирати складові</b><span>Обирати процесор, оперативну пам’ять, накопичувач і відеокарту.</span></div>
+   <div class="goal"><b>💰 Обґрунтовувати вибір</b><span>Укладатися в бюджет і пояснювати свої рішення.</span></div>
+  </div>
+  <div class="callout warning"><b>Безпека:</b> не розбирай системний блок і не від’єднуй кабелі без дозволу вчителя. Усі дії виконуй на своєму комп’ютері, використовуючи навчальний матеріал.</div>
+ </section>
+ <div class="layout">
+  <div>
+   <section class="card" id="theory">
+    <span class="tag">Мініпояснення · 5 хв</span><h2>Як обрати конфігурацію?</h2>
+    <p>Конфігурація — це набір апаратних складових комп’ютера та їхніх характеристик. Під час вибору важливо враховувати призначення, сумісність компонентів і бюджет.</p>
+    <table><thead><tr><th>Складова</th><th>За що відповідає</th><th>На що звернути увагу</th></tr></thead><tbody>
+     <tr><td><b>Процесор (CPU)</b></td><td>Виконує команди та обчислення</td><td>Продуктивність, покоління, сумісність із платою</td></tr>
+     <tr><td><b>Оперативна пам’ять (RAM)</b></td><td>Тимчасово зберігає дані запущених програм</td><td>Обсяг і тип пам’яті</td></tr>
+     <tr><td><b>Накопичувач (SSD/HDD)</b></td><td>Зберігає файли та програми</td><td>Місткість і швидкість</td></tr>
+     <tr><td><b>Відеокарта (GPU)</b></td><td>Опрацьовує графіку</td><td>Для ігор і 3D важлива потужність; для навчання часто достатньо вбудованої</td></tr>
+     <tr><td><b>Материнська плата</b></td><td>З’єднує компоненти</td><td>Сумісність із процесором, RAM та іншими деталями</td></tr>
+     <tr><td><b>Блок живлення</b></td><td>Забезпечує компоненти електроенергією</td><td>Достатня потужність і якість</td></tr>
+    </tbody></table>
+    <div class="callout"><b>Головне правило:</b> спочатку визнач потребу, потім — бюджет, далі добирай сумісні компоненти. Не переплачуй за можливості, якими не користуватимешся.</div>
+   </section>
+   <section class="card" id="practice">
+    <span class="tag">Самостійна робота · 18 хв</span><h2>Практичне завдання: «Комп’ютер для…»</h2>
+    <p>Обери сценарій. Орієнтовні ціни умовні — вони потрібні для навчального порівняння, а не є актуальними пропозиціями магазинів.</p>
+    <label for="purpose">1. Для чого потрібен комп’ютер?</label>
+    <select id="purpose">
+      <option value="study">Навчання, браузер, документи, відеозв’язок</option>
+      <option value="creative">Обробка фото та монтаж нескладного відео</option>
+      <option value="gaming">Сучасні ігри та 3D-графіка</option>
+    </select>
+    <label for="budget">2. Максимальний бюджет (умовні гривні)</label>
+    <select id="budget"><option value="18000">18 000 грн</option><option value="26000">26 000 грн</option><option value="40000">40 000 грн</option></select>
+    <div class="task">
+      <div class="task-title"><h3>3. Добери компоненти</h3><span class="points">Планування</span></div>
+      <label for="cpu">Процесор</label><select id="cpu"><option value="3500">Базовий — 3 500 грн</option><option value="6000">Середній — 6 000 грн</option><option value="10000">Потужний — 10 000 грн</option></select>
+      <label for="ram">Оперативна пам’ять</label><select id="ram"><option value="1500">8 ГБ — 1 500 грн</option><option value="2800">16 ГБ — 2 800 грн</option><option value="4800">32 ГБ — 4 800 грн</option></select>
+      <label for="storage">Накопичувач</label><select id="storage"><option value="1800">SSD 512 ГБ — 1 800 грн</option><option value="2800">SSD 1 ТБ — 2 800 грн</option><option value="4300">SSD 2 ТБ — 4 300 грн</option></select>
+      <label for="gpu">Графіка</label><select id="gpu"><option value="0">Вбудована графіка — 0 грн</option><option value="6500">Відеокарта початкового рівня — 6 500 грн</option><option value="13000">Потужна відеокарта — 13 000 грн</option></select>
+      <label for="other">Материнська плата, блок живлення та корпус</label><select id="other"><option value="5000">Базовий комплект — 5 000 грн</option><option value="7500">Збалансований комплект — 7 500 грн</option><option value="10000">Комплект із запасом — 10 000 грн</option></select>
+      <div class="actions"><button onclick="calculate()">Порахувати вартість</button><button class="secondary" onclick="suggest()">Підібрати стартовий варіант</button></div>
+      <div class="result" id="calcResult" aria-live="polite">Тут з’явиться сума та підказка після натискання кнопки.</div>
+    </div>
+    <div class="task">
+      <div class="task-title"><h3>4. Поясни свій вибір</h3><span class="points">Самостійно</span></div>
+      <div class="checklist">
+       <label><input type="checkbox"> Я врахував/врахувала основне призначення комп’ютера.</label>
+       <label><input type="checkbox"> Я перевірив/перевірила, чи вкладається конфігурація в бюджет.</label>
+       <label><input type="checkbox"> Я можу пояснити, навіщо обрав/обрала саме ці складові.</label>
+       <label><input type="checkbox"> Я розумію, що сумісність компонентів потрібно перевірити перед купівлею.</label>
+      </div>
+      <label for="reason">Запиши 2–3 речення: чому твоя конфігурація підходить для обраної потреби?</label>
+      <textarea id="reason" rows="4" style="width:100%;padding:12px;border:1px solid #bdcbe1;border-radius:10px;font:inherit" placeholder="Мій комп’ютер призначений для… Я обрав/обрала… Це рішення підходить, тому що…"></textarea>
+      <div class="actions"><button class="secondary" onclick="copyReason()">Скопіювати пояснення</button></div>
+      <p id="copyMsg" class="muted" aria-live="polite"></p>
+    </div>
+   </section>
+  </div>
+  <aside>
+   <section class="card">
+    <span class="tag">План уроку · 35 хв</span><h2>Працюємо поетапно</h2>
+    <div class="timeline">
+     <div class="timebox"><b>3 хв</b>Старт і БЖД</div><div class="timebox"><b>5 хв</b>Мініпояснення</div><div class="timebox"><b>18 хв</b>Практика</div><div class="timebox"><b>6 хв</b>Тест</div><div class="timebox"><b>3 хв</b>Рефлексія</div>
+    </div>
+   </section>
+   <section class="card">
+    <span class="tag">Пам’ятка</span><h2>Що важливо пам’ятати</h2>
+    <div class="steps">
+     <div class="step"><div class="num">1</div><div><b>Призначення</b><p class="muted">Для навчання, творчості чи ігор потрібні різні ресурси.</p></div></div>
+     <div class="step"><div class="num">2</div><div><b>Баланс</b><p class="muted">Потужний процесор не компенсує нестачу RAM або слабку відеокарту в графічних задачах.</p></div></div>
+     <div class="step"><div class="num">3</div><div><b>Сумісність</b><p class="muted">Компоненти мають працювати разом; перевіряй роз’єми, тип пам’яті та потужність живлення.</p></div></div>
+     <div class="step"><div class="num">4</div><div><b>Бюджет</b><p class="muted">Залишай кошти на периферію, ліцензійне ПЗ та можливе оновлення.</p></div></div>
+    </div>
+   </section>
+   <section class="card">
+    <span class="tag">Критерії успіху</span><h2>Як оцінюється робота</h2>
+    <ul>
+     <li>Обрано призначення ПК — 2 бали.</li>
+     <li>Дібрано доречні компоненти — 3 бали.</li>
+     <li>Дотримано бюджету — 2 бали.</li>
+     <li>Пояснено вибір — 2 бали.</li>
+     <li>Враховано сумісність і безпеку — 1 бал.</li>
+    </ul>
+    <p><b>Разом: 10 балів.</b></p>
+   </section>
+  </aside>
+ </div>
+ <section class="card" id="check">
+  <span class="tag">Перевір себе · 6 хв</span><h2>Мінітест на 10 балів</h2>
+  <p class="muted">Обери одну правильну відповідь у кожному запитанні. Після завершення натисни «Перевірити відповіді».</p>
+  <form id="quiz">
+   <div class="question"><p>1. Що потрібно зробити насамперед, добираючи конфігурацію ПК?</p>
+    <label><input type="radio" name="q1" value="a"> Обрати найдорожчу відеокарту</label><label><input type="radio" name="q1" value="b"> Визначити призначення та потреби користувача</label><label><input type="radio" name="q1" value="c"> Купити найбільший корпус</label></div>
+   <div class="question"><p>2. Який компонент тимчасово зберігає дані програм, що працюють?</p>
+    <label><input type="radio" name="q2" value="a"> SSD</label><label><input type="radio" name="q2" value="b"> Блок живлення</label><label><input type="radio" name="q2" value="c"> Оперативна пам’ять</label></div>
+   <div class="question"><p>3. Для чого переважно потрібна потужна відеокарта?</p>
+    <label><input type="radio" name="q3" value="a"> Для 3D-графіки та вимогливих ігор</label><label><input type="radio" name="q3" value="b"> Для подачі електроенергії</label><label><input type="radio" name="q3" value="c"> Для зберігання документів</label></div>
+   <div class="question"><p>4. Чому потрібно перевіряти сумісність компонентів?</p>
+    <label><input type="radio" name="q4" value="a"> Щоб комп’ютер мав однаковий колір деталей</label><label><input type="radio" name="q4" value="b"> Щоб компоненти могли коректно працювати разом</label><label><input type="radio" name="q4" value="c"> Щоб збільшити розмір файлів</label></div>
+   <div class="question"><p>5. Який вибір найраціональніший для браузера, документів і відеозв’язку?</p>
+    <label><input type="radio" name="q5" value="a"> Збалансована система без переплати за потужну ігрову відеокарту</label><label><input type="radio" name="q5" value="b"> Найдорожчі комплектуючі незалежно від потреб</label><label><input type="radio" name="q5" value="c"> Комп’ютер без накопичувача</label></div>
+   <div class="question"><p>6. Що слід врахувати, обираючи блок живлення?</p>
+    <label><input type="radio" name="q6" value="a"> Лише колір корпусу</label><label><input type="radio" name="q6" value="b"> Сумарне енергоспоживання, запас потужності та якість</label><label><input type="radio" name="q6" value="c"> Кількість файлів на робочому столі</label></div>
+   <div class="question"><p>7. Що означає «конфігурація комп’ютера»?</p>
+    <label><input type="radio" name="q7" value="a"> Лише зовнішній вигляд монітора</label><label><input type="radio" name="q7" value="b"> Пароль користувача</label><label><input type="radio" name="q7" value="c"> Набір компонентів і їхніх характеристик</label></div>
+   <div class="question"><p>8. Який накопичувач зазвичай швидше завантажує систему?</p>
+    <label><input type="radio" name="q8" value="a"> SSD</label><label><input type="radio" name="q8" value="b"> DVD-диск</label><label><input type="radio" name="q8" value="c"> Дискета</label></div>
+   <div class="question"><p>9. Якщо бюджет обмежений, що варто зробити?</p>
+    <label><input type="radio" name="q9" value="a"> Ігнорувати призначення комп’ютера</label><label><input type="radio" name="q9" value="b"> Розставити пріоритети й обрати збалансовані сумісні компоненти</label><label><input type="radio" name="q9" value="c"> Витратити весь бюджет лише на процесор</label></div>
+   <div class="question"><p>10. Яка дія є безпечною під час уроку?</p>
+    <label><input type="radio" name="q10" value="a"> Самостійно розбирати системний блок під напругою</label><label><input type="radio" name="q10" value="b"> Від’єднувати чужі кабелі без дозволу</label><label><input type="radio" name="q10" value="c"> Виконувати навчальні завдання та дотримуватися вказівок учителя</label></div>
+   <div class="actions"><button type="button" onclick="gradeQuiz()">Перевірити відповіді</button><button type="reset" class="secondary" onclick="document.getElementById('quizResult').textContent=''">Скинути тест</button></div>
+  </form>
+  <div id="quizResult" class="result" aria-live="polite"></div>
+ </section>
+ <section class="card" id="reflection">
+  <span class="tag">Завершення · 3 хв</span><h2>Рефлексія</h2>
+  <p>Заверши подумки або усно три речення:</p>
+  <ul><li>Сьогодні я навчився / навчилася…</li><li>Під час добору компонентів найважливіше…</li><li>Наступного разу я перевірю…</li></ul>
+  <div class="callout success"><b>Висновок:</b> найкращий комп’ютер — не обов’язково найдорожчий. Це система, яка відповідає потребам користувача, вкладається в бюджет і складається із сумісних компонентів.</div>
+  <div class="actions"><button class="secondary" onclick="window.print()">Надрукувати / зберегти в PDF</button></div>
+ </section>
 
-const Q=[
-["1. Ти натискаєш клавішу. Що свідчить про введення?",["символ надходить до ПК","монітор світиться","колонки звучать"],0],
-["2. Що вводить мікрофон?",["звук","зображення","відео від монітора"],0],
-["3. Найкращий критерій пристрою введення?",["працює з інформацією","дані/команди надходять до ПК","має кабель"],1],
-["4. Яка пара містить лише пристрої введення?",["клавіатура + миша","монітор + колонки","принтер + проєктор"],0],
-["5. Обери всі пристрої введення.",["клавіатура","мікрофон","монітор","камера"],[0,1,3]],
-["6. Обери всі правильні твердження про введення.",["дані рухаються до ПК","пристрій може передавати команди","результат завжди на екрані","сигнал може надходити від людини"],[0,1,3]],
-["7. Який пристрій вводить зображення?",["камера","колонки","монітор"],0],
-["8. Упорядкуй алгоритм: назвати → визначити дані → визначити напрямок → висновок.",["цей порядок правильний","потрібно почати з висновку"],0],
-["9. Чого недостатньо для висновку?",["знати, що пристрій працює з інформацією","визначити напрямок даних","навести тип даних"],0],
-["10. Найкращий аргумент: миша — пристрій введення.",["має коліщатко","передає команди керування до ПК","лежить на столі"],1]
-];
-let A=[],started=false;
-function render(){let z=$("#qa");z.innerHTML="";Q.forEach((q,i)=>{let d=document.createElement("div");d.className="card q";let multi=Array.isArray(q[3]);d.innerHTML="<div><strong>"+q[0]+"</strong></div><div class='ans'>"+q[2].map((x,j)=>"<button data-j='"+j+"'>"+x+"</button>").join("")+"</div><div class='msg'></div>";let bs=$$("button",d);bs.forEach(b=>b.onclick=()=>{if(multi){b.classList.toggle("on");let a=A[i]||[];let j=+b.dataset.j;A[i]=a.includes(j)?a.filter(x=>x!==j):[...a,j]}else{bs.forEach(x=>x.classList.remove("on"));b.classList.add("on");A[i]=+b.dataset.j}});z.appendChild(d)})}
-$("#start").onclick=()=>{let n=String($("#nm").value||"").trim().replace(/\s+/g," "),c=String($("#cls").value||"").trim();if(n.split(" ").length<2||/^\d+$/.test(n)||!c){$("#ge").textContent="Введи ім’я та прізвище (мінімум два слова) і клас.";return}started=true;A=Array(Q.length).fill(null);render();$("#testGate").classList.add("hidden");$("#qa").classList.remove("hidden");$("#finish").classList.remove("hidden");$("#te").textContent=""};
-$("#finish").onclick=()=>{if(!started)return;if(A.some(x=>x===null||(Array.isArray(x)&&!x.length))){$("#te").textContent="Відповідай на всі 10 завдань.";return}let score=0;Q.forEach((q,i)=>{let c=q[3],a=A[i];if(Array.isArray(c)){if(Array.isArray(a)&&a.length===c.length&&a.every(x=>c.includes(x)))score++}else if(a===c)score++});let level=score>=9?"Високий":score>=7?"Достатній":score>=4?"Середній":"Початковий";let comment=score>=9?"Впевнено застосовуєш критерій напрямку даних.":score>=7?"Основний критерій засвоєно.":score>=4?"Повтори алгоритм «дані → напрямок → висновок».":"Повернися до теорії та відпрацюй алгоритм.";let now=new Date().toLocaleString("uk-UA",{dateStyle:"short",timeStyle:"short"});$("#qa").classList.add("hidden");$("#finish").classList.add("hidden");$("#res").classList.remove("hidden");$("#res").innerHTML="<div class='card result'><div class='k'>Картка результату</div><h3>"+esc($("#nm").value)+"</h3><p>Клас: <b>"+esc($("#cls").value)+"</b> • Тема: <b>Пристрої введення</b></p><div class='score'>"+score+"/10</div><p><b>"+(score*10)+"%</b> • "+level+" рівень</p><div class='rgrid'><div>Правильних<strong>"+score+"/10</strong></div><div>Дата/час<strong>"+now+"</strong></div><div>Рівень<strong>"+level+"</strong></div></div><p>"+comment+"</p><p><b>📸 Зробіть скриншот картки результату та надішліть учителю.</b></p><button class='btn noprint' onclick='location.reload()'>Пройти ще раз</button> <button class='btn s noprint' onclick='print()'>Друкувати / PDF</button></div>"};
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+<section class="card" id="textbook" style="text-align:center">
+  <span class="tag">Навчальні матеріали</span>
+  <h2>📘 Електронний підручник з інформатики для 8 класу</h2>
+  <p>Й. Ривкінд та співавтори · 8 клас</p>
+  <p><a href="https://files.pidruchnyk.com.ua/uploads/book/8-klas-informatyka-ryvkind-2025.pdf" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#2563eb;color:#fff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:750">Відкрити підручник (PDF)</a></p>
+  <p><a href="https://sites.google.com/view/informatika-8class" target="_blank" rel="noopener noreferrer">Додаткові матеріали до підручника</a></p>
+</section>
+
+</main>
+<footer>Інформатика · 8 клас · Урок 14 · Навчальний матеріал для роботи на уроці</footer>
+<script>
+function val(id){return Number(document.getElementById(id).value)}
+function calculate(){
+ const total=val('cpu')+val('ram')+val('storage')+val('gpu')+val('other');
+ const budget=val('budget'), purpose=document.getElementById('purpose').value;
+ const label=purpose==='study'?'навчання':purpose==='creative'?'творчості':'ігор та 3D-графіки';
+ let msg='<b>Орієнтовна вартість: '+total.toLocaleString('uk-UA')+' грн.</b><br>Бюджет: '+budget.toLocaleString('uk-UA')+' грн. ';
+ if(total>budget) msg+=' <b style="color:#b42318">Перевищення бюджету на '+(total-budget).toLocaleString('uk-UA')+' грн.</b> Спробуй змінити одну або кілька складових.';
+ else msg+=' <b style="color:#15803d">У бюджеті залишилося '+(budget-total).toLocaleString('uk-UA')+' грн.</b>';
+ msg+='<br>Призначення: '+label+'. '+(purpose==='study'&&val('gpu')>0?'Для навчання можна розглянути вбудовану графіку та спрямувати кошти на інші складові.':purpose==='gaming'&&val('gpu')===0?'Для сучасних ігор варто перевірити, чи вистачить графічної продуктивності.':'Переконайся, що компоненти сумісні між собою.');
+ document.getElementById('calcResult').innerHTML=msg;
+}
+function suggest(){
+ const p=document.getElementById('purpose').value;
+ document.getElementById('cpu').value=p==='study'?'3500':p==='creative'?'6000':'10000';
+ document.getElementById('ram').value=p==='study'?'2800':p==='creative'?'2800':'4800';
+ document.getElementById('storage').value=p==='gaming'?'2800':'1800';
+ document.getElementById('gpu').value=p==='study'?'0':p==='creative'?'6500':'13000';
+ document.getElementById('other').value=p==='gaming'?'7500':'5000';
+ calculate();
+}
+function gradeQuiz(){
+ const key={q1:'b',q2:'c',q3:'a',q4:'b',q5:'a',q6:'b',q7:'c',q8:'a',q9:'b',q10:'c'};
+ let score=0, unanswered=0;
+ for(const [q,a] of Object.entries(key)){const el=document.querySelector('input[name="'+q+'"]:checked');if(!el)unanswered++;else if(el.value===a)score++;}
+ const out=document.getElementById('quizResult');
+ out.innerHTML='<div class="score">Результат: '+score+' із 10 балів</div>'+(unanswered?'<p>Без відповіді залишилося запитань: '+unanswered+'. Можеш відповісти на них і перевірити ще раз.</p>':'<p>Тест завершено. Переглянь запитання, у яких варто повторити матеріал.</p>')+'<p>'+ (score>=9?'Чудово орієнтуєшся в темі.':score>=7?'Добрий результат. Повтори правила сумісності та добору компонентів.':'Повтори таблицю складових і спробуй пройти тест ще раз.')+'</p>';
+}
+function copyReason(){
+ const text=document.getElementById('reason').value.trim(), msg=document.getElementById('copyMsg');
+ if(!text){msg.textContent='Спочатку напиши пояснення у полі вище.';return;}
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>msg.textContent='Пояснення скопійовано.').catch(()=>msg.textContent='Не вдалося скопіювати автоматично — виділи текст і скопіюй вручну.');}
+ else{document.getElementById('reason').select();msg.textContent='Виділи текст і натисни Ctrl+C.';}
+}
 </script>
-<footer style="margin:36px auto 0;max-width:1100px;padding:24px 20px;text-align:center;border-top:1px solid #d9e2f0;color:#43516a">
-  <h2 style="margin:0 0 8px;font-size:1.2rem">📘 Підручник з інформатики для 8 класу</h2>
-  <p style="margin:0 0 12px">Й. Ривкінд, Т. Лисенко, Л. Чернікова, В. Шакотько · «Генеза», 2025</p>
-  <p style="margin:8px 0"><a href="https://files.pidruchnyk.com.ua/uploads/book/8-klas-informatyka-ryvkind-2025.pdf" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:10px 16px;border-radius:10px;background:#2458a6;color:#fff;text-decoration:none;font-weight:700">Відкрити електронний підручник (PDF)</a></p>
-  <p style="margin:8px 0"><a href="https://sites.google.com/view/informatika-8class" target="_blank" rel="noopener noreferrer">Додаткові матеріали до підручника</a></p>
-</footer>
 </body>
 </html>
