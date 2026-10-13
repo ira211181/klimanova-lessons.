@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Інтерактивний урок інформатики для 8 класу: історія обчислювальних і комп’ютерних пристроїв.">
+<title>8 клас · Урок 15 · Історія обчислювальних і комп’ютерних пристроїв</title>
+<style>
+:root{--ink:#17233b;--muted:#52627a;--paper:#f2f5ff;--card:#fff;--line:#dce3ee;--blue:#2857d9;--cyan:#17a8b5;--gold:#f4b942;--coral:#e76f51;--green:#18794e;--violet:#7657d5;--pink:#ed5e9e;--shadow:0 14px 34px #1b31501b}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}body{margin:0;background:radial-gradient(circle at 8% 10%,#e2f8ff 0,transparent 23rem),radial-gradient(circle at 95% 36%,#fce7f3 0,transparent 24rem),linear-gradient(180deg,#f6f7ff,#eef7ff 55%,#fff8ef);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:#1748bd}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:12px 16px;background:var(--blue);color:white;font-weight:750;min-height:44px}button.secondary{background:#e9efff;color:#1d3f9d;border:1px solid #c8d5ff}button.ghost{background:white;color:var(--ink);border:1px solid var(--line)}button:disabled{opacity:.5;cursor:not-allowed}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+header.hero{background:linear-gradient(120deg,#111f45,#244dc1 62%,#14a8b5);color:#fff;padding:44px max(22px,calc((100% - 1120px)/2)) 38px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:360px;height:360px;border:1px solid #ffffff35;border-radius:50%;right:-100px;top:-160px;box-shadow:0 0 0 35px #ffffff0a,0 0 0 75px #ffffff08}
+.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.78rem;font-weight:800;color:#bdeff4}.hero h1{font-size:clamp(2.1rem,5vw,4.1rem);line-height:1.05;max-width:850px;margin:14px 0}.hero p{max-width:760px;color:#e4edff;font-size:1.13rem}.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.pill{display:inline-flex;align-items:center;gap:7px;border:1px solid #ffffff45;background:#ffffff12;padding:7px 12px;border-radius:999px;font-size:.9rem}
+nav{position:sticky;top:0;z-index:5;background:#fffffff0;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:10px max(16px,calc((100% - 1120px)/2));display:flex;gap:8px;overflow-x:auto}nav a{white-space:nowrap;text-decoration:none;font-size:.88rem;font-weight:750;color:#263b66;padding:8px 11px;border-radius:9px}nav a:hover{background:#eaf0ff}
+main{max-width:1120px;margin:0 auto;padding:24px 20px 60px}.section{position:relative}.section:nth-of-type(odd) .num{background:linear-gradient(135deg,#d9f7ff,#dce4ff);color:#2847b9}.section:nth-of-type(even) .num{background:linear-gradient(135deg,#ffe7bd,#ffdce9);color:#9a3b63}.card{transition:transform .18s ease,box-shadow .18s ease}.card:hover{box-shadow:0 18px 42px #233c7020}.visual-card{overflow:hidden;padding:0}.visual-card .visual-copy{padding:17px 19px 20px}.history-img{display:block;width:100%;height:205px;object-fit:cover;background:linear-gradient(135deg,#c9e9ff,#f9d9ed)}.media-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}.media-grid .span-6{grid-column:span 6}.media-grid .span-4{grid-column:span 4}.media-grid .span-12{grid-column:span 12}.video-frame{position:relative;width:100%;aspect-ratio:16/9;border:0;border-radius:16px;background:#111;display:block}.video-card{background:linear-gradient(135deg,#fff,#f3f0ff);border:1px solid #dcd4ff;border-radius:20px;padding:18px;box-shadow:var(--shadow)}.infographic{background:linear-gradient(130deg,#172554,#3155c9 52%,#12a6b3);color:#fff;border-radius:24px;padding:22px;box-shadow:0 18px 40px #1b315022}.infographic h3{color:#fff}.infographic .timeline{margin-top:18px}.infographic .era{box-shadow:0 7px 18px #081c4430;min-height:190px}.infographic .era p{font-size:.92rem}.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}.stat{background:#ffffff17;border:1px solid #ffffff35;border-radius:15px;padding:12px;text-align:center}.stat b{display:block;font-size:1.4rem;color:#ffe08a}.media-label{display:inline-block;background:#fff0bf;color:#68470a;border-radius:999px;padding:5px 10px;font-size:.78rem;font-weight:900;letter-spacing:.04em}.photo-credit{font-size:.78rem;color:var(--muted);margin-top:7px}.resource-link{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:11px;background:#e7f7ff;color:#075b83;text-decoration:none;font-weight:800}.resource-link:hover{background:#c9efff}.section{margin:28px 0;scroll-margin-top:80px}.section-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}.num{flex:0 0 44px;height:44px;border-radius:14px;display:grid;place-items:center;background:#e5edff;color:#244dc1;font-weight:900}.section h2{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin:0 0 5px}.section-head p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow);min-width:0}.span-12{grid-column:span 12}.span-8{grid-column:span 8}.span-7{grid-column:span 7}.span-6{grid-column:span 6}.span-5{grid-column:span 5}.span-4{grid-column:span 4}.card h3{margin:0 0 10px;font-size:1.18rem}.muted{color:var(--muted)}.small{font-size:.9rem}.tag{display:inline-block;background:#edf4ff;color:#2345a2;border-radius:8px;padding:3px 8px;font-size:.8rem;font-weight:800}.prompt{border-left:5px solid var(--gold);padding:12px 16px;background:#fff8e8;border-radius:0 12px 12px 0;margin:14px 0}.options{display:grid;gap:9px;margin:12px 0}.option{display:flex;gap:10px;align-items:flex-start;text-align:left;width:100%;background:white;color:var(--ink);border:1px solid var(--line);font-weight:600}.option:hover{border-color:#8ca7f4;background:#f8faff}.option.selected{border-color:var(--blue);background:#edf2ff}.feedback{padding:12px 14px;border-radius:12px;background:#edf7f1;border:1px solid #b8e0c8;margin-top:12px}.feedback.bad{background:#fff1ed;border-color:#f1b6a6}.feedback:empty{display:none}.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.era{border-top:5px solid var(--cyan);background:#f4fbfc;border-radius:14px;padding:14px}.era:nth-child(2){border-color:#e9ae37;background:#fffaf0}.era:nth-child(3){border-color:#7a70d6;background:#f7f5ff}.era:nth-child(4){border-color:#e76f51;background:#fff6f2}.era b{display:block;font-size:1.08rem}.era .year{font-weight:900;color:#244dc1;font-size:1.22rem}.artifact{display:flex;gap:14px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}.artifact:last-child{border:0}.artifact .symbol{flex:0 0 54px;height:54px;border-radius:15px;display:grid;place-items:center;background:#eaf0ff;font-size:1.7rem}.artifact p{margin:3px 0 0;color:var(--muted);font-size:.93rem}
+.sort-zone{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}.sort-bin{border:2px dashed #b8c5db;border-radius:14px;padding:12px;min-height:150px;background:#fafcff}.sort-bin h4{margin:0 0 8px}.chip{display:inline-flex;margin:4px;padding:9px 11px;border-radius:10px;background:#eaf0ff;border:1px solid #c9d6ff;color:#203e91;font-weight:750;cursor:pointer;min-height:44px;align-items:center}.chip.active{background:#244dc1;color:white}.chip.done{background:#e6f5ed;border-color:#8bd0a8;color:#145c3c}.sort-bank{padding:10px;background:#f3f6fb;border-radius:14px;min-height:64px}
+label{font-weight:700;display:block;margin-bottom:5px}input[type=text],select,textarea{width:100%;padding:11px 12px;border:1px solid #bfcada;border-radius:10px;background:white;color:var(--ink);min-height:44px}fieldset{border:1px solid var(--line);border-radius:14px;margin:14px 0;padding:14px}legend{font-weight:850;padding:0 6px}.checkline{display:flex;gap:10px;align-items:flex-start;margin:8px 0;font-weight:500}.checkline input{margin-top:7px;width:18px;height:18px;flex-shrink:0}.theory details{border:1px solid var(--line);border-radius:14px;background:white;margin:10px 0;padding:13px 16px}.theory summary{font-weight:850;cursor:pointer}.theory details p{margin-bottom:5px}.callout{padding:16px;border-radius:14px;background:#edf7fb;border:1px solid #b8e5ec}.result-card{border:2px solid #244dc1;background:linear-gradient(135deg,#fff,#f0f5ff);padding:22px;border-radius:18px}.score{font-size:2.5rem;font-weight:950;color:#244dc1}.progress{height:10px;border-radius:99px;background:#e2e8f2;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));width:0;transition:width .25s}footer{background:#101d3c;color:#e9efff;padding:28px max(20px,calc((100% - 1080px)/2));}footer a{color:#a9dff2}hr{border:0;border-top:1px solid var(--line);margin:18px 0}.hide{display:none!important}
+@media(max-width:760px){body{font-size:16px}.media-grid .span-6,.media-grid .span-4,.media-grid .span-12{grid-column:1}.stat-strip{grid-template-columns:repeat(2,1fr)}.history-img{height:190px}.hero{padding:32px 20px}.grid{grid-template-columns:1fr}.span-8,.span-7,.span-6,.span-5,.span-4,.span-12{grid-column:1}.timeline{grid-template-columns:repeat(2,minmax(0,1fr))}.sort-zone{grid-template-columns:1fr}.card{padding:17px}nav{gap:2px}nav a{padding:8px;font-size:.82rem}}
+@media(max-width:430px){.timeline{grid-template-columns:1fr}.hero h1{font-size:2.25rem}.section-head{gap:10px}.num{flex-basis:38px;height:38px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+@media print{nav,.controls,button{display:none!important}body{background:white;font-size:12pt}.hero{background:white;color:#111;padding:20px;border-bottom:2px solid #333}.hero p,.eyebrow{color:#333}.card{box-shadow:none;break-inside:avoid}.section{break-inside:avoid}.hide{display:block!important}footer{background:white;color:#111}a{color:#111;text-decoration:underline}}
+</style>
+</head>
+<body>
+<header class="hero" id="start">
+  <div class="eyebrow">Інформатика · 8 клас · Урок 15</div>
+  <h1>Історія обчислювальних і комп’ютерних пристроїв</h1>
+  <p>Від рахункових паличок до сучасних комп’ютерів: досліди, як люди розв’язували обчислювальні задачі та чому змінювалися пристрої.</p>
+  <div class="hero-meta"><span class="pill">⏱ 35 хвилин</span><span class="pill">🧭 Дослідження + докази</span><span class="pill">🎯 Вибір комп’ютерної системи</span></div>
+</header>
+<nav aria-label="Навігація уроком">
+<a href="#start">Старт</a><a href="#media">🎬 Медіатека</a><a href="#warmup">Розігрів</a><a href="#evidence">Докази</a><a href="#mission">Місія</a><a href="#theory">Теорія</a><a href="#debate">Перевірка висновку</a><a href="#test">Тест /10</a><a href="#homework">Д/з</a>
+</nav>
+<main>
+<section class="section" id="media">
+ <div class="section-head"><div class="num">🎬</div><div><h2>Медіатека: подивись, порівняй, здивуйся!</h2><p>Короткі відео, історичні світлини та інфографіка для дослідження</p></div></div>
+ <div class="media-grid">
+  <div class="video-card span-6">
+   <span class="media-label">▶ ВІДЕО 1 · УКРАЇНСЬКОЮ</span>
+   <h3>Історія обчислювальних і комп’ютерних пристроїв</h3>
+   <p class="muted">Відео до теми за підручником Ривкінда для 8 класу. Під час перегляду занотуй два пристрої та одну важливу зміну.</p>
+   <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/a4Tb6TEXK1o" title="Історія обчислювальних і комп’ютерних пристроїв — 8 клас, Ривкінд" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+   <p class="photo-credit">Канал Task Informatics · <a href="https://www.youtube.com/watch?v=a4Tb6TEXK1o" target="_blank" rel="noopener">Відкрити відео на YouTube ↗</a></p>
+  </div>
+  <div class="video-card span-6">
+   <span class="media-label">▶ ВІДЕО 2 · ДОДАТКОВО</span>
+   <h3>Як розвивалася обчислювальна техніка?</h3>
+   <p class="muted">Ще один відеоурок українською. Порівняй його пояснення з інфографікою нижче та знайди спільні ідеї.</p>
+   <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/35pWiEzmRi0" title="Історія обчислювальної техніки — український відеоурок" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+   <p class="photo-credit">Доступність вбудованого відтворення залежить від YouTube · <a href="https://youtu.be/35pWiEzmRi0" target="_blank" rel="noopener">Відкрити відео ↗</a></p>
+  </div>
+  <div class="span-12 infographic">
+   <span class="media-label">ІНФОГРАФІКА · 4 ЕТАПИ</span>
+   <h3 style="font-size:clamp(1.5rem,3vw,2rem);margin:12px 0 5px">Від камінця до кишенькового комп’ютера</h3>
+   <p style="color:#e7eeff;margin:0">Головна ідея: люди поступово передавали обчислення від власних рук — механізмам, електроніці та програмам.</p>
+   <div class="timeline">
+    <div class="era"><span class="year">01 · Давнина</span><b>🪨 Рахували вручну</b><p>Пальці, камінці, зарубки, абак. Людина сама виконує основні дії.</p></div>
+    <div class="era"><span class="year">02 · XVII–XIX ст.</span><b>⚙️ Механізми</b><p>Паскаліна й проєкти Беббіджа автоматизують частину обчислень.</p></div>
+    <div class="era"><span class="year">03 · XX ст.</span><b>💡 Електроніка</b><p>Лампи, транзистори та мікросхеми зробили обчислення швидшими.</p></div>
+    <div class="era"><span class="year">04 · Сьогодні</span><b>💻 Комп’ютери всюди</b><p>Ноутбуки, смартфони та сервери працюють із різними програмами й даними.</p></div>
+   </div>
+   <div class="stat-strip"><div class="stat"><b>🧮</b>ручні засоби</div><div class="stat"><b>⚙️</b>механізація</div><div class="stat"><b>⚡</b>електроніка</div><div class="stat"><b>🧠</b>програмованість</div></div>
+  </div>
+  <article class="card visual-card span-4"><img class="history-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Abacus_6.png?width=900" alt="Абак — давній ручний обчислювальний пристрій" loading="lazy" onerror="this.style.display='none'"><div class="visual-copy"><span class="tag">01 · Ручні засоби</span><h3>Абак і рахівниця</h3><p>Людина пересуває кісточки або камінці й сама керує кожним кроком обчислення.</p><p class="photo-credit">Зображення: Wikimedia Commons · <a href="https://commons.wikimedia.org/wiki/Category:Abaci" target="_blank" rel="noopener">Інші зображення абаків ↗</a></p></div></article>
+  <article class="card visual-card span-4"><img class="history-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Pascaline.jpg?width=900" alt="Механічна рахувальна машина Паскаля — Pascaline" loading="lazy" onerror="this.style.display='none'"><div class="visual-copy"><span class="tag">02 · Механізація</span><h3>Машина Паскаля</h3><p>Коліщатка й механічні передачі допомагали автоматизувати арифметичні дії.</p><p class="photo-credit">Зображення: Wikimedia Commons · <a href="https://commons.wikimedia.org/wiki/Category:Pascalines" target="_blank" rel="noopener">Колекція Pascaline ↗</a></p></div></article>
+  <article class="card visual-card span-4"><img class="history-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Charles_Babbage_-_Difference_Engine_(1847-1849).jpg?width=900" alt="Механізм різницевої машини Чарльза Беббіджа" loading="lazy" onerror="this.style.display='none'"><div class="visual-copy"><span class="tag">03 · Програмований задум</span><h3>Ідея Беббіджа</h3><p>Проєкт аналітичної машини передбачав пам’ять, обчислення та керування.</p><p class="photo-credit">Зображення: Wikimedia Commons · <a href="https://commons.wikimedia.org/wiki/Category:Difference_engines" target="_blank" rel="noopener">Різницеві машини ↗</a></p></div></article>
+  <article class="card visual-card span-6"><img class="history-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Eniac.jpg?width=1100" alt="ENIAC — один із ранніх електронних цифрових комп’ютерів" loading="lazy" onerror="this.style.display='none'"><div class="visual-copy"><span class="tag">04 · Електронна епоха</span><h3>ENIAC: кімната, заповнена обчисленнями</h3><p>Ранні електронні комп’ютери були величезними й потребували багато енергії. Сучасні пристрої набагато компактніші.</p><p class="photo-credit">Зображення: Wikimedia Commons · <a href="https://commons.wikimedia.org/wiki/Category:ENIAC" target="_blank" rel="noopener">Фотографії ENIAC ↗</a></p></div></article>
+  <article class="card visual-card span-6"><img class="history-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Personal_computer,_exploded_5.jpg?width=1100" alt="Компоненти персонального комп’ютера" loading="lazy" onerror="this.style.display='none'"><div class="visual-copy"><span class="tag">05 · Сучасність</span><h3>Комп’ютер — це система компонентів</h3><p>Процесор, оперативна пам’ять, накопичувач і графічна система добираються під конкретні задачі.</p><p class="photo-credit">Зображення: Wikimedia Commons · <a href="https://commons.wikimedia.org/wiki/Category:Personal_computers" target="_blank" rel="noopener">Сучасні комп’ютери ↗</a></p></div></article>
+  <div class="card span-12" style="background:linear-gradient(120deg,#fff5d8,#ffe6ef 52%,#e3f8ff);border:1px solid #f1d5de">
+   <h3>🔍 Мінічелендж «Помітив закономірність?»</h3><p>Після перегляду відео та інфографіки обери найточніше твердження:</p>
+   <div class="options" id="mediaChallenge"><button class="option" data-feedback="Так! Історія — це не лише швидкість: важливі автоматизація, програмованість, розміри, енерговитрати та набір задач.">А. Змінювалися швидкість, керування та коло задач.</button><button class="option" data-feedback="Не зовсім. Ранні пристрої були корисними, але не всі могли виконувати довільні програми.">Б. Усі давні пристрої вже були програмованими комп’ютерами.</button><button class="option" data-feedback="Не зовсім. Новіші пристрої зазвичай компактніші, але різні системи створені для різних потреб.">В. Будь-який новий комп’ютер підходить для всіх задач.</button></div><div class="feedback" id="mediaFeedback" aria-live="polite"></div>
+  </div>
+ </div>
+</section>
+<section class="section" id="problem">
+ <div class="section-head"><div class="num">01</div><div><h2>Проблемне запитання</h2><p>0–3 хв · Спочатку сформулюй гіпотезу</p></div></div>
+ <div class="grid">
+  <div class="card span-7">
+   <h3>Що насправді робить пристрій «комп’ютером»?</h3>
+   <p>Уяви чотири пристрої: рахівницю, механічну обчислювальну машину, ранній електронний комп’ютер і сучасний ноутбук. Усі вони пов’язані з обчисленнями, але можливості в них різні.</p>
+   <div class="prompt">Твоя гіпотеза: який критерій найкраще пояснює перехід від простих обчислювальних засобів до комп’ютерів загального призначення?</div>
+   <div class="options" id="hypothesis">
+    <button class="option" data-feedback="Це важлива ознака зручності, але не визначає обчислювальну універсальність: механічний пристрій також може мати рухомі частини.">А. Пристрій має рухомі частини.</button>
+    <button class="option" data-feedback="Добра гіпотеза: можливість змінювати програму дає пристрою змогу виконувати різні задачі без перебудови всього механізму. Перевіримо її на прикладах.">Б. Пристрій може виконувати різні задачі за змінюваними командами.</button>
+    <button class="option" data-feedback="Швидкість має значення, але сама по собі не робить пристрій універсальним. Треба зважати на спосіб керування та змінюваність задач.">В. Пристрій працює швидше за людину.</button>
+   </div><div class="feedback" id="hypFeedback" aria-live="polite"></div>
+  </div>
+  <div class="card span-5">
+   <h3>Маршрут на 35 хв</h3>
+   <div class="artifact"><div class="symbol">🔎</div><div><b>Зібрати докази</b><p>Порівняти можливості різних поколінь.</p></div></div>
+   <div class="artifact"><div class="symbol">🧩</div><div><b>Побудувати зв’язки</b><p>Пояснити, що саме змінювалося.</p></div></div>
+   <div class="artifact"><div class="symbol">💻</div><div><b>Обґрунтувати вибір</b><p>Визначити потрібні характеристики пристрою для задачі.</p></div></div>
+  </div>
+ </div>
+</section>
+<section class="section" id="warmup">
+ <div class="section-head"><div class="num">02</div><div><h2>Швидке сортування</h2><p>3–7 хв · Обери картку, а потім категорію</p></div></div>
+ <div class="card">
+  <p>Натисни на картку, а потім на категорію, яка найкраще описує її роль в історії обчислень. Після розміщення прочитай пояснення.</p>
+  <div class="sort-bank" id="sortBank">
+   <button class="chip" data-item="abacus">Рахівниця</button><button class="chip" data-item="pascal">Машина Паскаля</button><button class="chip" data-item="analytical">Проєкт аналітичної машини Беббіджа</button><button class="chip" data-item="eniac">ENIAC</button><button class="chip" data-item="pc">Персональний комп’ютер</button>
+  </div>
+  <div class="sort-zone">
+   <div class="sort-bin" data-bin="manual"><h4>Ручний засіб</h4><p class="muted small">Обчислення виконує людина, використовуючи предмети.</p></div>
+   <div class="sort-bin" data-bin="mechanical"><h4>Механічний / проєкт механізму</h4><p class="muted small">Рух механізмів або проєкт автоматизації обчислень.</p></div>
+   <div class="sort-bin" data-bin="electronic"><h4>Електронний комп’ютер і подальший розвиток</h4><p class="muted small">Електронне опрацювання та широкі можливості програмування.</p></div>
+  </div>
+  <div class="controls"><button id="checkSort">Перевірити сортування</button><button class="secondary" id="resetSort">Скинути</button></div><div class="feedback" id="sortFeedback" aria-live="polite"></div>
+ </div>
+</section>
+<section class="section" id="evidence">
+ <div class="section-head"><div class="num">03</div><div><h2>Лабораторія історичних доказів</h2><p>7–15 хв · Не плутай факт, висновок і припущення</p></div></div>
+ <div class="grid">
+  <div class="card span-6">
+   <span class="tag">Картка джерела A</span><h3>Механізація обчислень</h3>
+   <p>У XVII столітті Блез Паскаль створив механічну рахувальну машину, відому як Pascaline. Вона допомагала виконувати арифметичні операції за допомогою системи коліс і передач.</p>
+   <p class="muted small">Що підтверджує цей приклад? Частину обчислювальних дій можна передати механізму, але це ще не означає універсального програмованого комп’ютера.</p>
+  </div>
+  <div class="card span-6">
+   <span class="tag">Картка джерела B</span><h3>Програмований задум</h3>
+   <p>Чарльз Беббідж розробляв проєкти різницевої та аналітичної машин. Аналітична машина передбачала елементи, подібні до пам’яті, обчислювального пристрою та керування, але повністю завершеною за життя Беббіджа не стала.</p>
+   <p class="muted small">Важливо: проєкт і повністю діючий пристрій — не те саме. Не можна робити висновок, що всі задумані можливості були реалізовані в той час.</p>
+  </div>
+  <div class="card span-6">
+   <span class="tag">Картка джерела C</span><h3>Електронна епоха</h3>
+   <p>ENIAC, представлений у 1940-х роках, був одним із ранніх електронних цифрових комп’ютерів загального призначення. Він займав велику площу, споживав значну кількість електроенергії та використовував багато електронних ламп.</p>
+   <p class="muted small">Він демонструє зростання швидкості електронних обчислень, але не був схожий за розмірами, енергоспоживанням і зручністю на сучасний ноутбук.</p>
+  </div>
+  <div class="card span-6">
+   <span class="tag">Картка джерела D</span><h3>Комп’ютер для різних задач</h3>
+   <p>Сучасний персональний комп’ютер може виконувати багато різних задач завдяки програмному забезпеченню: створювати документи, обробляти зображення, моделювати процеси, програмувати й передавати дані мережею.</p>
+   <p class="muted small">Це не означає, що будь-який комп’ютер однаково добре впорається з будь-якою задачею: важливі процесор, пам’ять, графічна система, накопичувач та інші компоненти.</p>
+  </div>
+ </div>
+ <div class="card" style="margin-top:16px">
+  <h3>Завдання: які докази підтримують висновок?</h3>
+  <p>Висновок: «Історія обчислювальних пристроїв — це не просто збільшення швидкості, а зміна способу керування та кола задач».</p>
+  <fieldset><legend>Познач усі картки, які справді допомагають обґрунтувати цей висновок</legend>
+   <label class="checkline"><input type="checkbox" name="evidence" value="A"> A — механізм виконує частину арифметичних дій.</label>
+   <label class="checkline"><input type="checkbox" name="evidence" value="B"> B — проєкт передбачає елементи керування та пам’яті.</label>
+   <label class="checkline"><input type="checkbox" name="evidence" value="C"> C — електронний комп’ютер значно прискорює обчислення.</label>
+   <label class="checkline"><input type="checkbox" name="evidence" value="D"> D — програмне забезпечення дає змогу використовувати один пристрій для різних задач.</label>
+   <label class="checkline"><input type="checkbox" name="evidence" value="E"> E — сучасний ноутбук може бути чорного або сріблястого кольору.</label>
+  </fieldset>
+  <button id="checkEvidence">Перевірити докази</button><div class="feedback" id="evidenceFeedback" aria-live="polite"></div>
+ </div>
+</section>
+<section class="section" id="mission">
+ <div class="section-head"><div class="num">04</div><div><h2>Місія: обери систему під задачу</h2><p>15–19 хв · Різні рівні мислення</p></div></div>
+ <div class="card">
+  <p><b>Ситуація:</b> шкільній команді потрібно створювати презентації, працювати з великими фото, програмувати навчальні проєкти й зберігати матеріали. Бюджет обмежений. Обери, які характеристики треба перевірити перед купівлею.</p>
+  <div class="grid">
+   <div class="span-4"><label for="taskLevel">Обери рівень місії</label><select id="taskLevel"><option value="base">Базовий — необхідне</option><option value="mid">Достатній — баланс</option><option value="high">Високий — аргументований компроміс</option></select></div>
+   <div class="span-8"><label for="taskNeed">Головна задача</label><select id="taskNeed"><option value="general">Документи, браузер і презентації</option><option value="media">Фото та відеомонтаж</option><option value="code">Програмування та моделювання</option></select></div>
+  </div>
+  <fieldset><legend>Відміть характеристики, які треба врахувати</legend>
+   <label class="checkline"><input type="checkbox" name="spec" value="cpu"> Процесор і його можливості</label>
+   <label class="checkline"><input type="checkbox" name="spec" value="ram"> Обсяг оперативної пам’яті</label>
+   <label class="checkline"><input type="checkbox" name="spec" value="storage"> Тип і місткість накопичувача</label>
+   <label class="checkline"><input type="checkbox" name="spec" value="gpu"> Графічна система — залежно від задач</label>
+   <label class="checkline"><input type="checkbox" name="spec" value="ports"> Порти, мережа, сумісність із потрібними пристроями</label>
+   <label class="checkline"><input type="checkbox" name="spec" value="color"> Колір корпусу як головний критерій продуктивності</label>
+   <label class="checkline"><input type="checkbox" name="spec" value="price"> Ціна, гарантія та можливість обслуговування</label>
+  </fieldset>
+  <label for="missionReason">Поясни свій вибір одним-двома реченнями</label><textarea id="missionReason" rows="3" placeholder="Наприклад: для монтажу відео важливо перевірити…"></textarea>
+  <div class="controls"><button id="checkMission">Перевірити рішення</button></div><div class="feedback" id="missionFeedback" aria-live="polite"></div>
+ </div>
+</section>
+<section class="section theory" id="theory">
+ <div class="section-head"><div class="num">05</div><div><h2>Теорія після дослідження</h2><p>19–29 хв · Прочитай короткі пояснення й повернись до доказів</p></div></div>
+ <div class="grid">
+  <div class="card span-12">
+   <div class="timeline">
+    <div class="era"><span class="year">Давнина</span><b>Ручні засоби</b><p>Пальці, камінці, рахункові палички й абак допомагали фіксувати кількість і виконувати обчислення. Правила значною мірою виконує людина.</p></div>
+    <div class="era"><span class="year">XVII–XIX ст.</span><b>Механізація</b><p>Механічні машини автоматизують частину арифметичних операцій. У XIX столітті з’являються проєкти програмованого механічного обчислювача.</p></div>
+    <div class="era"><span class="year">XX ст.</span><b>Електронні комп’ютери</b><p>Електронні компоненти дали змогу значно підвищити швидкість. Згодом транзистори та інтегральні схеми сприяли зменшенню розмірів і підвищенню надійності.</p></div>
+    <div class="era"><span class="year">Сьогодні</span><b>Персональні та мобільні системи</b><p>Комп’ютери стали доступнішими й різноманітнішими. Програмне забезпечення та компоненти визначають, які задачі система може виконувати ефективно.</p></div>
+   </div>
+  </div>
+  <div class="card span-6">
+   <h3>Ключові поняття</h3>
+   <div class="artifact"><div class="symbol">🧮</div><div><b>Обчислювальний пристрій</b><p>Засіб, який допомагає виконувати обчислення — від ручного до автоматизованого.</p></div></div>
+   <div class="artifact"><div class="symbol">⚙️</div><div><b>Механічна машина</b><p>Виконує операції за допомогою механічних деталей і передавання руху.</p></div></div>
+   <div class="artifact"><div class="symbol">🔌</div><div><b>Електронний комп’ютер</b><p>Використовує електронні компоненти для опрацювання даних за заданими правилами.</p></div></div>
+   <div class="artifact"><div class="symbol">🧠</div><div><b>Програма</b><p>Команди, що визначають, які дії та в якій послідовності має виконувати система.</p></div></div>
+  </div>
+  <div class="card span-6">
+   <h3>Що змінювалося — і чому?</h3>
+   <details open><summary>1. Швидкість і автоматизація</summary><p>Частина дій поступово переходила від людини до механізмів, а потім до електронних схем. Це зменшило час виконання багатьох операцій.</p></details>
+   <details><summary>2. Змінюваність задач</summary><p>Загальне призначення комп’ютера пов’язане не лише зі швидкістю: програми дають змогу змінювати задачі без створення нового пристрою для кожної з них.</p></details>
+   <details><summary>3. Розмір, енергія, доступність</summary><p>Перехід до нових електронних компонентів сприяв компактнішим системам, але вибір сучасного пристрою все одно залежить від задач, бюджету й вимог.</p></details>
+   <details><summary>4. Типова помилка</summary><p>Не кожен пристрій, що рахує, є програмованим комп’ютером. Так само не можна вважати, що найновіший або найдорожчий пристрій автоматично найкращий для будь-якої задачі.</p></details>
+  </div>
+ </div>
+</section>
+<section class="section" id="debate">
+ <div class="section-head"><div class="num">06</div><div><h2>Детектор хибного висновку</h2><p>29–33 хв · Знайди помилку й виправ її</p></div></div>
+ <div class="card">
+  <div class="prompt">«Сучасний комп’ютер завжди кращий за старі пристрої, бо він новіший і швидший. Тому під час вибору достатньо дивитися лише на частоту процесора».</div>
+  <p>Що в цьому висновку слабке?</p>
+  <div class="options" id="fallacy">
+   <button class="option" data-feedback="Так. Новизна та частота процесора не враховують пам’ять, накопичувач, графіку, сумісність, ціну й реальну задачу.">А. Він ігнорує задачу користувача та інші характеристики системи.</button>
+   <button class="option" data-feedback="Це не головна помилка: швидкість може бути важливою, але її недостатньо для повного вибору.">Б. Усі старі пристрої були швидшими за сучасні.</button>
+   <button class="option" data-feedback="Історія пристроїв має значення для розуміння розвитку, але помилка тут — у надто вузькому критерії вибору.">В. Історію комп’ютерів не можна вивчати за прикладами.</button>
+  </div><div class="feedback" id="fallacyFeedback" aria-live="polite"></div>
+  <hr>
+  <h3>CER-конструктор: твердження → доказ → пояснення</h3>
+  <div class="grid">
+   <div class="span-4"><label for="claim">Твердження</label><select id="claim"><option value="">Обери твердження…</option><option>Комп’ютер потрібно обирати під конкретні задачі.</option><option>Достатньо порівняти лише частоту процесора.</option></select></div>
+   <div class="span-4"><label for="proof">Доказ</label><select id="proof"><option value="">Обери доказ…</option><option>Для різних задач важливими можуть бути різні компоненти.</option><option>Усі комп’ютери мають однакові можливості.</option></select></div>
+   <div class="span-4"><label for="reason">Пояснення</label><select id="reason"><option value="">Обери пояснення…</option><option>Рішення залежить від навантаження, бюджету й сумісності.</option><option>Новіший пристрій завжди найкращий за всіма критеріями.</option></select></div>
+  </div>
+  <div class="controls"><button id="checkCER">Перевірити аргумент</button></div><div class="feedback" id="cerFeedback" aria-live="polite"></div>
+ </div>
+</section>
+<section class="section" id="test">
+ <div class="section-head"><div class="num">07</div><div><h2>Підсумковий тест /10</h2><p>33–35 хв · Якщо не встигнеш — заверши самостійно після уроку</p></div></div>
+ <div class="card" id="testGate">
+  <h3>Спочатку представся</h3><p class="muted">Після введення імені та класу відкриється тест. Відповіді та результат з’являться лише після завершення.</p>
+  <div class="grid"><div class="span-7"><label for="studentName">Ім’я та прізвище</label><input id="studentName" type="text" autocomplete="name" placeholder="Наприклад, Олена Коваленко"></div><div class="span-5"><label for="studentClass">Клас</label><input id="studentClass" type="text" placeholder="8-А"></div></div>
+  <div class="feedback bad hide" id="gateError" aria-live="polite"></div><div class="controls"><button id="startTest">Відкрити тест</button></div>
+ </div>
+ <div class="card hide" id="testPanel"><div class="progress" aria-label="Прогрес тесту"><span id="testProgress"></span></div><p id="testCount" class="muted small"></p><div id="questions"></div><div class="controls"><button id="submitTest">Завершити тест</button></div><div class="feedback bad hide" id="testError" aria-live="polite"></div></div>
+ <div class="card hide" id="resultPanel" aria-live="polite"><div id="resultContent"></div><div class="controls"><button class="secondary" id="retryTest">Пройти ще раз</button><button class="ghost" onclick="window.print()">Друкувати / зберегти PDF</button></div><p><b>Зробіть скриншот картки результату та надішліть учителю.</b></p></div>
+</section>
+<section class="section" id="homework">
+ <div class="section-head"><div class="num">08</div><div><h2>Домашнє завдання</h2><p>Після уроку · Обери один маршрут</p></div></div>
+ <div class="grid">
+  <div class="card span-4"><span class="tag">Базовий</span><h3>Хронологія</h3><p>Створи коротку часову лінію з чотирьох етапів: ручні засоби, механічні пристрої, електронні комп’ютери, сучасні системи. До кожного додай приклад і одну характерну ознаку.</p></div>
+  <div class="card span-4"><span class="tag">Достатній</span><h3>Порівняння</h3><p>Порівняй механічну машину Паскаля, ENIAC і сучасний персональний комп’ютер за трьома критеріями: спосіб виконання операцій, змінюваність задач, розмір/зручність.</p></div>
+  <div class="card span-4"><span class="tag">Високий</span><h3>Рішення з аргументом</h3><p>Уяви, що школа обирає комп’ютер для конкретної задачі. Визнач 4 критерії, розстав пріоритети й поясни, чому найдорожчий варіант не обов’язково найкращий.</p></div>
+ </div>
+ <div class="callout" style="margin-top:16px"><b>Пам’ятай:</b> історичні пристрої відрізнялися не тільки швидкістю. Важливо досліджувати, хто виконував дії, як задавалися команди, які задачі можна було розв’язувати та які обмеження залишалися.</div>
+ <p class="muted small">Тест</p>
+</section>
+</main>
+<footer><b>Інформатика · 8 клас · Урок 15</b><p>Тема та очікуваний результат узгоджені з КТП: історія обчислювальних і комп’ютерних пристроїв; розроблення критеріїв для оцінювання й вибору комп’ютерної системи та її компонентів для заданої задачі.</p><p class="small">Підручник: <a href="https://files.pidruchnyk.com.ua/uploads/book/8-klas-informatyka-ryvkind-2025.pdf" target="_blank" rel="noopener noreferrer">«Інформатика. 8 клас» Й. Ривкінда, Т. Лисенко, Л. Чернікової та В. Шакотька (Генеза, 2025), § 3.4 «Історія обчислювальних і комп’ютерних пристроїв», с. 79</a>. <a href="https://sites.google.com/view/informatika-8class/" target="_blank" rel="noopener noreferrer">Інтерактивний додаток і матеріали до підручника</a>. Довідкові матеріали: <a href="https://www.computerhistory.org/" target="_blank" rel="noopener noreferrer">Computer History Museum</a> · <a href="https://www.britannica.com/technology/computer" target="_blank" rel="noopener noreferrer">Encyclopaedia Britannica: Computer</a>.</p></footer>
+<script>
+(() => {
+ const $ = (s, root=document) => root.querySelector(s);
+ const $$ = (s, root=document) => Array.from(root.querySelectorAll(s));
+ const safeText = v => String(v ?? '').trim();
+ function feedback(id, text, bad=false){const el=document.getElementById(id);if(!el)return;el.textContent=text;el.classList.toggle('bad',!!bad);}
+ // Hypothesis and fallacy option feedback
+ function wireSingleChoice(containerId, feedbackId){
+   const box=document.getElementById(containerId);if(!box)return;
+   $$('.option',box).forEach(btn=>btn.addEventListener('click',()=>{
+     $$('.option',box).forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');
+     feedback(feedbackId,btn.dataset.feedback||'Обміркуй, які ознаки підтримують твій вибір.');
+   }));
+ }
+ wireSingleChoice('hypothesis','hypFeedback');wireSingleChoice('fallacy','fallacyFeedback');wireSingleChoice('mediaChallenge','mediaFeedback');
+ const mediaChoices=$$('#mediaChallenge .option');mediaChoices.forEach(btn=>btn.addEventListener('click',()=>{const f=$('#mediaFeedback');if(f)f.classList.toggle('bad',!btn.textContent.startsWith('А.'));}));
+ // Sorting: select a card, then select a category. Every item is movable by click/touch/keyboard.
+ const sortInfo={
+  abacus:{bin:'manual',why:'Рахівниця — ручний засіб: результат залежить від дій людини.'},
+  pascal:{bin:'mechanical',why:'Машина Паскаля використовувала механічні колеса й передачі для арифметичних дій.'},
+  analytical:{bin:'mechanical',why:'Це проєкт механічної машини з програмованим задумом, а не завершений електронний комп’ютер.'},
+  eniac:{bin:'electronic',why:'ENIAC належить до ранніх електронних цифрових комп’ютерів.'},
+  pc:{bin:'electronic',why:'Персональний комп’ютер — електронна програмована система для широкого кола задач.'}
+ };
+ let selectedChip=null;
+ function bindChips(){ $$('.chip').forEach(chip=>chip.addEventListener('click',()=>{
+   if(selectedChip)selectedChip.classList.remove('active');
+   selectedChip=chip;chip.classList.add('active');
+ }));}
+ function bindBins(){ $$('.sort-bin').forEach(bin=>bin.addEventListener('click',()=>{
+   if(!selectedChip)return;bin.appendChild(selectedChip);selectedChip.classList.remove('active');selectedChip=null;
+ }));}
+ bindChips();bindBins();
+ $('#checkSort')?.addEventListener('click',()=>{
+   let correct=0,placed=0;
+   Object.entries(sortInfo).forEach(([key,val])=>{const chip=$(`[data-item="${key}"]`);if(!chip)return;const bin=chip.closest('.sort-bin');if(bin){placed++;if(bin.dataset.bin===val.bin){correct++;chip.classList.add('done');}else chip.classList.remove('done');}});
+   const text=placed<5?`Розміщено ${placed} із 5 карток. Спочатку розмісти всі, а тоді перевір.`:`Правильно ${correct} із 5. ${correct===5?'Чудово: ти розрізняєш ручні, механічні та електронні засоби.': 'Переглянь пояснення карток і подумай, хто виконує обчислювальні дії та який механізм використано.'}`;
+   feedback('sortFeedback',text,placed===5&&correct<5);
+   if(placed===5){$$('.sort-bin .chip').forEach(chip=>{const info=sortInfo[chip.dataset.item];chip.title=info?info.why:'';});}
+ });
+ $('#resetSort')?.addEventListener('click',()=>{
+   const bank=$('#sortBank');if(!bank)return;
+   $$('.sort-bin .chip').forEach(chip=>{chip.classList.remove('done','active');bank.appendChild(chip);});
+   selectedChip=null;feedback('sortFeedback','');
+ });
+ $('#checkEvidence')?.addEventListener('click',()=>{
+   const chosen=$$('input[name="evidence"]:checked').map(x=>x.value).sort().join('');
+   if(chosen==='ABCD')feedback('evidenceFeedback','Саме так. A і B показують механізацію та задум керування, C — зміну швидкості, D — різноманітність задач. E не є доказом для цього висновку.');
+   else feedback('evidenceFeedback','Перевір набір ще раз. Потрібні картки, які стосуються способу обчислення, керування або кола задач. Колір корпусу не пояснює історичного розвитку.',true);
+ });
+ $('#checkMission')?.addEventListener('click',()=>{
+   const chosen=$$('input[name="spec"]:checked').map(x=>x.value);
+   const need=$('#taskNeed')?.value||'general';
+   const required=['cpu','ram','storage','ports','price'];
+   if(need==='media')required.push('gpu');
+   if(need==='code')required.push('ram');
+   const misses=required.filter(x=>!chosen.includes(x));
+   const irrelevant=chosen.includes('color');
+   let msg=misses.length===0&&!irrelevant?'Ти врахував основні критерії для обраної задачі. Тепер звір свій вибір із бюджетом і конкретними програмами.':'Рішення потребує уточнення. ';
+   if(misses.length)msg+=`Ще перевір критерії: ${misses.map(x=>({cpu:'процесор',ram:'оперативна пам’ять',storage:'накопичувач',ports:'порти й сумісність',price:'ціна та обслуговування',gpu:'графічна система'}[x]||x)).join(', ')}. `;
+   if(irrelevant)msg+='Колір корпусу не є критерієм продуктивності. ';
+   const level=$('#taskLevel')?.value;
+   if(level==='high')msg+='Для високого рівня додай компроміс: яку характеристику можна не максимізувати, щоб залишитися в бюджеті?';
+   const reason=safeText($('#missionReason')?.value);
+   if(reason.length<15)msg+=' Додай пояснення своїми словами, пов’язавши компоненти з реальною задачею.';
+   feedback('missionFeedback',msg,misses.length>0||irrelevant||reason.length<15);
+ });
+ $('#checkCER')?.addEventListener('click',()=>{
+   const c=$('#claim')?.value||'',p=$('#proof')?.value||'',r=$('#reason')?.value||'';
+   const ok=c==='Комп’ютер потрібно обирати під конкретні задачі.'&&p==='Для різних задач важливими можуть бути різні компоненти.'&&r==='Рішення залежить від навантаження, бюджету й сумісності.';
+   feedback('cerFeedback',ok?'Аргумент логічно зібраний: твердження підтримане релевантним доказом і поясненням.': 'Перевір кожну частину: твердження має відповідати доказу, а пояснення — показувати, чому доказ його підтримує.',!ok);
+ });
+ // Mixed assessment, ten items; each item counts one point.
+ const Q=[
+  {t:'Яка ознака найкраще відрізняє програмований комп’ютер загального призначення від простого рахункового засобу?',o:['Має корпус із металу','Може виконувати різні задачі за програмами','Обов’язково має екран','Працює без електроенергії'],a:1},
+  {t:'Яке твердження про машину Паскаля є найточнішим?',o:['Це механічний пристрій для арифметичних операцій','Це перший сучасний ноутбук','Це повністю електронний комп’ютер','Це лише теоретичний алгоритм без механізму'],a:0},
+  {t:'Чому проєкт аналітичної машини Беббіджа важливий для історії обчислень?',o:['Довів, що комп’ютери не потребують команд','Передбачав елементи обчислення, пам’яті та керування','Зробив усі обчислення миттєвими','Був першим персональним комп’ютером для дому'],a:1},
+  {t:'Який висновок про ENIAC є обґрунтованим?',o:['Він був компактним, як смартфон','Він належав до ранніх електронних цифрових комп’ютерів','Він не використовував електронних компонентів','Він був створений для роботи з сучасними мобільними застосунками'],a:1},
+  {t:'Познач усі характеристики, які можуть бути важливими для вибору комп’ютера для роботи з великими фото.',multi:true,o:['Оперативна пам’ять','Графічна система та процесор','Колір корпусу','Накопичувач і доступний простір'],a:[0,1,3]},
+  {t:'Познач усі коректні твердження про розвиток комп’ютерів.',multi:true,o:['Нові електронні компоненти сприяли зменшенню розмірів','Кожен обчислювальний пристрій є програмованим комп’ютером','Програмне забезпечення дозволяє змінювати задачі','Найновіша система завжди найкраща для будь-якого користувача'],a:[0,2]},
+  {t:'Установи відповідність: який приклад найкраще пасує до опису?',match:true,pairs:[['Ручний засіб','Рахівниця'],['Механічний пристрій','Машина Паскаля'],['Електронний комп’ютер','ENIAC']],o:['Ручний засіб — рахівниця','Механічний пристрій — машина Паскаля','Електронний комп’ютер — ENIAC'],a:[0,1,2]},
+  {t:'Обери логічний порядок розвитку від простішого засобу до сучасних систем.',seq:true,o:['Ручні засоби рахунку','Механічні обчислювальні пристрої','Ранні електронні комп’ютери','Персональні й мобільні комп’ютери'],a:[0,1,2,3]},
+  {t:'Яких даних бракує, щоб обґрунтовано обрати комп’ютер для відеомонтажу?',o:['Лише кольору корпусу','Лише назви виробника','Відомостей про програми, бюджет і вимоги до компонентів','Лише року виходу найновішої моделі'],a:2},
+  {t:'Який аргумент найкраще підтримує тезу «комп’ютер обирають під задачу»?',o:['Дорожчий пристрій завжди виграє','Потрібно зіставити навантаження, компоненти, сумісність і бюджет','Достатньо знати тільки частоту процесора','Усі комп’ютери виконують усі задачі однаково швидко'],a:1}
+ ];
+ let testStarted=false;
+ function renderQuestions(){
+   const host=$('#questions');if(!host)return;host.innerHTML='';
+   Q.forEach((q,i)=>{
+    const box=document.createElement('fieldset');box.dataset.q=String(i);
+    const legend=document.createElement('legend');legend.textContent=`${i+1}. ${q.t}`;box.appendChild(legend);
+    q.o.forEach((opt,j)=>{
+      const lab=document.createElement('label');lab.className='checkline';
+      const inp=document.createElement('input');inp.type=(q.multi||q.match||q.seq)?'checkbox':'radio';inp.name=`q${i}`;inp.value=String(j);
+      lab.appendChild(inp);lab.appendChild(document.createTextNode(opt));box.appendChild(lab);
+    });
+    if(q.seq){const hint=document.createElement('p');hint.className='muted small';hint.textContent='Познач усі варіанти в правильному порядку, натискаючи їх послідовно.';box.appendChild(hint);}
+    host.appendChild(box);
+   });
+ }
+ function startTest(){
+   const name=safeText($('#studentName')?.value),klass=safeText($('#studentClass')?.value);
+   if(name.split(/\s+/).filter(Boolean).length<2||/^\d+$/.test(name)||!klass){
+    const err=$('#gateError');if(err){err.textContent='Введи ім’я та прізвище (щонайменше два слова) і клас, наприклад 8-А.';err.classList.remove('hide');}return;
+   }
+   $('#gateError')?.classList.add('hide');$('#testGate')?.classList.add('hide');$('#testPanel')?.classList.remove('hide');$('#resultPanel')?.classList.add('hide');
+   testStarted=true;renderQuestions();updateProgress();
+ }
+ function updateProgress(){
+  const total=Q.length;let answered=0;
+  Q.forEach((q,i)=>{if($$(`input[name="q${i}"]:checked`).length)answered++;});
+  const bar=$('#testProgress');if(bar)bar.style.width=`${answered/total*100}%`;
+  const count=$('#testCount');if(count)count.textContent=`Відповіді: ${answered} із ${total}`;
+ }
+ $('#startTest')?.addEventListener('click',startTest);
+ $('#questions')?.addEventListener('change',updateProgress);
+ function getSelected(i){return $$(`input[name="q${i}"]:checked`).map(x=>Number(x.value));}
+ function exactArray(a,b){return a.length===b.length&&a.slice().sort((x,y)=>x-y).every((v,i)=>v===b.slice().sort((x,y)=>x-y)[i]);}
+ function scoreTest(){
+  let score=0,missing=0;
+  Q.forEach((q,i)=>{
+   const selected=getSelected(i);if(!selected.length)missing++;
+   let ok=false;
+   if(q.multi||q.match)ok=exactArray(selected,q.a);
+   else if(q.seq)ok=selected.length===q.a.length&&selected.every((v,idx)=>v===q.a[idx]);
+   else ok=selected.length===1&&selected[0]===q.a;
+   if(ok)score++;
+  });
+  if(missing){const err=$('#testError');if(err){err.textContent=`Ти ще не відповів/відповіла на ${missing} завдань. Можеш завершити тест без них або повернутися до відповідей.`;err.classList.remove('hide');}}
+  else $('#testError')?.classList.add('hide');
+  const name=safeText($('#studentName')?.value),klass=safeText($('#studentClass')?.value);
+  const pct=score*10;
+  const level=score>=9?'Відмінно: аргументовано застосовуєш історичні факти й критерії вибору.':score>=7?'Добре: основні зв’язки зрозумілі; переглянь завдання, де важили кілька критеріїв.':score>=5?'Базовий рівень: повтори різницю між ручними, механічними та електронними пристроями.':'Потрібне повторення: перечитай коротку теорію та пояснення до карток.';
+  const now=new Date();const date=now.toLocaleString('uk-UA');
+  $('#resultContent').innerHTML='';
+  const h=document.createElement('h3');h.textContent='Картка результату';$('#resultContent').appendChild(h);
+  const sc=document.createElement('div');sc.className='score';sc.textContent=`${score}/10`;$('#resultContent').appendChild(sc);
+  const p=document.createElement('p');p.innerHTML=`<b>Учень/учениця:</b> ${escapeHTML(name)}<br><b>Клас:</b> ${escapeHTML(klass)}<br><b>Тема:</b> Історія обчислювальних і комп’ютерних пристроїв<br><b>Результат:</b> ${pct}%<br><b>Дата й час:</b> ${escapeHTML(date)}`;$('#resultContent').appendChild(p);
+  const msg=document.createElement('p');msg.textContent=level;$('#resultContent').appendChild(msg);
+  const details=document.createElement('details');const sum=document.createElement('summary');sum.textContent='Переглянути правильні відповіді';details.appendChild(sum);
+  Q.forEach((q,i)=>{const pp=document.createElement('p');pp.textContent=`${i+1}. ${q.t} Правильна відповідь: ${Array.isArray(q.a)?q.a.map(n=>q.o[n]).join('; '):q.o[q.a]}`;details.appendChild(pp);});$('#resultContent').appendChild(details);
+  $('#testPanel')?.classList.add('hide');$('#resultPanel')?.classList.remove('hide');testStarted=false;
+ }
+ function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+ $('#submitTest')?.addEventListener('click',()=>{if(testStarted)scoreTest();});
+ $('#retryTest')?.addEventListener('click',()=>{
+   if(!confirm('Почати нову спробу? Ім’я та клас залишаться, а відповіді тесту буде очищено.'))return;
+   $('#resultPanel')?.classList.add('hide');$('#testPanel')?.classList.remove('hide');testStarted=true;renderQuestions();updateProgress();window.scrollTo({top:$('#testPanel')?.offsetTop||0,behavior:'smooth'});
+ });
+})();
+</script>
+</body>
+</html>
