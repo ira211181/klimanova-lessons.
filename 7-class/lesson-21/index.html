@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="7 клас, урок 21: підпрограми Python. Другий спосіб розв'язання задачі, композиція функцій, симулятор, вправи й тест із 20 запитань.">
+<title>7 клас · Урок 21 · Підпрограми — другий спосіб</title><style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#172f4a;background:#f2f8ff;scroll-behavior:smooth}
+*{box-sizing:border-box}body{margin:0;line-height:1.6}a{color:#185eb4;text-underline-offset:3px}
+.wrap{width:min(1150px,calc(100% - 32px));margin:auto}
+header{background:linear-gradient(120deg,#e8f8ff,#f1ecff);border-bottom:1px solid #d5e5f5}
+.top{padding:15px 0;display:flex;justify-content:space-between;gap:12px;align-items:center;font-weight:800}
+.hero{display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:25px;padding:40px 0 56px}
+h1{font-size:clamp(2.1rem,5vw,4rem);line-height:1.12;margin:12px 0;letter-spacing:-.045em}
+h1 em{color:#2165d4;font-style:normal}h2{line-height:1.2;letter-spacing:-.03em}
+.tag{display:inline-block;background:#dff1ff;border:1px solid #c2e2ff;color:#19569b;padding:5px 11px;border-radius:30px;font-weight:800;font-size:.82rem}
+nav{position:sticky;top:0;z-index:10;background:#ffffffef;backdrop-filter:blur(12px);border-bottom:1px solid #dce7f4}
+nav .wrap{display:flex;overflow:auto;gap:5px;padding:10px 0}nav a{white-space:nowrap;text-decoration:none;font-weight:750;font-size:.86rem;padding:7px 11px;border-radius:9px}nav a:hover{background:#e8f4ff}
+.card{margin:24px auto;padding:clamp(18px,3vw,38px);background:white;border:1px solid #dbe7f3;border-radius:22px;box-shadow:0 12px 35px #255c9b10;scroll-margin-top:95px}
+.card h2{margin-top:0;font-size:clamp(1.45rem,3vw,2.1rem)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.grid>*{min-width:0}
+.panel{padding:18px;border:1px solid #d9e8f4;background:#f6fbff;border-radius:15px}
+.callout{padding:14px 17px;border-left:5px solid #19a6a0;background:#e9fbf8;border-radius:12px}
+.warn{border-left-color:#e0a027;background:#fff9eb}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#102e4b;color:#e7f7ff;border-radius:15px;padding:20px;font-size:.94rem;line-height:1.7}
+button{border:0;border-radius:10px;background:#235ecb;color:white;font-weight:800;padding:10px 15px;cursor:pointer;margin:4px}
+button.secondary{background:#e6f1ff;color:#1b559b;border:1px solid #b6d5ee}
+button:disabled{opacity:.5;cursor:not-allowed}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #e99b00;outline-offset:3px}
+input,select,textarea{font:inherit;border:1px solid #a6c4dc;border-radius:9px;padding:9px;max-width:100%}
+textarea{width:100%;min-height:90px}
+label{display:block;margin:8px 0}
+fieldset{border:1px solid #d4e3ef;border-radius:12px;margin:12px 0;padding:14px}
+legend{font-weight:800}
+.feedback{margin:10px 0;padding:12px;background:#e9f5ff;border-radius:10px;white-space:pre-line}
+.feedback:empty{display:none}.good{background:#e4f8ed;color:#125b3e}.bad{background:#fff0e8;color:#893b24}
+.video{aspect-ratio:16/9;max-width:850px}.video iframe{width:100%;height:100%;border:0;border-radius:14px}
+.flex{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.steps li{margin:12px 0;padding-left:5px}
+.trace{min-height:105px;white-space:pre-line;padding:18px;background:#122f50;color:#effbff;border-radius:14px}
+.pill{padding:8px 12px;border-radius:10px;border:1px solid #bad7eb;background:#eaf7ff}
+.pill.active{background:#d6f9eb;border-color:#29a47e}
+.code-line{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid #d3e3ef;border-radius:10px;margin:7px 0}
+.code-line code{flex:1;white-space:pre-wrap}
+.progress{height:6px;background:#dcebf6}.progress>div{width:0;height:100%;background:#2d6bce}
+.honesty{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.honesty .panel:nth-child(1){border-top:5px solid #2cae81}.honesty .panel:nth-child(2){border-top:5px solid #e5aa35}.honesty .panel:nth-child(3){border-top:5px solid #e56c66}
+footer{padding:35px;text-align:center;color:#526d82}
+@media(max-width:760px){.hero,.grid,.honesty{grid-template-columns:1fr}.hero svg{max-width:320px}nav a{font-size:.78rem}.wrap{width:min(100% - 22px,1150px)}}
+@media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+@media print{nav,.controls,button{display:none!important}.card{break-inside:avoid;box-shadow:none}body{background:white}}
+</style></head>
+<body><div class="progress" aria-hidden="true"><div id="progressFill"></div></div>
+<header><div class="wrap"><div class="top"><span>◈ SMART LAB · ІНФОРМАТИКА</span><span class="tag">7-А / 7-Б · 17.11.2026</span></div>
+<div class="hero"><div><span class="tag">7 клас · Урок №21 · Продовження</span>
+<h1>Підпрограми: <em>складаємо рішення з функцій</em></h1>
+<p>Другий спосіб розв’язання задачі: розділяємо обчислення, перевірку та оформлення результату. Вчимося тестувати функції та знаходити межові випадки.</p>
+<p><a href="https://www.geneza.ua/product/1155" target="_blank" rel="noopener noreferrer"><strong>📘 Підручник Й. Ривкінда «Інформатика. 7 клас» — офіційна сторінка видавництва «Генеза» ↗</strong></a></p>
+<div class="flex"><span class="pill">Python</span><span class="pill">return ≠ print</span><span class="pill">Тестування</span><span class="pill">45 хв + самостійна робота</span></div></div>
+<svg viewBox="0 0 420 330" role="img" aria-label="Схема: перевірка даних, обчислення, повернення результату"><rect x="15" y="25" width="390" height="275" rx="25" fill="#d9edff"/>
+<rect x="50" y="56" width="320" height="52" rx="14" fill="#225dbe"/><text x="210" y="89" font-size="20" font-weight="700" text-anchor="middle" fill="white">Перевірка даних</text>
+<path d="M210 108V136" stroke="#2264ae" stroke-width="5"/><path d="M200 127L210 140L220 127" fill="none" stroke="#2264ae" stroke-width="5"/>
+<rect x="50" y="145" width="320" height="52" rx="14" fill="#12a4a1"/><text x="210" y="178" font-size="20" font-weight="700" text-anchor="middle" fill="white">base_cost()</text>
+<path d="M210 197V225" stroke="#2264ae" stroke-width="5"/><path d="M200 217L210 230L220 217" fill="none" stroke="#2264ae" stroke-width="5"/>
+<rect x="50" y="237" width="320" height="52" rx="14" fill="#6c58cb"/><text x="210" y="270" font-size="20" font-weight="700" text-anchor="middle" fill="white">final_cost() → return</text></svg></div></div></header>
+<nav aria-label="Розділи уроку"><div class="wrap"><a href="#goal">1. Мета</a><a href="#theory">2. Теорія</a><a href="#examples">3. Приклади</a><a href="#video">4. Відео</a><a href="#practice">5. Практика</a><a href="#exercise1">6. Вправа 1</a><a href="#exercise2">7. Вправа 2</a><a href="#sim">8. Симулятор</a><a href="#quiz">9. Тест</a><a href="#home">10. Домашнє</a><a href="#reflection">11. Рефлексія</a><a href="#sources">12. Джерела</a></div></nav>
+<main class="wrap">
+<section class="card" id="goal"><span class="tag">01 · SMART LAB</span><h2>Мета та очікувані результати</h2><div class="grid"><div class="panel"><h3>Навчимося</h3><p>Пояснювати різницю між <code>return</code> та <code>print</code>; викликати одну функцію з іншої; передавати аргументи; перевіряти дані; створювати тести для граничних значень.</p></div><div class="panel"><h3>Критерії успіху</h3><p>Можу написати дві взаємопов’язані функції, пояснити трасування, передбачити результат і перевірити програму щонайменше на трьох наборах даних.</p></div></div><p class="callout">Пригадай урок №20: ми навчилися оголошувати функції. Сьогодні використовуємо <strong>другий спосіб</strong> — складаємо складну задачу з маленьких перевірених функцій. Це нова практична задача, а не повторення попередньої.</p></section>
+<section class="card" id="theory"><span class="tag">02 · SMART LAB</span><h2>Теорія: одна задача — кілька функцій</h2><div class="grid"><div class="panel"><h3>1. Декомпозиція</h3><p>Складне завдання зручно поділити на менші: перевірка введення, обчислення базової суми, застосування знижки, формування повідомлення.</p></div><div class="panel"><h3>2. Повернення результату</h3><p><code>return</code> передає значення в місце виклику. <code>print</code> лише виводить інформацію. Якщо функція нічого явно не повертає, результат її виклику — <code>None</code>.</p></div><div class="panel"><h3>3. Композиція</h3><p>Функція <code>final_cost()</code> може викликати <code>base_cost()</code>, отримати результат і застосувати правило знижки.</p></div><div class="panel"><h3>4. Тести</h3><p>Для порога знижки від 10 учнів перевір 9, 10 і 11. Для ціни — 0, додатне число та помилкове від’ємне значення.</p></div></div><p class="callout warn"><strong>Типові помилки:</strong> забути <code>return</code>; переплутати 10 % і 0.1; використати змінну до присвоювання; не перевірити від’ємну ціну або нульову кількість.</p></section>
+<section class="card" id="examples"><span class="tag">03 · SMART LAB</span><h2>Приклади Python з поясненнями</h2><h3>Спосіб 1: усе в одному блоці — складно перевіряти</h3><pre>count = 12
+price = 90
+discount = 10
+total = count * price * (1 - discount / 100)
+print(total)</pre><h3>Спосіб 2: окремі функції — зрозуміло та повторно використовувано</h3><pre>def base_cost(count, price):
+    return count * price
+
+def final_cost(count, price, discount_percent):
+    subtotal = base_cost(count, price)
+    if count &gt;= 10:
+        return subtotal * (1 - discount_percent / 100)
+    return subtotal
+
+print(final_cost(12, 90, 10))  # 972.0
+print(final_cost(9, 90, 10))   # 810</pre><p>Спочатку <code>base_cost</code> повертає 1080. Потім <code>final_cost</code> зменшує суму на 10 %: 1080 − 108 = 972 грн. Для 9 учнів поріг не досягнуто, тому знижка не застосовується.</p><div class="callout"><strong>Мініексперимент:</strong> заміни <code>return count * price</code> на <code>print(count * price)</code>. Чому обчислення знижки перестане працювати? Тому що <code>subtotal</code> отримає <code>None</code>.</div></section>
+<section class="card" id="video"><span class="tag">04 · SMART LAB</span><h2>Відео: «7 клас. Підпрограми»</h2><p>Україномовні метадані тематичного відеоуроку за програмою Ривкінда; відео також використовувалося в попередньому уроці як повторення базових понять. Для цього уроку зверни увагу саме на параметри, результат і повторне використання функцій.</p><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/YoSy5updPvA" title="7 клас 20 урок. Підпрограми — Інформатика це легко" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<p><a href="https://www.youtube.com/watch?v=YoSy5updPvA" target="_blank" rel="noopener noreferrer">Відкрити відео на YouTube ↗</a> (резервне посилання). Якщо вбудований програвач недоступний, скористайся ним.</p><div class="grid"><div class="panel"><strong>Запитання 1.</strong> Чим відрізняються параметр і аргумент? <details><summary>Перевір себе</summary><p>Параметр — ім’я в описі функції, аргумент — конкретне значення під час виклику.</p></details></div><div class="panel"><strong>Запитання 2.</strong> Чому <code>return</code> зручніший за <code>print</code> для обчислень? <details><summary>Перевір себе</summary><p>Повернений результат можна використати в іншому обчисленні або функції.</p></details></div></div></section>
+<section class="card" id="practice"><span class="tag">05 · SMART LAB</span><h2>Практична робота «Калькулятор екскурсії»</h2><p><strong>Мета:</strong> створити програму, що обчислює суму групового замовлення з перевіркою вхідних даних. Працюй у Python-середовищі; не вводь реальних персональних даних учнів.</p><ol class="steps">
+<li>Створи новий файл <code>excursion.py</code> і запиши заголовок та мету у коментарі.</li>
+<li>Створи функцію <code>base_cost(count, price)</code>, яка повертає добуток.</li>
+<li>Створи функцію <code>final_cost(count, price, discount_percent)</code>, що викликає <code>base_cost</code>.</li>
+<li>Додай правило: якщо учнів щонайменше 10, застосуй відсоткову знижку.</li>
+<li>Додай перевірку: кількість — додатне ціле число; ціна невід’ємна; знижка в межах 0–100.</li>
+<li>Створи функцію <code>format_receipt(total)</code>, яка повертає рядок для друку; виклич <code>print</code> поза нею.</li>
+<li>Протестуй випадки: (9, 90, 10) → 810; (10, 90, 10) → 810; (12, 90, 10) → 972.</li>
+<li>Зроби висновок: що спростило використання кількох функцій? Збережи файл і власні результати тестування.</li></ol>
+<div class="callout warn">Безпека: не запускай незнайомі скрипти; не публікуй реальні імена, телефони чи фінансові дані дітей. Працюй лише з навчальними числами.</div></section>
+<section class="card" id="exercise1"><span class="tag">06 · SMART LAB</span><h2>Інтерактивна вправа 1 · «Прогноз виклику»</h2><p>Прочитай короткий Python-код і передбач результат. Усього шість незалежних ситуацій.</p><div class="panel"><h3 id="exTitle"></h3><pre id="exCode"></pre><div id="exChoices" class="flex"></div><div id="exFeedback" class="feedback" aria-live="polite"></div><div class="controls"><button id="nextEx" disabled>Наступна ситуація →</button><button id="resetEx" class="secondary">Почати знову</button></div></div></section>
+<section class="card" id="exercise2"><span class="tag">07 · SMART LAB</span><h2>Інтерактивна вправа 2 · «Збери виклики»</h2><p>Кнопками ↑ і ↓ розташуй рядки так, щоб спочатку була описана допоміжна функція, потім основна, а наприкінці її виклик. Порядок має значення!</p><div id="orderLines"></div><div class="controls"><button id="checkOrder">Перевірити порядок</button><button id="resetOrder" class="secondary">Перемішати знову</button></div><div id="orderFeedback" class="feedback" aria-live="polite"></div></section>
+<section class="card" id="sim"><span class="tag">08 · SMART LAB</span><h2>Предметний симулятор · «Маршрут обчислення»</h2><p>Модель показує шість етапів виконання двох взаємопов’язаних функцій. Змінюй параметри, порівнюй випадки 9/10/11 учнів та спостерігай, як змінюється результат.</p><div class="grid"><div class="panel"><label>Кількість учнів <input id="students" type="number" min="1" step="1" value="12"></label><label>Ціна квитка, грн <input id="ticket" type="number" min="0" step="1" value="90"></label><label>Знижка для групи від 10 осіб, % <input id="discount" type="number" min="0" max="100" step="1" value="10"></label><div class="controls"><button id="simStep">Крок →</button><button id="simAuto">Автопоказ ▶</button><button id="simPause" class="secondary">Пауза ‖</button><button id="simReset" class="secondary">Скинути ↺</button></div><p>Етап: <strong id="simCount">0/6</strong></p></div><div class="panel"><div class="flex" id="simNodes"><span class="pill">Вхід</span><span class="pill">Виклик</span><span class="pill">Сума</span><span class="pill">Правило</span><span class="pill">return</span><span class="pill">Вивід</span></div><div id="trace" class="trace" aria-live="polite"></div></div></div><p class="callout">Запитання для дослідження: чому для 9 учнів знижка не діє, а для 10 — діє? Чи зміниться результат, якщо знижка дорівнює 0 %?</p></section>
+<section class="card" id="quiz"><span class="tag">09 · SMART LAB</span><h2>Підсумкове тестування · 20 запитань</h2><p>12 запитань з однією відповіддю, 4 з кількома, 2 на послідовність і 2 з короткою числовою відповіддю. Після перевірки отримаєш пояснення помилок.</p><form id="q" onsubmit="return false"></form><button id="grade">Перевірити 20 відповідей</button><div id="quizResult" class="feedback" aria-live="polite"></div></section>
+<section class="card" id="home"><span class="tag">10 · SMART LAB</span><h2>Домашнє завдання та 9 запитань самоперевірки</h2><div class="grid"><div class="panel"><h3>Базовий рівень</h3><p>Створи функцію <code>area(a, b)</code> для обчислення площі прямокутника. Перевір 2 × 3 і 5 × 4.</p></div><div class="panel"><h3>Достатній рівень</h3><p>Створи <code>price_with_discount(price, percent)</code> та <code>message(total)</code>. Перевір 0 %, 10 %, 100 %.</p></div><div class="panel"><h3>Високий рівень</h3><p>Розроби калькулятор для шкільного ярмарку з двома функціями, перевіркою введення та таблицею щонайменше 5 тестів.</p></div><div class="panel"><h3>Як здати</h3><p>Надішли свій Python-файл, короткий опис алгоритму та приклади тестів у Classroom. Не копіюй чужий код без зазначення джерела.</p></div></div><h3>Домашня самоперевірка</h3><form id="h" onsubmit="return false"></form><button id="homeGrade">Перевірити 9 відповідей</button><div id="homeResult" class="feedback" aria-live="polite"></div></section>
+<section class="card" id="reflection"><span class="tag">11 · SMART LAB</span><h2>Рефлексія та академічна доброчесність</h2><p>Заверши три речення: «Сьогодні я навчився/навчилася…», «Найскладнішим було…», «Наступного разу перевірю…».</p><textarea id="reflectionText" aria-label="Моя рефлексія" placeholder="Моя відповідь..."></textarea><div class="controls"><button id="saveReflection">Зберегти в браузері</button><button id="exportReflection" class="secondary">Експортувати TXT</button></div><div id="reflectionStatus" class="feedback" aria-live="polite"></div><div class="honesty"><div class="panel"><strong>🟢 Можна</strong><p>Радитися, перевіряти документацію, цитувати джерела.</p></div><div class="panel"><strong>🟡 Поясни</strong><p>Якщо використав/використала підказку або ШІ — вкажи, що саме.</p></div><div class="panel"><strong>🔴 Не можна</strong><p>Видавати чужий код або чужі результати тестування за власні.</p></div></div></section>
+<section class="card" id="sources"><span class="tag">12 · SMART LAB</span><h2>Перевірені джерела</h2><p><strong>Підручник:</strong> Й. Ривкінд, Т. Лисенко, Л. Чернікова, В. Шакотько. «Інформатика. 7 клас» (2024), видавництво «Генеза». <a href="https://www.geneza.ua/product/1155" target="_blank" rel="noopener noreferrer">Офіційна сторінка підручника ↗</a>. Номер параграфа потребує додаткової звірки з конкретним виданням.</p><p><strong>Відео:</strong> канал «Інформатика — це легко!», «7 клас 20 урок. Підпрограми». <a href="https://www.youtube.com/watch?v=YoSy5updPvA" target="_blank" rel="noopener noreferrer">Переглянути на YouTube ↗</a>. Відео повторює базу попереднього заняття, а всі вправи цього уроку — нові.</p><p><a href="https://www.geneza.ua/product/1155" target="_blank" rel="noopener noreferrer">📘 Відкрити підручник для 7 класу ↗</a></p><p class="callout warn">Технічне застереження: мову звукової доріжки та можливість відтворення iframe в конкретному браузері потрібно додатково перевірити. Метадані та тематичну відповідність відео перевірено.</p></section>
+</main><footer>SMART LAB · Інформатика · 7 клас · Урок №21 · Навчальна сторінка</footer>
+<script type="application/json" id="questions-data">[["single","Що виконує команда return у функції? ",["Повертає результат у місце виклику","Завжди друкує результат","Створює нову змінну поза функцією","Завершує весь Python"],0,"return передає значення виклику; print лише показує його."],["single","Що буде результатом double(4), якщо функція повертає x*2?",["4","8","2","Помилка"],1,"4 × 2 = 8."],["single","Який запис правильно викликає функцію cost з двома аргументами?",["def cost(2, 3)","cost(2, 3)","return cost","cost = def"],1,"Виклик — ім'я та аргументи у дужках."],["single","Чому краще винести повторюване обчислення у функцію?",["Щоб збільшити кількість помилок","Щоб уникнути повторення коду","Щоб вимкнути перевірку","Щоб заборонити параметри"],1,"Функція дозволяє повторно використовувати перевірений алгоритм."],["single","Що повертає функція без явного return у Python?",["0","False","None","Порожній рядок"],2,"За відсутності return повертається None."],["single","Що зберігає змінна result у записі result = total(3, 10)?",["Текст функції","Значення, повернене total","Назву модуля","Тільки перший аргумент"],1,"Праворуч викликається функція, а результат присвоюється змінній."],["single","Як передати знижку 10 % у функцію з параметром discount_percent?",["10","0.1 без перевірки формули","'відсоток'","Нічого"],0,"У нашій моделі параметр приймає число 10, а функція ділить його на 100."],["single","У якій частині коду змінна price є параметром?",["price = 90","def total(price):","print(price) поза функцією","input('price')"],1,"Параметр записують у дужках під час визначення функції."],["single","Яке значення дає 5 * 80?",["400","85","16","500"],0,"П'ять квитків по 80 грн — 400 грн."],["single","Який тест найкраще перевіряє межу знижки від 10 учнів?",["Тільки 100 учнів","9, 10 та 11 учнів","Лише 1 учень","Жодного"],1,"Потрібні значення до, на та після порога."],["single","Що слід зробити з ціною квитка, яка від’ємна?",["Прийняти без перевірки","Підставити будь-яку","Показати помилку введення","Додати 100"],2,"Ціна не може бути від'ємною."],["single","Яка функція форматує повідомлення для користувача?",["Функція, що складає текст із результатів","Функція, що випадково змінює дані","Тільки input()","Лише імпорт модуля"],0,"Відокремлення обчислення від оформлення робить код зрозумілішим."],["multi","Оберіть правильні переваги функцій.",["Повторне використання коду","Легше тестувати частини програми","Автоматично прибирають усі помилки","Можна змінювати одну реалізацію"],[0,1,3],"Функції полегшують підтримку, але не гарантують відсутність помилок."],["multi","Які дії потрібні для надійного калькулятора екскурсії?",["Перевірити, що кількість — додатне ціле число","Перевірити невід'ємну ціну","Ігнорувати некоректні дані","Перевірити знижку від 0 до 100"],[0,1,3],"Валідація захищає від некоректних обчислень."],["multi","Які твердження про return і print правильні?",["return передає значення виклику","print виводить інформацію","print і return завжди взаємозамінні","Після виконаного return функція завершується"],[0,1,3],"Повернення значення і друк — різні дії."],["multi","Які випадки варто перевірити тестами функції знижки?",["0 % знижки","10 % знижки","100 % знижки","Лише один випадковий приклад"],[0,1,2],"Граничні та звичайні значення дають кращу перевірку."],["order","Оберіть правильну послідовність створення функції.",["Назва → параметри → двокрапка → тіло → виклик","Виклик → тіло → двокрапка → назва","Тіло → виклик → параметри","return → import → кінець"],0,"Спочатку визначення, потім виклик."],["order","Оберіть правильний порядок обчислення вартості.",["Перевірка даних → базова сума → знижка → підсумок","Знижка → підсумок → перевірка","Підсумок → введення → перевірка","Виведення → перевірка → обчислення"],0,"Насамперед валідуємо дані."],["short","Скільки гривень коштують 4 квитки по 50 грн без знижки?",null,"200","4 × 50 = 200 грн."],["short","Скільки гривень становить 10 % від 300 грн?",null,"30","300 × 10 / 100 = 30 грн."]]</script>
+<script type="application/json" id="home-data">[["Що означає параметр функції?",["Назва файла","Ім'я для вхідного значення","Кінець програми"],1],["Яка команда повертає значення?",["print","input","return"],2],["Чому треба тестувати функцію?",["Щоб перевірити правильність для різних даних","Щоб зробити текст довшим","Щоб прибрати всі коментарі"],0],["Який результат triple(3), якщо return x*3?",["9","6","3"],0],["Що робити з нульовою кількістю учнів?",["Прийняти як звичайне замовлення","Повідомити про помилку","Автоматично замінити на 100"],1],["Для чого функція format_receipt?",["Для побудови тексту квитанції","Для видалення файлів","Для запуску браузера"],0],["Що краще передавати у функцію?",["Явні аргументи","Лише глобальні змінні","Випадкові числа"],0],["Яке значення повертає return 2+3?",["23","5","None"],1],["Що перевіряють тести 9, 10, 11 учнів?",["Граничний перехід правила","Лише форматування","Колір інтерфейсу"],0]]</script>
+<script type="application/json" id="exercise-data">[["def square(x): return x*x; print(square(3))",["9","6","3"],0,"Функція повертає 3 × 3 = 9."],["def add(a,b): return a+b; print(add(2,5))",["7","25","Помилка"],0,"Два аргументи: 2 + 5 = 7."],["def f(x): print(x+1); y=f(4); print(y)",["5, потім None","5, потім 5","4, потім 5"],0,"print показує 5, але без return функція повертає None."],["def price(n): return n*20; print(price(4))",["80","24","20"],0,"4 × 20 = 80."],["def f(x): return x+2; print(f(f(1)))",["3","5","4"],1,"Внутрішній виклик: 1+2=3, зовнішній: 3+2=5."],["def disc(s): return s*0.9; print(disc(100))",["90.0","10.0","100"],0,"Залишається 90 % від 100."]]</script>
+<script type="application/json" id="order-data">["def base_cost(count, price):","    return count * price","def final_cost(count, price):","    subtotal = base_cost(count, price)","    return subtotal * 0.9","print(final_cost(10, 80))"]</script>
+<script>
+"use strict";
+const QUESTIONS=JSON.parse(document.getElementById("questions-data").textContent);
+const HOME=JSON.parse(document.getElementById("home-data").textContent);
+const EX1=JSON.parse(document.getElementById("exercise-data").textContent);
+const ORDER=JSON.parse(document.getElementById("order-data").textContent);
+const byId=id=>document.getElementById(id);
+const clean=t=>String(t).trim().toLowerCase().replace(/\s+/g,"");
+function makeQuiz(list,target,prefix,kind){
+ const host=byId(target);host.replaceChildren();
+ list.forEach((q,i)=>{
+  const fs=document.createElement("fieldset"),lg=document.createElement("legend");
+  lg.textContent=(i+1)+". "+(kind==="home"?q[0]:q[1]);fs.append(lg);
+  const type=kind==="home"?"single":q[0],opts=kind==="home"?q[1]:q[2];
+  if(type==="short"){const inp=document.createElement("input");inp.type="text";inp.id=prefix+i;inp.setAttribute("aria-label","Коротка відповідь "+(i+1));fs.append(inp);}
+  else opts.forEach((op,j)=>{
+   const label=document.createElement("label"),inp=document.createElement("input");
+   inp.type=type==="multi"?"checkbox":"radio";inp.name=prefix+i;inp.value=j;
+   label.append(inp,document.createTextNode(" "+op));fs.append(label);
+  });
+  host.append(fs);
+ });
+}
+function grade(list,prefix,kind,resultId){
+ let correct=0,missing=0,feedback=[];
+ list.forEach((q,i)=>{
+  const type=kind==="home"?"single":q[0],expected=kind==="home"?q[2]:q[3];
+  let actual;
+  if(type==="short")actual=clean(byId(prefix+i).value);
+  else actual=[...document.querySelectorAll('input[name="'+prefix+i+'"]:checked')].map(e=>Number(e.value)).sort((a,b)=>a-b);
+  const valid=type==="short"?actual===clean(expected):type==="multi"?JSON.stringify(actual)===JSON.stringify(expected):actual.length===1&&actual[0]===expected;
+  if(valid)correct++;else{if(type==="short"?!actual:actual.length===0)missing++;feedback.push((i+1)+": "+(kind==="home"?"Переглянь правило.":q[4]));}
+ });
+ const out=byId(resultId);out.className="feedback "+(correct===list.length?"good":"bad");
+ out.textContent="Результат: "+correct+" / "+list.length+". Без відповіді: "+missing+".\n"+(feedback.length?feedback.join("\n"):"Усі відповіді правильні!");
+}
+makeQuiz(QUESTIONS,"q","q","final");makeQuiz(HOME,"h","h","home");
+byId("grade").addEventListener("click",()=>grade(QUESTIONS,"q","final","quizResult"));
+byId("homeGrade").addEventListener("click",()=>grade(HOME,"h","home","homeResult"));
+let eIndex=0,eScore=0;
+function showEx(){
+ const q=EX1[eIndex];byId("exTitle").textContent="Ситуація "+(eIndex+1)+" із "+EX1.length;
+ byId("exCode").textContent=q[0];const host=byId("exChoices");host.replaceChildren();
+ q[1].forEach((t,i)=>{const b=document.createElement("button");b.className="secondary";b.textContent=t;b.addEventListener("click",()=>answerEx(i));host.append(b)});
+ byId("exFeedback").textContent="";
+}
+function answerEx(i){const q=EX1[eIndex],ok=i===q[2];if(ok)eScore++;
+ byId("exFeedback").textContent=(ok?"Правильно! ":"Спробуй запам’ятати: ")+q[3];
+ [...byId("exChoices").querySelectorAll("button")].forEach(b=>b.disabled=true);
+ byId("nextEx").disabled=false;
+}
+byId("nextEx").addEventListener("click",()=>{eIndex++;if(eIndex===EX1.length){byId("exTitle").textContent="Завершено: "+eScore+"/"+EX1.length;byId("exCode").textContent="Повтори ситуації, у яких були помилки.";byId("exChoices").replaceChildren();byId("nextEx").disabled=true;}else{byId("nextEx").disabled=true;showEx()}});
+byId("resetEx").addEventListener("click",()=>{eIndex=0;eScore=0;byId("nextEx").disabled=true;showEx()});
+showEx();
+let seq=[...ORDER].reverse();
+function drawOrder(){const host=byId("orderLines");host.replaceChildren();seq.forEach((s,i)=>{
+ const div=document.createElement("div");div.className="code-line";
+ const code=document.createElement("code");code.textContent=s;div.append(code);
+ [["↑",-1],["↓",1]].forEach(([t,d])=>{const b=document.createElement("button");b.className="secondary";b.textContent=t;b.setAttribute("aria-label","Перемістити рядок "+(i+1)+(d===-1?" вище":" нижче"));b.disabled=i+d<0||i+d>=seq.length;b.addEventListener("click",()=>{[seq[i],seq[i+d]]=[seq[i+d],seq[i]];drawOrder()});div.append(b)});
+ host.append(div);
+ });}
+byId("checkOrder").addEventListener("click",()=>{const ok=seq.every((v,i)=>v===ORDER[i]);byId("orderFeedback").textContent=ok?"Правильно: функція base_cost описана до використання у final_cost.":"Послідовність поки неправильна. Спочатку опиши допоміжну функцію, потім основну, наприкінці виклич її."});
+byId("resetOrder").addEventListener("click",()=>{seq=[...ORDER].reverse();byId("orderFeedback").textContent="";drawOrder()});drawOrder();
+let stage=0,timer=null;
+function inputs(){return {n:Number(byId("students").value),p:Number(byId("ticket").value),d:Number(byId("discount").value)}}
+function valid(x){return Number.isInteger(x.n)&&x.n>0&&Number.isFinite(x.p)&&x.p>=0&&Number.isFinite(x.d)&&x.d>=0&&x.d<=100}
+function stop(){if(timer!==null){clearInterval(timer);timer=null}}
+function frames(x){
+ const raw=x.n*x.p,percent=x.n>=10?x.d:0,amount=raw*percent/100,total=raw-amount;
+ return [
+ ["1. Перевірка параметрів","count = "+x.n+", price = "+x.p+", discount = "+x.d+"\nВхідні дані коректні."],
+ ["2. Виклик базової функції","base_cost("+x.n+", "+x.p+")\nВиклик допоміжної функції з двома аргументами."],
+ ["3. Повернення базової суми","return count * price\n"+x.n+" × "+x.p+" = "+raw.toFixed(2)+" грн."],
+ ["4. Правило знижки","Учнів: "+x.n+". Поріг: 10.\nЗастосована знижка: "+percent+" %."],
+ ["5. Повернення остаточної суми","Знижка: "+amount.toFixed(2)+" грн.\nreturn "+raw.toFixed(2)+" - "+amount.toFixed(2)+" = "+total.toFixed(2)+" грн."],
+ ["6. Результат виклику","final_cost(...) → "+total.toFixed(2)+" грн.\nОкрема функція може оформити повідомлення для учнів."]
+ ];
+}
+function step(){
+ const x=inputs();if(!valid(x)){stop();byId("trace").textContent="Помилка: кількість — додатне ціле, ціна ≥ 0, знижка від 0 до 100.";return}
+ const fs=frames(x);if(stage>=fs.length){stop();return}
+ const f=fs[stage];byId("trace").textContent=f[0]+"\n"+f[1];stage++;
+ byId("simCount").textContent=stage+"/"+fs.length;
+ [...byId("simNodes").children].forEach((n,i)=>n.classList.toggle("active",i<stage));
+ if(stage===fs.length)stop();
+}
+function reset(){stop();stage=0;byId("trace").textContent="Вибери дані та натисни «Крок».";byId("simCount").textContent="0/6";[...byId("simNodes").children].forEach(n=>n.classList.remove("active"))}
+byId("simStep").addEventListener("click",step);
+byId("simAuto").addEventListener("click",()=>{if(timer!==null)return;if(stage===6)reset();step();if(stage<6)timer=setInterval(step,1200)});
+byId("simPause").addEventListener("click",stop);
+byId("simReset").addEventListener("click",reset);
+["students","ticket","discount"].forEach(id=>byId(id).addEventListener("change",reset));
+reset();
+byId("saveReflection").addEventListener("click",()=>{
+ const text=byId("reflectionText").value;try{localStorage.setItem("smartlab-7-21-reflection",text);byId("reflectionStatus").textContent="Збережено в цьому браузері."}catch(e){byId("reflectionStatus").textContent="Не вдалося зберегти локально. Можна експортувати TXT."}
+});
+try{byId("reflectionText").value=localStorage.getItem("smartlab-7-21-reflection")||""}catch(e){}
+byId("exportReflection").addEventListener("click",()=>{
+ const blob=new Blob(["Рефлексія. 7 клас, урок 21\n"+byId("reflectionText").value],{type:"text/plain;charset=utf-8"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="refleksiia-7-21.txt";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+window.addEventListener("scroll",()=>{
+ const doc=document.documentElement,range=doc.scrollHeight-doc.clientHeight;
+ byId("progressFill").style.width=(range?Math.min(100,100*doc.scrollTop/range):100)+"%";
+},{passive:true});
+</script></body></html>
