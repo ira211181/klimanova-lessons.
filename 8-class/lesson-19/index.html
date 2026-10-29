@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#edf6ff"><meta name="description" content="8 клас, урок 19: Кнопка у Python Tkinter. Теорія, відео, дві вправи, симулятор, практична робота та 20 тестів.">
+<title>8 клас • Урок 19 • Кнопка у Python Tkinter | SMART LAB</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#17334f;background:#f3f8ff;scroll-behavior:smooth}
+*{box-sizing:border-box}html{scroll-padding-top:92px}body{margin:0;line-height:1.65;background:radial-gradient(ellipse at 90% 0,#e0edff,transparent 36%),#f3f8ff}
+a{color:#1555a5;text-underline-offset:3px}button,select,input,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.52;cursor:not-allowed}
+:focus-visible{outline:3px solid #e39800;outline-offset:3px}.wrap{max-width:1140px;margin:auto;padding-inline:22px}
+header{background:linear-gradient(110deg,#e5f8ff,#edf0ff 60%,#f3e9ff);border-bottom:1px solid #cbdff0}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;font-weight:850;flex-wrap:wrap}
+.pill{display:inline-block;background:#ffffffdc;border:1px solid #c6d7ed;border-radius:99px;padding:6px 13px;font-size:.87rem}
+.hero{display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:24px;padding:35px 0 48px}
+h1{font-size:clamp(2.3rem,5vw,4.7rem);line-height:1.1;letter-spacing:-.055em;margin:14px 0}h1 span{color:#305cc5}
+.hero p{font-size:1.1rem;color:#49647d}.hero-art{background:white;border:1px solid #cbdcf0;border-radius:25px;padding:24px;box-shadow:0 20px 45px #174b9c14}
+.mock-top{height:27px;border-radius:9px 9px 0 0;background:#dbe8fa;display:flex;align-items:center;gap:7px;padding:7px}
+.dot{height:9px;width:9px;border-radius:50%;background:#789fc9}.mock-body{min-height:190px;border:1px solid #dbe7f3;padding:24px;text-align:center}
+.mock-button{border:0;background:#356de1;color:white;padding:13px 25px;border-radius:11px;font-weight:850;box-shadow:0 6px 0 #244d9b}
+nav{position:sticky;top:0;z-index:30;background:#fffffff2;backdrop-filter:blur(12px);border-bottom:1px solid #dce8f5}
+nav .wrap{display:flex;gap:5px;overflow-x:auto;padding-top:9px;padding-bottom:9px}
+nav a{white-space:nowrap;text-decoration:none;padding:9px 11px;border-radius:9px;font-weight:800;font-size:.84rem}
+nav a:hover{background:#e8f2ff}.card{background:#fff;border:1px solid #dbe7f3;border-radius:23px;box-shadow:0 15px 40px #28569c10;padding:clamp(19px,3vw,37px);margin:25px 0;scroll-margin-top:92px}
+.card h2{font-size:clamp(1.55rem,3vw,2.15rem);letter-spacing:-.035em;margin:0 0 18px}.card h3{margin:16px 0 8px}
+.badge{display:inline-block;padding:4px 11px;border-radius:9px;background:#e5f3ff;color:#145c96;font-weight:850;font-size:.8rem;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.tile{background:#f8fbff;border:1px solid #d8e8f4;border-radius:16px;padding:17px}.tile strong{color:#1d59a5}
+.note{background:#e7f9f2;border-left:5px solid #229779;padding:14px;border-radius:11px;margin:17px 0}
+.warn{background:#fff4e2;border-left:5px solid #d3942c;padding:14px;border-radius:11px;margin:17px 0}
+.btn{display:inline-block;border:0;background:#245fcb;color:#fff;padding:10px 16px;border-radius:11px;text-decoration:none;font-weight:850;margin:4px 5px 4px 0}
+.btn.alt{background:#e6f0ff;color:#1c4d99}.btn.purple{background:#7552bd}.btn.green{background:#187d65}
+.code{display:block;background:#102d4b;color:#e5f6ff;border-radius:15px;padding:19px;overflow-x:auto;white-space:pre;font:500 .94rem/1.7 ui-monospace,Consolas,monospace}
+.aspect{position:relative;aspect-ratio:16/9;background:#14324f;border-radius:16px;overflow:hidden}
+.aspect iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.question{border:1px solid #d8e5f1;border-radius:14px;padding:16px;background:#f9fcff;margin:13px 0}
+.question h3{font-size:1rem;margin:0 0 12px}.choice{display:block;border:1px solid #dce8f4;background:#fff;border-radius:10px;padding:9px 11px;margin:7px 0}
+.choice input{margin-right:9px}.feedback{background:#eaf4ff;border-radius:10px;padding:11px;margin:12px 0;min-height:1.3em}
+.feedback:empty{display:none}.good{background:#e4f8ee;color:#176546}.bad{background:#fff0e8;color:#933f23}
+.field{display:block;margin:11px 0;font-weight:700}.field input,.field select,.field textarea{display:block;width:100%;max-width:590px;padding:10px;border:1px solid #a7c2de;border-radius:10px;background:#fff;color:#17334f}
+.field textarea{min-height:86px}.chips{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0}.chips button{border:1px solid #a6c8ed;background:#e8f3ff;border-radius:10px;padding:10px;color:#1a4f98;font-weight:800}
+.chips button:disabled{opacity:.45}.chosen{min-height:48px;border:2px dashed #b4cde6;border-radius:12px;padding:10px;background:#f8fbff}
+.simgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.simgrid label{font-weight:800;font-size:.89rem}
+.simgrid select,.simgrid input{display:block;width:100%;padding:9px;border:1px solid #aac5df;border-radius:9px;margin-top:6px}
+.sim-screen{border:1px solid #b6d3ea;border-radius:17px;background:#e9f5ff;padding:17px;margin:15px 0}
+.sim-window{max-width:530px;min-height:230px;margin:auto;background:white;border:1px solid #9bb4d0;border-radius:12px;box-shadow:0 12px 24px #174a9b17;overflow:hidden}
+.sim-title{background:#dae9fa;padding:7px 12px;font-size:.88rem;font-weight:800}
+.sim-content{display:grid;place-items:center;gap:13px;padding:25px;min-height:185px}
+#previewBtn{padding:12px 20px;border:1px solid #aac4df;border-radius:10px;font-weight:800}
+.progress{height:12px;background:#d6e5f5;border-radius:10px;overflow:hidden;margin:12px 0}
+.progress span{display:block;width:0;height:100%;background:#2869d5;transition:width .25s}
+.small{color:#526d85;font-size:.88rem}.center{text-align:center}footer{padding:30px 0;color:#516b83}
+@media(max-width:840px){.hero,.grid,.grid3{grid-template-columns:1fr}.simgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.wrap{padding-inline:13px}.card{border-radius:16px;padding:19px}.simgrid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+@media print{nav,.btn,.chips{display:none!important}.card{box-shadow:none;break-inside:avoid}}
+</style></head><body>
+<header><div class="wrap"><div class="top"><span>🧠 SMART LAB · Інформатика · 8 клас</span><span class="pill">Урок №19 · 01.12.2026</span></div>
+<div class="hero"><div><span class="badge">Розділ 4 · Алгоритми та програми</span>
+<h1>Натисни кнопку — <span>запусти дію!</span></h1>
+<p>Тема: «Кнопка». Створюємо графічний інтерфейс Python Tkinter, досліджуємо властивості кнопки та події натискання.</p>
+<p><a class="btn" href="#goals">Розпочати урок ↓</a><a class="btn alt" href="https://www.geneza.ua/product/1209" target="_blank" rel="noopener noreferrer">📖 Підручник Й. Ривкінда · 8 клас ↗</a></p>
+<span class="pill">45 хв · 2 вправи · симулятор · 20 тестів</span></div>
+<div class="hero-art" aria-label="Схема вікна з кнопкою"><div class="mock-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="mock-body"><p>Вікно програми</p><button class="mock-button" type="button" id="heroBtn">Натисни мене</button><p id="heroMsg" aria-live="polite">Подія ще не відбулася</p></div></div></div></div></header>
+<nav aria-label="Навігація уроку"><div class="wrap">
+<a href="#goals">Мета</a><a href="#theory">Теорія</a><a href="#example">Код</a><a href="#video">Відео</a><a href="#practice">Практична</a><a href="#exercise1">Вправа 1</a><a href="#exercise2">Вправа 2</a><a href="#sim">Симулятор</a><a href="#quiz">20 тестів</a><a href="#home">Домашнє</a><a href="#reflection">Рефлексія</a><a href="#sources">Джерела</a><a href="#ethics">Доброчесність</a>
+</div></nav>
+<main class="wrap">
+<section class="card" id="goals"><span class="badge">01 · Мета</span><h2>Чого навчимося?</h2>
+<div class="grid3"><div class="tile"><strong>🧩 Розуміти</strong><p>Пояснювати, чим кнопка відрізняється від напису та чому потрібна подія.</p></div>
+<div class="tile"><strong>🛠️ Створювати</strong><p>Додавати Button до вікна, задавати text, bg, fg, width і розташування.</p></div>
+<div class="tile"><strong>🧪 Перевіряти</strong><p>Прив’язувати обробник command і тестувати результат натискання.</p></div></div>
+<div class="note">Проблемне запитання: чому кнопка може бути видимою, але після натискання нічого не відбувається?</div></section>
+<section class="card" id="theory"><span class="badge">02 · Пояснення</span><h2>Кнопка як об’єкт графічного інтерфейсу</h2>
+<p><b>Кнопка (Button)</b> — елемент керування, на який користувач натискає, щоб запустити певну дію. У Python модуль <code>tkinter</code> дає змогу створювати кнопки всередині вікна.</p>
+<div class="grid3">
+<div class="tile"><strong>text</strong><p>Напис на кнопці: <code>text="Почати"</code>.</p></div>
+<div class="tile"><strong>bg та fg</strong><p>Колір фону й тексту: <code>bg="blue", fg="white"</code>.</p></div>
+<div class="tile"><strong>width та height</strong><p>Розміри в текстових одиницях Tkinter, не пікселях.</p></div>
+<div class="tile"><strong>pack()</strong><p>Автоматично розміщує кнопку в доступному просторі вікна.</p></div>
+<div class="tile"><strong>place(x=..., y=...)</strong><p>Розташовує кнопку за координатами від лівого верхнього кута.</p></div>
+<div class="tile"><strong>command=ім’я_функції</strong><p>Вказує функцію, яка викликається після натискання кнопки.</p></div>
+</div>
+<h3>Подія та обробник</h3><p>Подія — дія користувача, наприклад натискання кнопки. Обробник — функція, яку програма запускає у відповідь. Запис <code>command=on_click</code> передає посилання на функцію; <code>command=on_click()</code> викликає її одразу під час створення кнопки — це поширена помилка.</p>
+<div class="warn"><b>Типові помилки:</b> забули <code>pack()</code> або <code>place()</code> — кнопка не з’явиться; помилилися в назві функції — виникне помилка; вказали <code>command=on_click()</code> — дія виконається завчасно; не викликали <code>mainloop()</code> — вікно не працюватиме як очікується.</div>
+<p>Порівняй: <b>кнопка</b> ініціює дію, а <b>напис (Label)</b> переважно показує інформацію. Наступний урок присвячений написам.</p></section>
+<section class="card" id="example"><span class="badge">03 · Приклад</span><h2>Перша кнопка у Tkinter</h2>
+<p>Приклад створює вікно, додає кнопку «Привітатися» й змінює її напис після натискання.</p>
+<pre class="code" aria-label="Приклад коду Python">import tkinter as tk
+
+root = tk.Tk()
+root.title("Моя перша кнопка")
+root.geometry("360x220")
+
+def on_click():
+    button.config(text="Вітаю! Натиснуто")
+
+button = tk.Button(
+    root,
+    text="Привітатися",
+    bg="royalblue",
+    fg="white",
+    width=20,
+    command=on_click
+)
+button.pack(pady=40)
+root.mainloop()</pre>
+<p><b>Розбір:</b> <code>tk.Tk()</code> створює вікно; <code>tk.Button(root, ...)</code> — кнопку, яка належить цьому вікну; <code>command=on_click</code> задає обробник; <code>button.pack(...)</code> показує кнопку; <code>root.mainloop()</code> запускає цикл обробки подій.</p>
+<div class="note">Перевірка: заміни <code>command=on_click</code> на <code>command=on_click()</code> подумки. Яка дія відбудеться до натискання? Поясни причину.</div></section>
+<section class="card" id="video"><span class="badge">04 · Відеоурок</span><h2>Подивись, як працює кнопка</h2>
+<p>Україномовна відеопрезентація «8 клас 45 урок. Поняття елемента керування. Кнопка» (канал «Інформатика — це легко!», 23.02.2025). Номер у відео відрізняється від номера нашого уроку в КТП.</p>
+<div class="aspect"><iframe src="https://www.youtube-nocookie.com/embed/xlrmMpg85wE" title="8 клас. Поняття елемента керування. Кнопка" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<p><a href="https://www.youtube.com/watch?v=xlrmMpg85wE" target="_blank" rel="noopener noreferrer">▶ Відкрити відео на YouTube, якщо вбудований програвач недоступний</a></p>
+<div class="grid"><div class="question"><h3>Запитання 1. Для чого потрібна кнопка?</h3><label class="choice"><input type="radio" name="video1" value="0"> Лише для збереження файла</label><label class="choice"><input type="radio" name="video1" value="1"> Для запуску дії користувачем</label><label class="choice"><input type="radio" name="video1" value="2"> Для зміни розміру екрана</label></div>
+<div class="question"><h3>Запитання 2. Який запис правильно пов’язує кнопку з функцією?</h3><label class="choice"><input type="radio" name="video2" value="0"> command=on_click()</label><label class="choice"><input type="radio" name="video2" value="1"> click=on_click</label><label class="choice"><input type="radio" name="video2" value="2"> command=on_click</label></div></div>
+<button class="btn" type="button" id="videoCheck">Перевірити відповіді до відео</button><div id="videoFeedback" class="feedback" role="status" aria-live="polite"></div>
+<div class="small">Метадані й українську назву відео перевірено. Фактичну озвучку та відтворення iframe в усіх браузерах потрібно перевірити перед уроком.</div></section>
+<section class="card" id="practice"><span class="badge">05 · Практична робота</span><h2>«Кнопка добрих новин»</h2>
+<p><b>Завдання:</b> створи у Python IDLE вікно з кнопкою «Отримати новину», яка після натискання змінює напис на «Сьогодні я навчився створювати кнопки!».</p>
+<ol><li>Відкрий IDLE → File → New File; створи файл <code>knopka_novyn.py</code>.</li>
+<li>Імпортуй <code>tkinter</code> та створи головне вікно <code>root = tk.Tk()</code>.</li>
+<li>Установи заголовок і розмір вікна 420 × 260.</li>
+<li>Створи функцію <code>show_news()</code>, яка змінює текст кнопки через <code>button.config(text=...)</code>.</li>
+<li>Створи кнопку з текстом «Отримати новину», синім тлом та білим текстом.</li>
+<li>Прив’яжи обробник через <code>command=show_news</code> і розмісти кнопку через <code>pack(pady=45)</code>.</li>
+<li>Додай <code>root.mainloop()</code>, збережи файл та запусти F5.</li>
+<li>Перевір кнопку двічі, зміни її колір, зроби скриншот і поясни, що змінилося.</li></ol>
+<div class="warn"><b>Безпека:</b> не запускай невідомі файли, не вводь паролі чи особисті дані в навчальні приклади, роби короткі перерви та дотримуйся правил роботи за комп’ютером.</div>
+<p><b>Критерії:</b> вікно відкривається — 2 бали; кнопка видима — 2; властивості задані — 2; натискання запускає функцію — 3; тестування й пояснення — 3. Разом 12 балів.</p></section>
+<section class="card" id="exercise1"><span class="badge">06 · Інтерактив 1</span><h2>«Впізнай властивість»</h2><p>Для кожної ситуації вибери потрібну властивість або метод Tkinter. Після перевірки побачиш пояснення.</p>
+<div id="situations"></div><button class="btn" id="situationsCheck" type="button">Перевірити 8 ситуацій</button><button class="btn alt" id="situationsReset" type="button">Скинути</button><div id="situationsFeedback" class="feedback" role="status" aria-live="polite"></div></section>
+<section class="card" id="exercise2"><span class="badge">07 · Інтерактив 2</span><h2>«Склади маршрут кнопки»</h2><p>Натискай кроки в правильній послідовності від підготовки вікна до запуску програми. Кнопки доступні також із клавіатури.</p>
+<div id="orderPool" class="chips" aria-label="Доступні кроки"></div><p><b>Твоя послідовність:</b></p><div id="orderChosen" class="chosen" aria-live="polite">Поки порожньо</div>
+<button class="btn" id="orderCheck" type="button">Перевірити порядок</button><button class="btn alt" id="orderReset" type="button">Почати спочатку</button><div id="orderFeedback" class="feedback" role="status" aria-live="polite"></div></section>
+<section class="card" id="sim"><span class="badge">08 · Предметна симуляція</span><h2>«Конструктор кнопки»</h2>
+<p>Налаштуй властивості кнопки та обробник події. Виконуй побудову покроково або автоматично. Після останнього кроку натисни створену кнопку й перевір результат. Це браузерна модель Tkinter, а не запуск Python.</p>
+<div class="simgrid"><label>Напис кнопки<input id="simText" maxlength="30" value="Натисни мене"></label>
+<label>Колір фону<select id="simBg"><option value="royalblue">Синій</option><option value="seagreen">Зелений</option><option value="darkorange">Помаранчевий</option><option value="purple">Фіолетовий</option></select></label>
+<label>Колір тексту<select id="simFg"><option value="white">Білий</option><option value="black">Чорний</option></select></label>
+<label>Дія після натискання<select id="simAction"><option value="message">Показати повідомлення</option><option value="counter">Збільшити лічильник</option><option value="color">Змінити фон вікна</option></select></label></div>
+<div class="sim-screen"><div class="sim-window"><div class="sim-title">◉ Навчальне вікно Tkinter</div><div class="sim-content" id="simContent"><button id="previewBtn" type="button" disabled>Кнопка ще не створена</button><div id="simResult" role="status" aria-live="polite">Почни з кроку 1.</div></div></div></div>
+<div class="progress" aria-label="Прогрес симуляції"><span id="simProgress"></span></div>
+<p id="simStepText" class="feedback" aria-live="polite">Крок 0 із 6. Обери налаштування й натисни «Крок».</p>
+<button class="btn" id="simNext" type="button">Наступний крок</button><button class="btn purple" id="simAuto" type="button">Автопоказ</button><button class="btn alt" id="simPause" type="button">Пауза</button><button class="btn alt" id="simReset" type="button">Скинути</button>
+<h3>Python-код за твоїми налаштуваннями</h3><pre class="code" id="simCode" aria-label="Згенерований приклад коду Python"></pre>
+<div class="note">Експеримент: порівняй три дії. Чому обробник кнопки має виконуватися після натискання, а не під час створення?</div></section>
+<section class="card" id="quiz"><span class="badge">09 · Самоперевірка</span><h2>Підсумковий тест: 20 запитань</h2>
+<p>Є запитання з однією відповіддю, кількома відповідями, встановленням послідовності та короткою відповіддю. Після перевірки показуються пояснення. За кожне повністю правильне завдання — 1 бал.</p>
+<div id="quizQuestions"></div><button class="btn green" type="button" id="quizCheck">Перевірити 20 відповідей</button><button class="btn alt" type="button" id="quizReset">Очистити відповіді</button><div id="quizFeedback" class="feedback" role="status" aria-live="polite"></div></section>
+<section class="card" id="home"><span class="badge">10 · Домашнє завдання</span><h2>Обери свій рівень</h2>
+<div class="grid3"><div class="tile"><strong>Базовий</strong><p>Створи вікно з кнопкою «Почати» і встанови властивості text, bg, fg. Перевір відображення.</p></div>
+<div class="tile"><strong>Достатній</strong><p>Додай обробник, який змінює напис кнопки після натискання. Запиши два тестові випадки.</p></div>
+<div class="tile"><strong>Високий</strong><p>Створи дві кнопки: одна збільшує лічильник, друга обнуляє його. Поясни призначення обробників.</p></div></div>
+<h3>Домашня мініперевірка: 9 запитань</h3><div id="homeQuestions"></div>
+<button class="btn" type="button" id="homeCheck">Перевірити домашні тести</button><button class="btn alt" type="button" id="homeReset">Очистити домашні тести</button><div id="homeFeedback" class="feedback" role="status" aria-live="polite"></div></section>
+<section class="card" id="reflection"><span class="badge">11 · Рефлексія</span><h2>Що я навчився робити?</h2>
+<label class="field">Сьогодні я зрозумів/зрозуміла…<textarea id="reflectionLearn" placeholder="Наприклад: навіщо потрібний command"></textarea></label>
+<label class="field">Найскладніше було…<textarea id="reflectionHard" placeholder="Наприклад: відрізнити функцію від її виклику"></textarea></label>
+<label class="field">На наступному уроці я спробую…<textarea id="reflectionNext" placeholder="Наприклад: додати напис Label"></textarea></label>
+<button class="btn" id="reflectionSave" type="button">Зберегти у браузері</button><button class="btn alt" id="reflectionExport" type="button">Завантажити TXT</button><div id="reflectionFeedback" class="feedback" role="status" aria-live="polite"></div>
+<p class="small">Нотатки зберігаються локально в цьому браузері, не надсилаються на сервер. Не вписуй персональні дані.</p></section>
+<section class="card" id="sources"><span class="badge">12 · Перевірені джерела</span><h2>Підручник і матеріали</h2>
+<p><a class="btn alt" href="https://www.geneza.ua/product/1209" target="_blank" rel="noopener noreferrer">📖 Підручник Й. Ривкінда · Інформатика, 8 клас (видавництво «Генеза») ↗</a></p>
+<p>Автори: Й. Ривкінд, Т. Лисенко, Л. Чернікова, В. Шакотько. Видання для 8 класу НУШ; ISBN 978-617-8370-99-2. За КТП тема відповідає пункту 4.2; номер параграфа у конкретному примірнику підручника слід звірити перед задаванням домашнього читання.</p>
+<p><a href="https://www.youtube.com/watch?v=xlrmMpg85wE" target="_blank" rel="noopener noreferrer">Відео «Поняття елемента керування. Кнопка», канал «Інформатика — це легко!» ↗</a></p>
+<p><a href="https://docs.google.com/spreadsheets/d/13XKIfzKTMFybpyofp7jHeYC7DEMrziEYlaWoHPBGkaA/edit" target="_blank" rel="noopener noreferrer">Календарно-тематичний план 2026/2027 ↗</a></p></section>
+<section class="card" id="ethics"><span class="badge">13 · Академічна доброчесність</span><h2>Створюй самостійно й відповідально</h2>
+<p>Пиши власний код, зазначай використані джерела та пояснюй запозичені фрагменти. Можна обговорювати ідеї, але не видавати чужу програму за свою. Не публікуй особисті дані у файлах і скриншотах. Якщо використовував/використовувала допоміжний інструмент ШІ — перевір результат і повідом про його використання відповідно до правил учителя.</p>
+<div class="note">Контрольне запитання: чим відрізняється копіювання чужого рішення від навчання на прикладі з подальшим самостійним поясненням?</div></section>
+</main><footer class="wrap">SMART LAB · Інформатика · 8 клас · Урок №19 · «Кнопка» · 2026/2027</footer>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function feedback(id,msg,ok){const el=$(id);el.textContent=msg;el.className="feedback "+(ok?"good":"bad");}
+$("heroBtn").addEventListener("click",()=>{$("heroMsg").textContent="Подія click! Обробник виконав дію."});
+$("videoCheck").addEventListener("click",()=>{
+ const a=document.querySelector('input[name="video1"]:checked'),b=document.querySelector('input[name="video2"]:checked');
+ if(!a||!b){feedback("videoFeedback","Відповідай на обидва запитання.",false);return}
+ const score=Number(a.value==="1")+Number(b.value==="2");
+ feedback("videoFeedback",score+"/2. "+(score===2?"Правильно: кнопка запускає дію, а command приймає ім’я функції без дужок.":"Пригадай призначення кнопки й запис command=on_click."),score===2);
+});
+const situations=[
+["Потрібно змінити напис на кнопці.",["text","bg","pack()"],0,"text задає видимий напис."],
+["Потрібно зробити тло кнопки зеленим.",["fg","bg","width"],1,"bg задає колір фону кнопки."],
+["Потрібно зробити літери білими.",["fg","height","place()"],0,"fg задає колір тексту."],
+["Потрібно показати кнопку у вікні автоматично.",["pack()","mainloop()","title()"],0,"pack() розміщує віджет."],
+["Потрібно розташувати кнопку за координатами.",["text","place(x=20,y=30)","bg"],1,"place() використовує координати."],
+["Потрібно запускати функцію після натискання.",["command=action","command=action()","height=2"],0,"Передаємо ім’я функції без виклику."],
+["Потрібно збільшити ширину кнопки.",["fg","width","text"],1,"width змінює ширину кнопки у текстових одиницях."],
+["Потрібно почати обробку подій вікна.",["pack()","bg","mainloop()"],2,"mainloop() запускає цикл подій."]
+];
+function renderSituations(){
+ $("situations").innerHTML="";
+ situations.forEach((s,i)=>{
+ const div=document.createElement("div");div.className="question";
+ const h=document.createElement("h3");h.textContent=(i+1)+". "+s[0];div.append(h);
+ const select=document.createElement("select");select.id="situation"+i;select.setAttribute("aria-label","Відповідь до ситуації "+(i+1));
+ const ph=document.createElement("option");ph.value="";ph.textContent="— Обери відповідь —";select.append(ph);
+ s[1].forEach((v,j)=>{const opt=document.createElement("option");opt.value=String(j);opt.textContent=v;select.append(opt)});
+ div.append(select);const f=document.createElement("div");f.id="sf"+i;f.className="small";div.append(f);$("situations").append(div);
+ });
+}
+$("situationsCheck").addEventListener("click",()=>{
+ let score=0;
+ situations.forEach((s,i)=>{const ok=$("situation"+i).value===String(s[2]);score+=Number(ok);$("sf"+i).textContent=(ok?"✓ ":"✗ ")+s[3]});
+ feedback("situationsFeedback","Результат: "+score+"/8. "+(score===8?"Усі властивості визначено правильно.":"Переглянь пояснення під ситуаціями."),score===8);
+});
+$("situationsReset").addEventListener("click",()=>{renderSituations();$("situationsFeedback").textContent="";$("situationsFeedback").className="feedback"});
+renderSituations();
+const orderSteps=["Імпортувати tkinter","Створити головне вікно","Оголосити функцію-обробник","Створити Button з command","Розмістити кнопку pack()","Запустити root.mainloop()"];
+let chosen=[];
+function renderOrder(){
+ $("orderPool").innerHTML="";
+ [3,0,5,1,4,2].forEach(i=>{
+ const b=document.createElement("button");b.type="button";b.textContent=orderSteps[i];b.disabled=chosen.includes(i);
+ b.addEventListener("click",()=>{chosen.push(i);renderOrder()});$("orderPool").append(b);
+ });
+ $("orderChosen").textContent=chosen.length?chosen.map((i,j)=>(j+1)+". "+orderSteps[i]).join(" → "):"Поки порожньо";
+}
+$("orderCheck").addEventListener("click",()=>{
+ const ok=chosen.length===6&&chosen.every((x,i)=>x===i);
+ feedback("orderFeedback",ok?"Чудово! Послідовність побудови віконного проєкту правильна.":"Перевір: спочатку імпорт і вікно, потім обробник, кнопка, її розміщення та цикл подій.",ok);
+});
+$("orderReset").addEventListener("click",()=>{chosen=[];renderOrder();$("orderFeedback").textContent="";$("orderFeedback").className="feedback"});
+renderOrder();
+let simStep=0,simTimer=null,simCount=0;
+const simDescriptions=[
+"Імпортуємо tkinter, щоб користуватися графічними елементами.",
+"Створюємо головне вікно root = tk.Tk().",
+"Оголошуємо функцію on_click() для обробки події.",
+"Створюємо Button і задаємо text, bg, fg, command.",
+"Розміщуємо кнопку через pack() та запускаємо mainloop().",
+"Готово! Натисни кнопку в моделі й перевір дію обробника."
+];
+function simSettings(){return {text:$("simText").value.trim()||"Натисни мене",bg:$("simBg").value,fg:$("simFg").value,action:$("simAction").value}}
+function simCode(){
+ const s=simSettings();let action="";
+ if(s.action==="message")action='    button.config(text="Дію виконано!")';
+ else if(s.action==="counter")action='    global clicks\n    clicks += 1\n    button.config(text="Натискань: " + str(clicks))';
+ else action='    root.configure(bg="lightyellow")';
+ const lines=['import tkinter as tk','root = tk.Tk()','root.title("Моя кнопка")','root.geometry("400x240")'];
+ if(s.action==="counter")lines.push('clicks = 0');
+ lines.push('','def on_click():',action,'','button = tk.Button(root, text='+JSON.stringify(s.text)+',','                   bg='+JSON.stringify(s.bg)+', fg='+JSON.stringify(s.fg)+',','                   command=on_click)','button.pack(pady=40)','root.mainloop()');
+ $("simCode").textContent=lines.join("\n");
+}
+function updateSim(){
+ const s=simSettings();$("simProgress").style.width=(simStep/6*100)+"%";
+ $("simStepText").textContent="Крок "+simStep+" із 6. "+(simStep?simDescriptions[simStep-1]:"Обери налаштування й натисни «Крок»."); 
+ const b=$("previewBtn");b.disabled=simStep<5;b.textContent=simStep>=4?s.text:"Кнопка ще не створена";
+ b.style.background=simStep>=4?s.bg:"#e7edf5";b.style.color=simStep>=4?s.fg:"#526980";
+ if(simStep===0){$("simResult").textContent="Почни з кроку 1.";$("simContent").style.background="white";}
+ if(simStep===6)$("simResult").textContent="Натисни кнопку, щоб перевірити обробник.";
+ $("simNext").disabled=simStep>=6;simCode();
+}
+function stopSim(){if(simTimer!==null){clearInterval(simTimer);simTimer=null}}
+function simNext(){if(simStep<6){simStep++;updateSim();if(simStep===6)stopSim()}}
+$("simNext").addEventListener("click",simNext);
+$("simAuto").addEventListener("click",()=>{if(simStep>=6)simReset();stopSim();simTimer=setInterval(simNext,1050)});
+$("simPause").addEventListener("click",()=>{stopSim();$("simResult").textContent="Автопоказ призупинено."});
+function simReset(){stopSim();simStep=0;simCount=0;updateSim()}
+$("simReset").addEventListener("click",simReset);
+["simText","simBg","simFg","simAction"].forEach(id=>$(id).addEventListener("input",simReset));
+$("previewBtn").addEventListener("click",()=>{
+ if(simStep<5)return;const s=simSettings();
+ if(s.action==="message"){$("previewBtn").textContent="Дію виконано!";$("simResult").textContent="Обробник змінив текст кнопки."}
+ else if(s.action==="counter"){simCount++;$("previewBtn").textContent="Натискань: "+simCount;$("simResult").textContent="Лічильник збільшено на 1."}
+ else {$("simContent").style.background="lightyellow";$("simResult").textContent="Обробник змінив колір вікна."}
+});
+updateSim();
+const quiz=[
+{t:"single",q:"Який клас Tkinter створює кнопку?",o:["Button","Label","Entry"],a:0,e:"Для кнопки використовують tk.Button."},
+{t:"single",q:"Що означає text у Button?",o:["Колір фону","Напис на кнопці","Ширину вікна"],a:1,e:"text задає напис."},
+{t:"single",q:"Яка властивість задає фон кнопки?",o:["fg","bg","height"],a:1,e:"bg — background."},
+{t:"single",q:"Яка властивість задає колір тексту?",o:["fg","width","command"],a:0,e:"fg — foreground."},
+{t:"single",q:"Що робить pack()?",o:["Створює файл","Розміщує віджет","Закриває програму"],a:1,e:"pack() керує розміщенням."},
+{t:"single",q:"Який запис правильно призначає обробник?",o:["command=on_click()","command=on_click","on_click=command"],a:1,e:"Функцію передають без дужок."},
+{t:"single",q:"Який об’єкт є головним вікном у прикладі root = tk.Tk()?",o:["root","Button","pack"],a:0,e:"root посилається на головне вікно."},
+{t:"single",q:"Для чого потрібний root.mainloop()?",o:["Змінює фон","Запускає цикл обробки подій","Створює кнопку"],a:1,e:"Цикл очікує та обробляє події."},
+{t:"single",q:"Що зробить button.config(text='Готово')?",o:["Змінить напис кнопки","Видалить кнопку","Закриє вікно"],a:0,e:"config змінює властивості об’єкта."},
+{t:"single",q:"Як розмістити кнопку за координатами?",o:["place(x=30,y=20)","title(30,20)","mainloop(30,20)"],a:0,e:"place використовує координати."},
+{t:"single",q:"У яких одиницях задають width кнопки Tkinter за замовчуванням?",o:["Переважно у текстових одиницях","У мегабайтах","Завжди у пікселях"],a:0,e:"width текстової кнопки не дорівнює кількості пікселів."},
+{t:"single",q:"Кнопка є видимою, але не реагує. Що перевірити насамперед?",o:["Колір монітора","Призначення command та функцію","Назву папки"],a:1,e:"Для реакції потрібний обробник події."},
+{t:"multi",q:"Вибери властивості, які впливають на вигляд кнопки.",o:["text","bg","fg","mainloop()"],a:[0,1,2],e:"text, bg, fg описують вигляд, mainloop — цикл подій."},
+{t:"multi",q:"Що потрібно для кнопки, яка реагує на натискання?",o:["Створити функцію-обробник","Указати command=ім’я_функції","Обов’язково підключити інтернет","Запустити цикл подій"],a:[0,1,3],e:"Функція, command і цикл подій потрібні; інтернет — ні."},
+{t:"multi",q:"Які твердження про розміщення правильні?",o:["pack() розміщує віджет","place() може задавати координати","Без розміщення Button зазвичай не видно","fg відповідає за координати"],a:[0,1,2],e:"Координати задає place, а fg — колір тексту."},
+{t:"multi",q:"Які дії допоможуть перевірити програму?",o:["Натиснути кнопку двічі","Зіставити очікуваний і фактичний результат","Ігнорувати повідомлення про помилки","Перевірити команду обробника"],a:[0,1,3],e:"Тестування включає перевірку реакції й помилок."},
+{t:"order",q:"Упорядкуй етапи створення кнопки.",o:["Створити root = tk.Tk()","Оголосити обробник","Створити Button","Викликати pack()"],a:[0,1,2,3],e:"Спочатку вікно й функція, потім кнопка та розміщення."},
+{t:"order",q:"Упорядкуй дії тестування обробника.",o:["Визначити очікувану реакцію","Запустити програму","Натиснути кнопку","Порівняти результат з очікуваним"],a:[0,1,2,3],e:"Тест починається з очікуваного результату."},
+{t:"short",q:"Запиши назву параметра Tkinter, який призначає функцію кнопці.",a:["command"],e:"Правильна назва: command."},
+{t:"short",q:"Запиши назву методу, який автоматично розміщує кнопку (без дужок).",a:["pack"],e:"Правильна назва: pack."}
+];
+const home=[
+{t:"single",q:"Що створює tk.Button(root)?",o:["Кнопку у вікні root","Текстовий файл","Нову вкладку браузера"],a:0,e:"Button створює віджет кнопки."},
+{t:"single",q:"Який запис установлює синій фон?",o:["fg='blue'","bg='blue'","text='blue'"],a:1,e:"bg відповідає за фон."},
+{t:"single",q:"Що викликає обробник command?",o:["Натискання кнопки","Збереження Python-файла","Зміна роздільності монітора"],a:0,e:"command реагує на дію користувача."},
+{t:"single",q:"Як змінити напис існуючої кнопки?",o:["button.config(text='Новий')","button.mainloop()","root.pack()"],a:0,e:"config змінює властивості."},
+{t:"single",q:"Чим завершується стандартний віконний приклад?",o:["root.mainloop()","root.bg()","button.title()"],a:0,e:"mainloop запускає цикл подій."},
+{t:"single",q:"Який метод розміщує кнопку за x і y?",o:["place()","config()","title()"],a:0,e:"place() підтримує координати."},
+{t:"multi",q:"Вибери правильні елементи проєкту з кнопкою.",o:["Головне вікно","Кнопка","Обробник події","Обов’язковий пароль"],a:[0,1,2],e:"Пароль не потрібний."},
+{t:"multi",q:"Що корисно робити під час налагодження?",o:["Читати повідомлення про помилки","Перевіряти ім’я функції","Порівнювати результат з очікуваним","Приховувати всі помилки"],a:[0,1,2],e:"Помилки слід аналізувати, а не приховувати."},
+{t:"short",q:"Як називається клас кнопки у tkinter?",a:["button"],e:"Клас називається Button."}
+];
+function normalize(s){return String(s).trim().toLowerCase().replace(/\s+/g," ").replace(/\(\)$/,"")}
+function renderTests(data,container,prefix){
+ const root=$(container);root.innerHTML="";
+ data.forEach((q,i)=>{
+ const box=document.createElement("div");box.className="question";
+ const h=document.createElement("h3");h.textContent=(i+1)+". "+q.q;box.append(h);
+ if(q.t==="single"||q.t==="multi"){
+ q.o.forEach((option,j)=>{
+ const lab=document.createElement("label");lab.className="choice";
+ const inp=document.createElement("input");inp.type=q.t==="single"?"radio":"checkbox";inp.name=prefix+i;inp.value=String(j);
+ lab.append(inp,document.createTextNode(option));box.append(lab);
+ });
+ }else if(q.t==="order"){
+ const help=document.createElement("p");help.className="small";help.textContent="Вибери дію для кожної позиції.";box.append(help);
+ q.o.forEach((_,pos)=>{
+ const lab=document.createElement("label");lab.className="field";lab.textContent="Крок "+(pos+1);
+ const select=document.createElement("select");select.id=prefix+i+"_"+pos;
+ const ph=document.createElement("option");ph.value="";ph.textContent="— Обери дію —";select.append(ph);
+ q.o.forEach((option,j)=>{const o=document.createElement("option");o.value=String(j);o.textContent=option;select.append(o)});
+ lab.append(select);box.append(lab);
+ });
+ }else{
+ const inp=document.createElement("input");inp.type="text";inp.id=prefix+i;inp.placeholder="Коротка відповідь";inp.setAttribute("aria-label","Відповідь на запитання "+(i+1));box.append(inp);
+ }
+ const f=document.createElement("div");f.className="small";f.id=prefix+"feedback"+i;box.append(f);root.append(box);
+ });
+}
+function checkTests(data,prefix,resultId){
+ let score=0;
+ data.forEach((q,i)=>{
+ let ok=false;
+ if(q.t==="single"){const selected=document.querySelector('input[name="'+prefix+i+'"]:checked');ok=!!selected&&Number(selected.value)===q.a}
+ else if(q.t==="multi"){const checked=[...document.querySelectorAll('input[name="'+prefix+i+'"]:checked')].map(x=>Number(x.value)).sort((a,b)=>a-b);ok=JSON.stringify(checked)===JSON.stringify(q.a)}
+ else if(q.t==="order"){const selected=q.o.map((_,j)=>$(prefix+i+"_"+j).value);ok=selected.every((x,j)=>x!==""&&Number(x)===q.a[j])}
+ else{ok=q.a.includes(normalize($(prefix+i).value))}
+ score+=Number(ok);$(prefix+"feedback"+i).textContent=(ok?"✓ Правильно. ":"✗ Спробуй ще. ")+q.e;
+ });
+ feedback(resultId,"Результат: "+score+"/"+data.length+". "+(score===data.length?"Усі завдання виконано правильно.":"Прочитай пояснення після кожного запитання."),score===data.length);
+ return score;
+}
+renderTests(quiz,"quizQuestions","q");renderTests(home,"homeQuestions","h");
+$("quizCheck").addEventListener("click",()=>checkTests(quiz,"q","quizFeedback"));
+$("homeCheck").addEventListener("click",()=>checkTests(home,"h","homeFeedback"));
+$("quizReset").addEventListener("click",()=>{renderTests(quiz,"quizQuestions","q");$("quizFeedback").textContent="";$("quizFeedback").className="feedback"});
+$("homeReset").addEventListener("click",()=>{renderTests(home,"homeQuestions","h");$("homeFeedback").textContent="";$("homeFeedback").className="feedback"});
+const reflKey="smartlab_8_19_reflection";
+function reflectionText(){return "Рефлексія. 8 клас. Урок 19 «Кнопка»\n\nЯ навчився/навчилася:\n"+$("reflectionLearn").value+"\n\nНайскладніше:\n"+$("reflectionHard").value+"\n\nНаступний крок:\n"+$("reflectionNext").value+"\n"}
+$("reflectionSave").addEventListener("click",()=>{
+ try{localStorage.setItem(reflKey,JSON.stringify([$("reflectionLearn").value,$("reflectionHard").value,$("reflectionNext").value]));feedback("reflectionFeedback","Нотатки збережено локально у браузері.",true)}
+ catch(e){feedback("reflectionFeedback","Браузер не дозволяє зберігання. Скористайся експортом TXT.",false)}
+});
+$("reflectionExport").addEventListener("click",()=>{
+ const blob=new Blob(["\uFEFF"+reflectionText()],{type:"text/plain;charset=utf-8"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="refleksiia_8_urok_19.txt";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ feedback("reflectionFeedback","Файл TXT підготовлено.",true);
+});
+try{const saved=JSON.parse(localStorage.getItem(reflKey)||"null");if(Array.isArray(saved)&&saved.length===3){["reflectionLearn","reflectionHard","reflectionNext"].forEach((id,i)=>$(id).value=saved[i]||"")}}catch(e){}
+</script></body></html>
