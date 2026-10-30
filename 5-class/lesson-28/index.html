@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="5 клас, урок 28: види текстових об’єктів на слайді, редагування тексту, інтерактиви, симулятор, тести.">
+<title>Урок 28 • Текстові об’єкти презентації • 5 клас</title><style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#162b4c;background:#f3f8ff;line-height:1.58;scroll-behavior:smooth}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 95% 3%,#e3edff 0,transparent 35%),#f3f8ff}
+a{color:#1858b6;text-underline-offset:3px}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;background:#2059c5;color:white;padding:.75rem 1.1rem;border-radius:12px;font-weight:750}button:hover{filter:brightness(1.07)}button:disabled{opacity:.55;cursor:not-allowed}button.secondary{background:#e6f1ff;color:#18447f}button.danger{background:#fff0ef;color:#9c2431}
+:focus-visible{outline:3px solid #d47b05;outline-offset:3px}.wrap{max-width:1150px;margin:auto;padding:0 20px}
+header{background:linear-gradient(125deg,#e3f5ff,#eff0ff 70%,#fff9e9);border-bottom:1px solid #cfe3f4}
+.top{display:flex;justify-content:space-between;gap:12px;align-items:center;padding-top:18px}.brand{font-weight:900;color:#134a83}.badge{background:white;border:1px solid #cadcef;padding:7px 13px;border-radius:999px;font-size:.85rem}
+.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center;padding:55px 0}.hero h1{font-size:clamp(2.1rem,5vw,4.2rem);letter-spacing:-.045em;line-height:1.12;margin:13px 0}.hero h1 em{font-style:normal;color:#2361cf}.hero p{max-width:650px;color:#405d79;font-size:1.08rem}.hero-art{background:white;border:1px solid #cfddf0;box-shadow:0 22px 44px #2458a518;border-radius:24px;padding:24px;transform:rotate(2deg)}.mini-slide{aspect-ratio:16/9;border-radius:13px;background:linear-gradient(135deg,#d5ecff,#f3e5ff);display:grid;place-items:center;text-align:center;padding:18px;color:#24519c}.mini-slide strong{font-size:1.6rem}
+nav{position:sticky;top:0;z-index:10;background:#ffffffed;backdrop-filter:blur(15px);box-shadow:0 5px 18px #1b4b7e12;border-bottom:1px solid #d6e6f6}nav .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:8px}nav a{white-space:nowrap;padding:10px 12px;text-decoration:none;font-weight:750;font-size:.85rem;border-radius:10px}nav a:hover{background:#eaf3ff}
+section.card{background:white;margin:24px 0;padding:clamp(20px,3vw,36px);border-radius:24px;border:1px solid #d8e7f5;box-shadow:0 13px 32px #204f8a0a;scroll-margin-top:90px}
+h2{font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.03em;margin:0 0 14px}h3{margin:0 0 9px;font-size:1.1rem}.kicker{color:#197d9a;font-weight:900;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.panel{background:#f4f9ff;border:1px solid #dce9f6;border-radius:17px;padding:18px}.panel.warn{background:#fff8ec;border-color:#f2d4a0}.panel.good{background:#eefcf8;border-color:#a9dfcf}
+table{width:100%;border-collapse:collapse}th,td{border:1px solid #dce9f6;padding:11px;text-align:left}th{background:#eaf3ff}
+ul,ol{padding-left:23px}li{margin:.45rem 0}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}.note{font-size:.9rem;color:#506880}.result{background:#edf7ff;border-left:4px solid #2782c9;padding:12px 16px;border-radius:8px;margin:14px 0;min-height:45px}
+iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:15px;background:#15283f}.video-box{max-width:790px}
+label{display:block;font-weight:650;margin:8px 0}select,input[type=text],textarea,input[type=number]{width:100%;padding:10px;border:1px solid #adc9e4;border-radius:10px;background:white}textarea{min-height:95px}input[type=range]{width:100%}
+.task{padding:16px 0;border-bottom:1px solid #e3eef8}.task:last-child{border:0}.task fieldset{border:0;margin:0;padding:0}.task legend{font-weight:780;margin-bottom:8px}.option{display:block;font-weight:450;margin:6px 0}.option input{margin-right:8px}
+.sim-layout{display:grid;grid-template-columns:minmax(270px,1fr) minmax(280px,1.3fr);gap:18px}
+.sim-slide{position:relative;aspect-ratio:16/9;background:linear-gradient(145deg,#e7f4ff,#f4efff);border:3px solid #9bc4ec;border-radius:14px;overflow:hidden;box-shadow:0 13px 26px #183f7122}
+.sim-obj{position:absolute;max-width:85%;overflow-wrap:anywhere;color:#1e4586;padding:5px 9px;border-radius:6px;white-space:pre-wrap}.sim-obj.selected{outline:2px dashed #ed8d22;background:#ffffff8a}.sim-obj.wordart{font-weight:950;color:#a347b8;text-shadow:1px 2px 0 white}.sim-obj.title{font-weight:850}.sim-obj.body{color:#305476}
+.sim-help{min-height:75px;background:#f1f7ff;padding:12px;border-radius:12px;margin-top:10px}
+.checkrow{display:flex;gap:10px;align-items:flex-start;margin:8px 0}.checkrow input{margin-top:7px}
+footer{padding:30px 0;color:#59718c;text-align:center}
+@media(max-width:760px){.hero,.sim-layout,.grid,.grid.three{grid-template-columns:1fr}.hero{padding:30px 0}.hero-art{max-width:420px}.wrap{padding:0 14px}.card{border-radius:17px}table{font-size:.88rem}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media print{nav,.actions,button{display:none!important}body{background:white}.card{box-shadow:none;break-inside:avoid}}
+</style></head>
+<body>
+<header><div class="wrap"><div class="top"><span class="brand">✦ SMART LAB · ІНФОРМАТИКА</span><span class="badge">5 клас · Урок №28 · 10.12.2026</span></div>
+<div class="hero"><div><span class="kicker">Інтерактивний урок · презентації</span><h1>Види <em>текстових об’єктів</em> та їх редагування у презентації</h1>
+<p>Навчися розрізняти заголовок, заповнювач, текстове поле й декоративний напис. Створи слайд, виправ помилки та перевір себе.</p>
+<div class="actions"><a href="#theory"><button type="button">Почати урок ↓</button></a><a href="https://www.geneza.ua/product/1093" target="_blank" rel="noopener noreferrer"><button class="secondary" type="button">📖 Підручник Й. Ривкінда · 5 клас ↗</button></a></div>
+<p class="note">Мета: розрізняти текстові об’єкти, вставляти й редагувати їх, зберігати презентацію та дотримуватися авторських прав.</p></div>
+<div class="hero-art" aria-hidden="true"><div class="mini-slide"><div><strong>МІЙ ПРОЄКТ</strong><br>Заголовок слайда<br><small>Текстове поле • WordArt • редагування</small></div></div></div></div></div></header>
+<nav aria-label="Розділи уроку"><div class="wrap">
+<a href="#goals">Мета</a><a href="#theory">Теорія</a><a href="#examples">Приклади</a><a href="#video">Відео</a><a href="#practice">Практика</a><a href="#games">Вправи</a><a href="#simulation">Симулятор</a><a href="#test">Тест</a><a href="#home">Домашнє</a><a href="#reflection">Рефлексія</a><a href="#sources">Джерела</a>
+</div></nav>
+<main class="wrap">
+<section class="card" id="goals"><span class="kicker">01 · 3 хв</span><h2>Що ти зможеш після уроку</h2><div class="grid three">
+<div class="panel"><h3>🔎 Розпізнаю</h3><p>Відрізняю заповнювач заголовка, заповнювач основного тексту, текстове поле та WordArt.</p></div>
+<div class="panel"><h3>✍️ Редагую</h3><p>Виправляю слова, додаю й видаляю речення, переміщую текстові об’єкти.</p></div>
+<div class="panel"><h3>💾 Зберігаю</h3><p>Перевіряю результат і зберігаю зміни у файлі презентації.</p></div></div>
+<p class="note">Правила безпеки: працюй із правильною поставою, роби короткі перерви, не відкривай невідомих файлів і не публікуй особисті дані.</p></section>
+<section class="card" id="theory"><span class="kicker">02 · 8 хв</span><h2>Текстові об’єкти на слайді</h2>
+<p><strong>Текстовий об’єкт</strong> — частина слайда, у якій розміщено текст. Він має вміст і власне місце на слайді. У презентаціях часто використовують такі види:</p>
+<div class="grid">
+<div class="panel"><h3>① Заповнювач заголовка</h3><p>Область, яку передбачено макетом для короткої назви слайда. Наприклад: «Мій улюблений спорт».</p></div>
+<div class="panel"><h3>② Заповнювач основного тексту</h3><p>Область макета для пояснень, переліків або основних тез.</p></div>
+<div class="panel"><h3>③ Текстове поле</h3><p>Окрема область, яку можна вставити в довільному місці, наприклад для підпису до фото.</p></div>
+<div class="panel"><h3>④ WordArt</h3><p>Декоративний текстовий об’єкт для виразного напису. Його оформлення не повинно заважати читанню.</p></div></div>
+<div class="panel good"><strong>Важлива відмінність:</strong> заповнювач є частиною макета слайда, а текстове поле можна додати самостійно. У різних програмах назви команд можуть трохи відрізнятися.</div>
+<h3 style="margin-top:20px">Редагування ≠ форматування</h3>
+<table><thead><tr><th>Редагування</th><th>Форматування</th></tr></thead><tbody>
+<tr><td>Заміна слова «Прівіт» на «Привіт»</td><td>Зміна кольору або розміру літер</td></tr>
+<tr><td>Видалення зайвого речення</td><td>Вирівнювання напису по центру</td></tr>
+<tr><td>Додавання нового рядка</td><td>Застосування стилю до тексту</td></tr></tbody></table>
+<p class="note">Сьогодні головна увага — видам текстових об’єктів і редагуванню. Детальніше про форматування — на наступному уроці.</p></section>
+<section class="card" id="examples"><span class="kicker">03 · 6 хв</span><h2>Приклади та типові помилки</h2>
+<div class="grid">
+<div class="panel"><h3>Як додати текстове поле</h3><ol><li>Відкрий потрібний слайд.</li><li>Обери <strong>Вставлення → Текстове поле</strong> (назва може відрізнятися).</li><li>Вкажи місце поля на слайді.</li><li>Уведи підпис, наприклад «Фото: шкільний сад».</li><li>Перевір напис і збережи файл.</li></ol></div>
+<div class="panel"><h3>Як виправити текст</h3><ol><li>Клацни всередині текстового об’єкта.</li><li>Установи курсор у потрібному місці.</li><li>Видали зайві символи клавішею Backspace або Delete.</li><li>Уведи правильні символи.</li><li>Перечитай напис і збережи зміни.</li></ol></div>
+<div class="panel warn"><h3>Помилка 1 · видалено об’єкт замість букви</h3><p>Якщо вибрано межу поля, клавіша Delete може видалити весь об’єкт. Щоб змінити слово, клацни <strong>всередині</strong> тексту.</p></div>
+<div class="panel warn"><h3>Помилка 2 · напис перекриває фото</h3><p>Перемісти текстове поле за його межею, залиш достатньо простору й перевір вигляд слайда.</p></div></div></section>
+<section class="card" id="video"><span class="kicker">04 · 7 хв</span><h2>Відеопояснення українською</h2>
+<p>«3.2. Редагування та форматування текстових об’єктів на слайді | 5 клас | Ривкінд», канал Task Informatics. У відео показано текстове поле, WordArt та виправлення написів.</p>
+<div class="video-box"><iframe title="Редагування текстових об’єктів на слайді, 5 клас, Ривкінд" src="https://www.youtube-nocookie.com/embed/dd5JI0-ewjU" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<p class="note">Якщо програвач не відкривається, <a href="https://www.youtube.com/watch?v=dd5JI0-ewjU" target="_blank" rel="noopener noreferrer">перейди до відео на YouTube ↗</a>.</p>
+<div class="grid"><div class="panel"><h3>Контрольне запитання 1</h3><p>Що вставляють для окремого підпису до зображення?</p>
+<label class="option"><input type="radio" name="vq1" value="0"> Таблицю переходів</label><label class="option"><input type="radio" name="vq1" value="1"> Текстове поле</label></div>
+<div class="panel"><h3>Контрольне запитання 2</h3><p>Що означає редагування тексту?</p>
+<label class="option"><input type="radio" name="vq2" value="1"> Зміна кольору фону</label><label class="option"><input type="radio" name="vq2" value="2"> Виправлення або заміна слів</label></div></div>
+<div class="actions"><button id="checkVideo" type="button">Перевірити відповіді</button></div><div id="videoResult" class="result" role="status" aria-live="polite">Переглянь відео та дай дві відповіді.</div></section>
+<section class="card" id="practice"><span class="kicker">05 · 12 хв</span><h2>Практична робота «Мій шкільний клуб»</h2>
+<p><strong>Завдання:</strong> створи три слайди про шкільний клуб читання, спорту або творчості. Використай заповнювачі, окреме текстове поле та відредагуй текст.</p>
+<div class="panel good"><strong>Результат:</strong> презентація з трьох слайдів: назва клубу, три заняття, запрошення до участі. У файлі мають бути щонайменше один заголовок, два заповнювачі основного тексту та окремий підпис.</div>
+<div id="practiceSteps">
+<label class="checkrow"><input class="practice-check" type="checkbox"><span><strong>1.</strong> Створи нову презентацію та збережи її як «Мій шкільний клуб».</span></label><label class="checkrow"><input class="practice-check" type="checkbox"><span><strong>2.</strong> На першому слайді введи коротку назву клубу в заповнювач заголовка.</span></label><label class="checkrow"><input class="practice-check" type="checkbox"><span><strong>3.</strong> У заповнювачі підзаголовка додай своє ім’я або вигаданий підпис без особистих даних.</span></label><label class="checkrow"><input class="practice-check" type="checkbox"><span><strong>4.</strong> Додай другий слайд із заголовком «Чим ми займаємося».</span></label><label class="checkrow"><input class="practice-check" type="checkbox"><span><strong>5.</strong> Уведи три короткі заняття в заповнювач основного тексту.</span></label><label class="checkrow"><input class="practice-check" type="checkbox"><span><strong>6.</strong> Встав окреме текстове поле з підписом «Зустрічаємося щосереди».</span></label><label class="checkrow"><input class="practice-check" type="checkbox"><span><strong>7.</strong> Створи третій слайд, навмисно введи слово «Запрошеня», а потім виправ його на «Запрошення».</span></label><label class="checkrow"><input class="practice-check" type="checkbox"><span><strong>8.</strong> Перевір правопис, розташування текстових об’єктів і збережи презентацію.</span></label>
+</div><div id="practiceResult" class="result" role="status" aria-live="polite"></div>
+<div class="panel"><strong>Оцінювання (12 балів):</strong> три змістовні слайди — 3; правильне використання заповнювачів — 3; окреме текстове поле — 2; виправлення помилок — 2; збереження та охайність — 2.</div></section>
+<section class="card" id="games"><span class="kicker">06 · 10 хв</span><h2>Дві інтерактивні вправи</h2>
+<div class="grid"><div class="panel"><h3>Вправа 1 · «Впізнай текстовий об’єкт»</h3><p>Для кожної ситуації вибери правильний тип текстового об’єкта.</p><div id="cases"></div>
+<div class="actions"><button id="checkCases" type="button">Перевірити 8 ситуацій</button></div><div class="result" id="casesResult" role="status" aria-live="polite">Відповідай на всі ситуації.</div></div>
+<div class="panel"><h3>Вправа 2 · «Маршрут напису»</h3><p>Признач номери 1–6 крокам роботи з текстовим полем. Кожен номер використовуй один раз.</p><div id="route"></div>
+<div class="actions"><button id="checkRoute" type="button">Перевірити порядок</button></div><div class="result" id="routeResult" role="status" aria-live="polite">Установи послідовність.</div></div></div></section>
+<section class="card" id="simulation"><span class="kicker">07 · 10 хв</span><h2>Симулятор «Студія текстових об’єктів»</h2>
+<p>Це навчальна модель слайда. Додавай текстові об’єкти, змінюй їхній вміст, тип, положення й розмір. Справжній файл презентації створюй у PowerPoint або Google Презентаціях.</p>
+<div class="sim-layout"><div class="panel">
+<label for="simSelect">Обраний об’єкт</label><select id="simSelect"></select>
+<label for="simType">Тип текстового об’єкта</label><select id="simType"><option value="title">Заповнювач заголовка</option><option value="body">Заповнювач основного тексту</option><option value="textbox">Текстове поле</option><option value="wordart">WordArt</option></select>
+<label for="simText">Текст об’єкта</label><input id="simText" type="text" maxlength="120" value="Моя презентація">
+<label for="simPos">Положення</label><select id="simPos"><option value="top">Угорі</option><option value="middle">Посередині</option><option value="bottom">Унизу</option></select>
+<label for="simSize">Розмір напису</label><input id="simSize" type="range" min="13" max="34" value="28">
+<label for="simWidth">Ширина текстового об’єкта</label><input id="simWidth" type="range" min="35" max="90" value="80">
+<div class="actions"><button id="simAdd" type="button">+ Додати об’єкт</button><button id="simApply" type="button" class="secondary">Застосувати</button><button id="simRemove" type="button" class="danger">Видалити</button></div></div>
+<div class="panel"><h3>Попередній перегляд слайда</h3><div class="sim-slide" id="simSlide" role="group" aria-label="Інтерактивний слайд із текстовими об’єктами"></div>
+<p id="simCount" class="note"></p><div id="simHelp" class="sim-help" role="status" aria-live="polite"></div>
+<div class="actions"><button id="simStep" type="button">Наступний крок</button><button id="simAuto" type="button" class="secondary">▶ Автопоказ</button><button id="simPause" type="button" class="secondary">Ⅱ Пауза</button><button id="simReset" type="button" class="danger">↺ Скинути</button></div>
+<p id="simAction" class="note" role="status" aria-live="polite"></p></div></div></section>
+<section class="card" id="test"><span class="kicker">08 · 12 хв</span><h2>Підсумкове тестування · 20 запитань</h2>
+<p>12 запитань з однією відповіддю, 4 з кількома, 2 на встановлення послідовності, 2 з короткою відповіддю. Після перевірки з’явиться пояснення до кожного запитання.</p>
+<form id="finalQuestions" onsubmit="return false"></form><div class="actions"><button id="checkFinal" type="button">Перевірити 20 відповідей</button><button id="resetFinal" type="button" class="secondary">Очистити</button></div>
+<div id="finalResult" class="result" role="status" aria-live="polite">Відповідай самостійно, а потім перевір.</div></section>
+<section class="card" id="home"><span class="kicker">09 · Самостійно</span><h2>Домашнє завдання</h2>
+<div class="grid three"><div class="panel"><h3>Базовий рівень</h3><p>Створи два слайди «Мій день». Додай заголовки й короткі підписи.</p></div>
+<div class="panel"><h3>Достатній рівень</h3><p>Додай окреме текстове поле та виправ навмисно введені дві помилки.</p></div>
+<div class="panel"><h3>Високий рівень</h3><p>Створи три слайди «Мій ідеальний клас» із заголовками, поясненнями та декоративним написом. Поясни вибір об’єктів.</p></div></div>
+<h3 style="margin-top:22px">Домашній мінітест · 9 запитань</h3><form id="homeQuestions" onsubmit="return false"></form>
+<div class="actions"><button id="checkHome" type="button">Перевірити домашній тест</button><button id="resetHome" type="button" class="secondary">Очистити</button></div><div id="homeResult" class="result" role="status" aria-live="polite">Дев’ять незалежних запитань для закріплення.</div></section>
+<section class="card" id="reflection"><span class="kicker">10 · 3 хв</span><h2>Рефлексія</h2>
+<label for="ref1">Сьогодні я навчився / навчилася…</label><textarea id="ref1"></textarea>
+<label for="ref2">Найкраще в мене вийшло…</label><textarea id="ref2"></textarea>
+<label for="ref3">Наступного разу я хочу потренувати…</label><textarea id="ref3"></textarea>
+<div class="actions"><button id="saveRef" type="button">Зберегти в браузері</button><button id="exportRef" type="button" class="secondary">Завантажити TXT</button></div>
+<div id="refResult" class="result" role="status" aria-live="polite">Записи зберігаються локально на цьому пристрої, якщо браузер дозволяє.</div></section>
+<section class="card" id="integrity"><span class="kicker">11 · Відповідальність</span><h2>Академічна доброчесність і безпека</h2>
+<ul><li>Створюй власні написи й не видавай чужі роботи за свої.</li><li>Якщо використовуєш чужі зображення або цитати, перевір дозвіл та вкажи джерело.</li><li>Не розміщуй у презентаціях адреси, паролі та інші приватні відомості.</li><li>Пояснюй, що саме зробив / зробила самостійно, а що — з допомогою.</li></ul></section>
+<section class="card" id="sources"><span class="kicker">12 · Джерела</span><h2>Перевірені матеріали</h2>
+<p><strong>Підручник:</strong> <a href="https://www.geneza.ua/product/1093" target="_blank" rel="noopener noreferrer">Й. Ривкінд, Т. Лисенко, Л. Чернікова, В. Шакотько. «Інформатика. 5 клас». Офіційна сторінка видавництва «Генеза» ↗</a>. Конкретний параграф потребує перевірки; номер не вказано.</p>
+<p><strong>Відео:</strong> <a href="https://www.youtube.com/watch?v=dd5JI0-ewjU" target="_blank" rel="noopener noreferrer">Task Informatics · «3.2. Редагування та форматування текстових об’єктів на слайді» ↗</a>. Назву й тематичну відповідність підтверджено; фактичне відтворення iframe на пристрої може залежати від налаштувань YouTube.</p>
+<p class="note">Урок №28, 5 клас, за КТП на 10.12.2026. Інтерактиви працюють у браузері без додаткових бібліотек.</p></section>
+</main><footer class="wrap">SMART LAB · Інформатика · 5 клас · Урок 28 · Навчайся, перевіряй, створюй.</footer>
+<script>
+"use strict";
+const finalQuestions=[{"t":"single","q":"Який об’єкт найчастіше призначений для назви слайда?","o":["Текстовий заповнювач заголовка","Лінія","Переходи","Звукова доріжка"],"a":0,"e":"Назву слайда вводять у заповнювач заголовка."},{"t":"single","q":"Що означає «редагувати текст»?","o":["Змінити колір фону","Виправити або змінити зміст напису","Запустити показ","Змінити розмір слайда"],"a":1,"e":"Редагування змінює символи, слова та зміст."},{"t":"single","q":"Який об’єкт дає змогу розмістити напис у довільному місці слайда?","o":["Панель нотаток","Таблиця сортування","Текстове поле","Режим показу"],"a":2,"e":"Текстове поле можна вставити й перемістити."},{"t":"single","q":"Що таке заповнювач на слайді?","o":["Файл із відео","Малюнок на тлі","Спосіб друку","Область макета для вмісту"],"a":3,"e":"Заповнювач є передбаченою макетом областю."},{"t":"single","q":"Як почати змінювати вже введене слово?","o":["Клацнути всередині тексту та встановити курсор","Видалити весь слайд","Перезапустити комп’ютер","Увімкнути анімацію"],"a":0,"e":"Для зміни символів потрібен текстовий курсор."},{"t":"single","q":"Яку клавішу зазвичай використовують для видалення символа ліворуч від курсора?","o":["Enter","Backspace","Shift","Tab"],"a":1,"e":"Backspace видаляє символ перед курсором."},{"t":"single","q":"Що потрібно виділити, щоб перемістити весь текстовий об’єкт?","o":["Лише одну літеру","Файл презентації","Межу текстового об’єкта","Значок браузера"],"a":2,"e":"Переміщують об’єкт, узявшись за його межу."},{"t":"single","q":"Яка дія найкраще допоможе уникнути втрати виправлень?","o":["Відкрити іншу вкладку","Приховати заголовок","Видалити примітки","Зберегти презентацію"],"a":3,"e":"Після редагування слід зберігати зміни."},{"t":"single","q":"Що робить команда «Копіювати» для виділеного тексту?","o":["Зберігає копію в буфері обміну","Видаляє слайд","Змінює макет","Закриває програму"],"a":0,"e":"Копіювання не вилучає вихідний фрагмент."},{"t":"single","q":"Чим відрізняється текстове поле від заповнювача заголовка?","o":["Текстове поле містить тільки цифри","Текстове поле можна додати незалежно від макета","Текстове поле не можна редагувати","Заголовок не містить тексту"],"a":1,"e":"Текстове поле додається вручну, а заповнювач задається макетом."},{"t":"single","q":"Який напис найдоречніший для заголовка слайда про економію води?","o":["Це дуже довге речення з багатьма подробицями","Вода вода вода","Бережімо воду","Пункт перший другого розділу презентації"],"a":2,"e":"Заголовок має бути коротким і передавати тему."},{"t":"single","q":"Що доцільно зробити після переміщення текстового поля?","o":["Вимкнути монітор","Змінити назву файла без потреби","Видалити текст","Перевірити, чи напис не перекриває інші об’єкти"],"a":3,"e":"Перевірка розташування забезпечує читабельність."},{"t":"multi","q":"Які дії належать до редагування тексту? (Обери всі)","o":["Виправити орфографічну помилку","Замінити слово","Видалити зайве речення","Увімкнути показ слайдів"],"a":[0,1,2],"e":"Редагування стосується змісту, а не режиму показу."},{"t":"multi","q":"Які об’єкти можуть містити текст на слайді? (Обери всі)","o":["Текстове поле","Заповнювач заголовка","Декоративний напис WordArt","Курсор миші"],"a":[0,1,2],"e":"Курсор миші не є текстовим об’єктом презентації."},{"t":"multi","q":"Які кроки потрібні для додавання власного напису? (Обери всі)","o":["Вибрати вставлення текстового поля","Накреслити область поля","Увести текст","Обов’язково видалити заголовок"],"a":[0,1,2],"e":"Заголовок видаляти не потрібно."},{"t":"multi","q":"Що перевірити перед збереженням слайда? (Обери всі)","o":["Чи немає друкарських помилок","Чи текст читається","Чи об’єкти не накладаються","Чи вимкнено всі кнопки програми"],"a":[0,1,2],"e":"Потрібна змістова й візуальна перевірка."},{"t":"order","q":"Установи порядок створення текстового поля.","items":["Увести напис","Вибрати команду вставлення текстового поля","Зберегти презентацію","Накреслити поле на слайді"],"a":[3,1,4,2],"e":"Вставлення → накреслити → увести → зберегти."},{"t":"order","q":"Установи порядок виправлення помилки в заголовку.","items":["Зберегти зміни","Клацнути всередині заголовка","Знайти помилкове слово","Замінити неправильні символи"],"a":[4,1,2,3],"e":"Спершу курсор, потім пошук і виправлення, наприкінці збереження."},{"t":"short","q":"Як називається об’єкт, який вставляють для довільного напису на слайді? (Два слова)","a":["текстове поле"],"e":"Правильна назва — текстове поле."},{"t":"short","q":"Якою клавішею видаляють символ ліворуч від курсора? (Англійська назва)","a":["backspace"],"e":"Це клавіша Backspace."}];
+const homeQuestions=[{"t":"single","q":"У якому об’єкті зазвичай пишуть назву слайда?","o":["Заголовок","Діаграма","Таблиця","Нотатки"],"a":0,"e":"Назву пишуть у заголовку."},{"t":"single","q":"Що означає вставити текстове поле?","o":["Закрити презентацію","Додати область для напису","Вимкнути слайд","Видалити макет"],"a":1,"e":"Текстове поле — окрема область для напису."},{"t":"single","q":"Яка дія змінює зміст тексту?","o":["Перехід","Демонстрація","Заміна слова","Зміна масштабу"],"a":2,"e":"Заміна слова — редагування."},{"t":"single","q":"Що робити з непотрібним реченням?","o":["Додати звук","Дублювати його","Приховати екран","Виділити й видалити"],"a":3,"e":"Зайвий текст можна видалити."},{"t":"single","q":"Що зручніше використати для короткого декоративного напису?","o":["WordArt","Сортування","Архіватор","Гіперпосилання"],"a":0,"e":"WordArt — декоративний текстовий об’єкт."},{"t":"single","q":"Яка дія допомагає не втратити роботу?","o":["Натиснути Esc","Зберегти файл","Змінити курсор","Закрити браузер"],"a":1,"e":"Збереження фіксує зміни."},{"t":"single","q":"Що слід перевірити після редагування?","o":["Гучність музики","Час запуску системи","Правильність напису","Розмір миші"],"a":2,"e":"Потрібно перевірити текст."},{"t":"multi","q":"Що можна зробити з текстовим полем?","o":["Перемістити","Змінити його текст","Видалити","Змінити операційну систему"],"a":[0,1,2],"e":"Текстове поле — об’єкт слайда."},{"t":"multi","q":"Що робить слайд зрозумілим?","o":["Короткий заголовок","Чіткий текст","Логічне розміщення написів","Якомога більше зайвих речень"],"a":[0,1,2],"e":"Лаконічність і логічність полегшують читання."}];
+const cases=[["Потрібно додати назву «Мій улюблений спорт» у передбачене макетом місце.",0],["На слайді є заповнювач «Натисніть, щоб додати текст» для основних думок.",1],["Потрібно розмістити короткий підпис під фотографією в довільному місці.",2],["Для святкового слайда хочуть декоративний напис «Вітаємо!»",3],["На титульному слайді треба ввести назву проєкту в готову область.",0],["Слід заповнити список із трьох правил у готовому заповнювачі.",1],["Потрібно вставити невелику примітку праворуч від схеми.",2],["Потрібно створити виразний декоративний напис на афіші.",3]];
+const route=[["Перевірити правильність напису",5],["Вибрати слайд",1],["Вставити текстове поле",2],["Зберегти презентацію",6],["Увести текст",3],["Відредагувати та розмістити напис",4]];
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function notice(id,msg){$(id).textContent=msg}
+function renderTest(items,target,prefix){
+  const root=$(target);root.replaceChildren();
+  items.forEach((q,i)=>{
+    const box=document.createElement("div");box.className="task";
+    const field=document.createElement("fieldset");const legend=document.createElement("legend");legend.textContent=(i+1)+". "+q.q;field.append(legend);
+    if(q.t==="single"||q.t==="multi"){
+      q.o.forEach((opt,j)=>{const label=document.createElement("label");label.className="option";const inp=document.createElement("input");inp.type=q.t==="single"?"radio":"checkbox";inp.name=prefix+"_"+i;inp.value=String(j);inp.setAttribute("aria-label",opt);label.append(inp,document.createTextNode(opt));field.append(label)});
+    }else if(q.t==="order"){
+      q.items.forEach((item,j)=>{const label=document.createElement("label");label.textContent=item+" — номер кроку:";const sel=document.createElement("select");sel.name=prefix+"_"+i+"_"+j;sel.innerHTML="<option value=''>Оберіть</option>"+q.items.map((_,k)=>"<option value='"+(k+1)+"'>"+(k+1)+"</option>").join("");label.append(sel);field.append(label)});
+    }else{const input=document.createElement("input");input.type="text";input.name=prefix+"_"+i;input.placeholder="Введіть коротку відповідь";input.autocomplete="off";field.append(input)}
+    const feedback=document.createElement("p");feedback.className="note";feedback.id=prefix+"_feedback_"+i;feedback.setAttribute("aria-live","polite");box.append(field,feedback);root.append(box);
+  });
+}
+function normalize(v){return String(v).toLocaleLowerCase("uk-UA").trim().replace(/\s+/g," ").replace(/[.!?]+$/,"")}
+function scoreTest(items,prefix,out){
+  let score=0,filled=0;
+  items.forEach((q,i)=>{
+    let ok=false,answered=false;
+    if(q.t==="single"||q.t==="multi"){
+      const chosen=[...document.querySelectorAll('input[name="'+prefix+"_"+i+'"]:checked')].map(x=>Number(x.value)).sort((a,b)=>a-b);
+      answered=chosen.length>0;
+      const expected=(Array.isArray(q.a)?q.a:[q.a]).slice().sort((a,b)=>a-b);
+      ok=JSON.stringify(chosen)===JSON.stringify(expected);
+    }else if(q.t==="order"){
+      const chosen=q.items.map((_,j)=>document.querySelector('select[name="'+prefix+"_"+i+"_"+j+'"]').value);
+      answered=chosen.every(Boolean);
+      ok=answered&&new Set(chosen).size===chosen.length&&chosen.every((v,j)=>Number(v)===q.a[j]);
+    }else{
+      const input=document.querySelector('input[name="'+prefix+"_"+i+'"]');
+      answered=Boolean(input.value.trim());ok=q.a.some(a=>normalize(a)===normalize(input.value));
+    }
+    if(answered)filled++;if(ok)score++;
+    $(prefix+"_feedback_"+i).textContent=(ok?"✓ Правильно. ":answered?"✗ Перевір ще раз. ":"Не заповнено. ")+q.e;
+  });
+  notice(out,"Результат: "+score+" із "+items.length+". Заповнено: "+filled+" із "+items.length+". Переглянь пояснення під кожним запитанням.");
+  return score;
+}
+function clearTest(items,target,prefix,out){
+  $(target).querySelectorAll("input").forEach(x=>{if(x.type==="radio"||x.type==="checkbox")x.checked=false;else x.value=""});
+  $(target).querySelectorAll("select").forEach(x=>x.value="");
+  items.forEach((_,i)=>notice(prefix+"_feedback_"+i,""));notice(out,"Відповіді очищено.");
+}
+function renderCases(){
+  const root=$("cases");root.replaceChildren();
+  cases.forEach(([s],i)=>{
+    const box=document.createElement("label");box.className="task";box.textContent=(i+1)+". "+s;
+    const sel=document.createElement("select");sel.id="case_"+i;
+    ["Оберіть об’єкт","Заповнювач заголовка","Заповнювач основного тексту","Текстове поле","WordArt"].forEach((s,j)=>{const opt=document.createElement("option");opt.value=String(j-1);opt.textContent=s;sel.append(opt)});
+    box.append(sel);root.append(box);
+  });
+}
+function checkCases(){
+  let n=0;cases.forEach((x,i)=>{if(Number($("case_"+i).value)===x[1])n++});
+  notice("casesResult","Правильно: "+n+"/8. Підказка: заголовок і основний текст часто передбачені макетом; окремий підпис — текстове поле; декоративний напис — WordArt.");
+}
+function renderRoute(){
+  const root=$("route");root.replaceChildren();
+  route.forEach(([s],i)=>{const label=document.createElement("label");label.className="task";label.textContent=s+" — порядок:";
+    const sel=document.createElement("select");sel.id="route_"+i;sel.innerHTML="<option value=''>Оберіть номер</option>"+[1,2,3,4,5,6].map(x=>"<option value='"+x+"'>"+x+"</option>").join("");
+    label.append(sel);root.append(label);
+  });
+}
+function checkRoute(){
+  const vals=route.map((_,i)=>$("route_"+i).value);
+  const ok=vals.every(Boolean)&&new Set(vals).size===6&&vals.every((x,i)=>Number(x)===route[i][1]);
+  notice("routeResult",ok?"✓ Правильна послідовність!":"Перевір: вибрати слайд → вставити поле → увести → відредагувати/розмістити → перевірити → зберегти. Усі номери мають бути різні.");
+}
+function videoCheck(){
+  const a=document.querySelector('input[name="vq1"]:checked');
+  const b=document.querySelector('input[name="vq2"]:checked');
+  if(!a||!b){notice("videoResult","Спочатку дай відповіді на обидва запитання.");return}
+  const n=Number(a.value==="1")+Number(b.value==="2");
+  notice("videoResult",n+"/2. Текстове поле вставляють для окремого напису; редагування означає зміну змісту тексту.");
+}
+const simPhases=[
+"1/6. Обери слайд і визнач, які написи потрібні: заголовок, пояснення або підпис.",
+"2/6. У списку «Тип об’єкта» обери заповнювач або окреме текстове поле.",
+"3/6. Уведи зміст напису та натисни «Додати об’єкт».",
+"4/6. Обери доданий об’єкт зі списку, зміни текст і натисни «Застосувати».",
+"5/6. Зміни положення або розмір обраного об’єкта й перевір, чи немає перекриття.",
+"6/6. Перевір правопис і читабельність, а потім збережи реальну презентацію у своїй програмі."
+];
+let simObjects=[],simIndex=0,simPhase=0,simTimer=null;
+const typeLabels={title:"Заголовок",body:"Основний текст",textbox:"Текстове поле",wordart:"WordArt"};
+function pauseSim(){if(simTimer!==null){clearInterval(simTimer);simTimer=null} $("simAuto").disabled=false}
+function simRender(){
+  const select=$("simSelect");select.replaceChildren();
+  simObjects.forEach((o,i)=>{const opt=document.createElement("option");opt.value=String(i);opt.textContent=(i+1)+". "+typeLabels[o.kind]+": "+o.text.slice(0,22);select.append(opt)});
+  if(simIndex>=simObjects.length)simIndex=Math.max(0,simObjects.length-1);
+  select.value=String(simIndex);
+  const slide=$("simSlide");slide.replaceChildren();
+  simObjects.forEach((o,i)=>{
+    const d=document.createElement("div");d.className="sim-obj "+o.kind+(i===simIndex?" selected":"");
+    d.textContent=o.text;d.style.fontSize=o.size+"px";d.style.width=o.width+"%";d.style.left=(100-o.width)/2+"%";
+    d.style.top=o.pos==="top"?"10%":o.pos==="middle"?"40%":"72%";
+    d.setAttribute("role","button");d.tabIndex=0;d.setAttribute("aria-label","Обрати текстовий об’єкт "+(i+1));
+    d.addEventListener("click",()=>simPick(i));d.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();simPick(i)}});
+    slide.append(d);
+  });
+  $("simCount").textContent="Об’єктів на слайді: "+simObjects.length;
+  notice("simHelp",simPhases[simPhase]);
+}
+function simPick(i){
+  if(!simObjects[i])return;simIndex=i;const o=simObjects[i];
+  $("simType").value=o.kind;$("simText").value=o.text;$("simPos").value=o.pos;$("simSize").value=String(o.size);$("simWidth").value=String(o.width);
+  simRender();
+}
+function simRead(){return{kind:$("simType").value,text:$("simText").value.trim().slice(0,120)||"Новий напис",pos:$("simPos").value,size:Number($("simSize").value),width:Number($("simWidth").value)}}
+function simAdd(){simObjects.push(simRead());simPick(simObjects.length-1);notice("simAction","Об’єкт додано. Можна змінити його властивості.")}
+function simApply(){if(!simObjects.length)return;simObjects[simIndex]=simRead();simRender();notice("simAction","Зміни застосовано до вибраного об’єкта.")}
+function simRemove(){if(!simObjects.length)return;simObjects.splice(simIndex,1);simIndex=0;simRender();if(simObjects.length)simPick(0);notice("simAction","Об’єкт видалено.")}
+function simStep(){simPhase=Math.min(5,simPhase+1);simRender();if(simPhase===5)pauseSim()}
+function simReset(){pauseSim();simPhase=0;simObjects=[{kind:"title",text:"Моя презентація",pos:"top",size:28,width:80},{kind:"body",text:"Три корисні ідеї",pos:"middle",size:20,width:75}];simIndex=0;simPick(0);notice("simAction","Початковий стан відновлено.")}
+function simAuto(){pauseSim();$("simAuto").disabled=true;simTimer=setInterval(simStep,2200)}
+function practiceProgress(){const done=document.querySelectorAll('.practice-check:checked').length;notice("practiceResult","Виконано "+done+" з 8 кроків.")}
+function saveReflection(){
+  const vals=[1,2,3].map(i=>$("ref"+i).value.trim());
+  try{localStorage.setItem("smartlab-5-28-reflection",JSON.stringify(vals));notice("refResult","Рефлексію збережено лише в цьому браузері.")}catch(e){notice("refResult","Локальне збереження недоступне. Скористайся експортом TXT.")}
+}
+function exportReflection(){
+  const text=["Рефлексія. Інформатика, 5 клас, урок 28","1. "+$("ref1").value,"2. "+$("ref2").value,"3. "+$("ref3").value].join("\n");
+  const blob=new Blob([text],{type:"text/plain;charset=utf-8"});const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");a.href=url;a.download="refleksiia_5_urok_28.txt";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+function init(){
+  renderCases();renderRoute();renderTest(finalQuestions,"finalQuestions","f");renderTest(homeQuestions,"homeQuestions","h");
+  $("checkCases").addEventListener("click",checkCases);$("checkRoute").addEventListener("click",checkRoute);$("checkVideo").addEventListener("click",videoCheck);
+  $("checkFinal").addEventListener("click",()=>scoreTest(finalQuestions,"f","finalResult"));
+  $("resetFinal").addEventListener("click",()=>clearTest(finalQuestions,"finalQuestions","f","finalResult"));
+  $("checkHome").addEventListener("click",()=>scoreTest(homeQuestions,"h","homeResult"));
+  $("resetHome").addEventListener("click",()=>clearTest(homeQuestions,"homeQuestions","h","homeResult"));
+  $("simAdd").addEventListener("click",simAdd);$("simApply").addEventListener("click",simApply);$("simRemove").addEventListener("click",simRemove);
+  $("simStep").addEventListener("click",simStep);$("simAuto").addEventListener("click",simAuto);$("simPause").addEventListener("click",pauseSim);$("simReset").addEventListener("click",simReset);
+  $("simSelect").addEventListener("change",e=>simPick(Number(e.target.value)));
+  document.querySelectorAll(".practice-check").forEach(c=>c.addEventListener("change",practiceProgress));
+  $("saveRef").addEventListener("click",saveReflection);$("exportRef").addEventListener("click",exportReflection);
+  try{const old=JSON.parse(localStorage.getItem("smartlab-5-28-reflection")||"null");if(Array.isArray(old))old.slice(0,3).forEach((v,i)=>$("ref"+(i+1)).value=String(v))}catch(e){}
+  simReset();practiceProgress();
+}
+document.addEventListener("DOMContentLoaded",init);
+</script></body></html>
