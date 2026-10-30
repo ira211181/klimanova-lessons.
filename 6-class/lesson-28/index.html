@@ -62,7 +62,7 @@ else{d.append(root);sim.items.forEach((x,i)=>{let arrow=document.createElement("
 $("simStage").textContent=sim.stage;$("simBar").style.width=(sim.stage/6*100)+"%";show("simExplanation",explain[sim.stage]+(sim.type==="hier"?" Ієрархія підкреслює рівні.":sim.type==="process"?" Процес підкреслює порядок.":" Цикл підкреслює повторення."));}
 function stepSim(){if(sim.stage<6){sim.stage++;renderSim();}else stopSim();}
 function initEvents(){
-$("checkVideo").addEventListener("click",()=>{let a=$("v1").value,b=$("v2").value;show("videoResult",!a||!b?"Відповідай на обидва запитання.":"Правильних відповідей: "+Number(a==="a")+Number(b==="b")+" із 2. "+(a==="a"&&b==="b"?"Чудово!":"Пригадай вкладку «Вставлення» й призначення ієрархії."));});
+$("checkVideo").addEventListener("click",()=>{let a=$("v1").value,b=$("v2").value;show("videoResult",!a||!b?"Відповідай на обидва запитання.":"Правильних відповідей: "+(Number(a==="a")+Number(b==="b"))+" із 2. "+(a==="a"&&b==="b"?"Чудово!":"Пригадай вкладку «Вставлення» й призначення ієрархії."));});
 $("checkSituations").addEventListener("click",checkSituations);$("resetSituations").addEventListener("click",()=>{initSituations();show("situationsResult","");});
 $("checkSequence").addEventListener("click",checkSequence);$("resetSequence").addEventListener("click",()=>{initSequence();show("sequenceResult","");});
 $("finalForm").addEventListener("submit",e=>{e.preventDefault();evaluate(QUIZ,"f");});$("homeForm").addEventListener("submit",e=>{e.preventDefault();evaluate(HOME,"h");});
