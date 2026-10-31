@@ -24,7 +24,7 @@ const EX1=[["Фотографія стала неприродно широкою
 const SEQ=["Створити слайд із заголовком","Додати три графічні об’єкти","Відредагувати розмір і положення","Змінити заливку та контур","Вирівняти й упорядкувати шари","Перевірити результат і зберегти"];
 const $=id=>document.getElementById(id);
 function el(tag,cls,txt){const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n;}
-function optionGroup(box,name,opts,type){const wrap=el('div','options');opts.forEach((o,i)=>{const label=el('label','choice'),input=el('input');input.type=type;input.name=name;input.value=i;label.append(input,document.createTextNode(o));wrap.append(label);});box.append(wrap);}
+function optionGroup(box,name,opts,type){const wrap=el('div','options');const shift=[...name].reduce((sum,c)=>sum+c.charCodeAt(0),0)%opts.length;const shuffled=opts.map((o,i)=>({o,i})).sort((a,b)=>((a.i+shift)%opts.length)-((b.i+shift)%opts.length));shuffled.forEach(({o,i})=>{const label=el('label','choice'),input=el('input');input.type=type;input.name=name;input.value=i;label.append(input,document.createTextNode(o));wrap.append(label);});box.append(wrap);}
 function selected(name){return [...document.querySelectorAll('input[name="'+name+'"]:checked')].map(n=>Number(n.value));}
 function feedback(id,msg,good){const n=$(id);n.textContent=msg;n.className=(n.classList.contains('stat')?'stat ':'feedback ')+(good?'good':'bad');}
 const vc=[{q:'Що змінюють кутові маркери?',a:['Розмір об’єкта','Гучність','Мову презентації'],right:0},{q:'Що належить до форматування?',a:['Колір заливки','Перейменування папки','Вимкнення монітора'],right:0}];
