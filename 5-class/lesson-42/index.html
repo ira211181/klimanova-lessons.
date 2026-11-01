@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Інформатика 5 клас. Урок 42. Автоматичний пошук і замінювання фрагментів тексту: теорія, українське відео, інтерактивні вправи, симулятор, 20 тестів.">
+<title>5 клас • Урок 42 • Пошук і замінювання тексту • SMART LAB</title>
+<style>
+:root{--ink:#18334d;--muted:#536f85;--blue:#245cd1;--teal:#087f8e;--line:#d6e5f4;--bg:#f3f8ff;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}body{margin:0;line-height:1.6;background:radial-gradient(circle at 90% 5%,#e5e8ff,transparent 30%),radial-gradient(circle at 10% 28%,#e0faf4,transparent 30%),var(--bg)}
+a{color:#174fa6;text-underline-offset:3px}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #ad6400;outline-offset:3px}
+.wrap{max-width:1160px;margin:auto;padding:0 19px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:17px 0}.brand{font-weight:900;letter-spacing:.04em;color:#164c8b}.pill{display:inline-block;background:#e3f0ff;color:#164f99;border-radius:30px;padding:6px 13px;font-size:.86rem;font-weight:800}
+header{background:linear-gradient(125deg,#f8fdff,#e9f1ff 55%,#eee9ff);border-bottom:1px solid #c9dced}.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;padding:30px 0 45px}.hero h1{font-size:clamp(2.25rem,5vw,4.2rem);letter-spacing:-.045em;line-height:1.12;margin:14px 0}.hero h1 span{color:var(--blue)}.lead{font-size:1.12rem;color:#4b6680}.hero svg{max-width:100%;height:auto;filter:drop-shadow(0 20px 26px #3772ac30)}
+nav{position:sticky;top:0;background:#ffffffed;backdrop-filter:blur(15px);z-index:20;border-bottom:1px solid var(--line)}nav .links{display:flex;gap:3px;overflow-x:auto;padding:9px 0}nav a{font-size:.83rem;font-weight:800;white-space:nowrap;padding:9px 11px;border-radius:9px;text-decoration:none}nav a:hover{background:#e5f1ff}
+.section{background:#fff;border:1px solid var(--line);border-radius:23px;box-shadow:0 13px 30px #2766aa0c;padding:clamp(18px,3.6vw,35px);margin:23px 0;scroll-margin-top:84px}h2{font-size:clamp(1.5rem,3vw,2.13rem);line-height:1.25;margin:0 0 15px}h3{margin:8px 0}.muted{color:var(--muted)}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{border:1px solid #d6e6f4;background:#f6fbff;border-radius:15px;padding:16px}.good{background:#ebfaf3;border-color:#b7e5cc}.warn{background:#fff8e9;border-color:#e6d1a5}
+.btn{border:0;border-radius:11px;padding:10px 15px;font-weight:800;background:linear-gradient(115deg,#285cda,#088fa2);color:white}.btn.alt{background:#e4f0ff;color:#174e9d}.btn.outline{background:white;border:1px solid #abc9e6;color:#164e98}.btn:disabled{opacity:.48;cursor:not-allowed}.row{display:flex;align-items:center;flex-wrap:wrap;gap:9px}.field{display:grid;gap:5px;font-weight:750;margin:10px 0}.field input,.field textarea,.field select{width:100%;padding:10px;border:1px solid #b4cde2;border-radius:10px;background:white;color:var(--ink)}textarea{min-height:105px;resize:vertical}.feedback{border-radius:12px;background:#e8f3ff;color:#164c8b;padding:12px 14px;margin:13px 0;font-weight:750}.feedback:empty{display:none}
+.video{position:relative;aspect-ratio:16/9;background:#112d4c;border-radius:15px;overflow:hidden}.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.exercise,.qcard{border:1px solid #d8e6f3;border-radius:15px;background:#f8fbff;padding:17px;margin:12px 0}.choice{display:block;padding:7px 4px}.choice input{margin-right:9px}.qcard legend{font-weight:850;padding:5px}.qcard.correct{border-color:#65ba93;background:#f3fff8}.qcard.incorrect{border-color:#e6b58e;background:#fff9f3}
+.editor{background:#f9fcff;border:1px solid #b7d3e8;border-radius:16px;padding:18px}.editor textarea{min-height:175px;line-height:1.75}.simgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.preview{white-space:pre-wrap;overflow-wrap:anywhere;min-height:110px;padding:15px;border:1px solid #c7deef;border-radius:13px;background:white}.preview mark{background:#ffe29a;color:#533600;border-radius:3px;padding:1px 2px}.stat{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}.stat span{background:#e9f4ff;padding:5px 10px;border-radius:9px;font-size:.86rem;font-weight:750}.sequence-item{display:flex;align-items:center;gap:8px;background:#f3f9ff;border:1px solid #cfe0f1;border-radius:11px;padding:10px;margin:8px 0}.sequence-item span{flex:1}.sequence-item button{border:1px solid #adc9e5;background:#fff;color:#17508e;border-radius:8px;padding:6px 11px;font-weight:800}
+.qcard select{width:100%;padding:8px;border:1px solid #b7d0e5;border-radius:9px}.matchrow{display:grid;grid-template-columns:1fr 1.3fr;gap:10px;align-items:center;margin:8px 0}.orderrow{display:grid;grid-template-columns:25px 1fr;gap:9px;align-items:center;margin:7px 0}.quizactions{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0}.result{padding:14px;border-radius:12px;background:#e6f8ef;color:#165c46;font-weight:800}.result:empty{display:none}.tiny{font-size:.88rem}.source{background:#e9f6ff;border-left:4px solid #2463c7;padding:14px;border-radius:8px}
+footer{text-align:center;padding:35px 15px;color:#56728a;font-size:.85rem}
+@media(max-width:850px){.hero{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr 1fr}.simgrid{grid-template-columns:1fr}}
+@media(max-width:600px){.hero,.grid2,.grid3{grid-template-columns:1fr}.hero svg{max-width:350px}.section{padding:18px}.matchrow{grid-template-columns:1fr}.top{align-items:flex-start}.hero h1{font-size:2.3rem}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media print{nav,.quizactions,.btn,.hero svg{display:none!important}.section{box-shadow:none;break-inside:avoid}body{background:white}}
+</style>
+</head>
+<body>
+<header id="top"><div class="wrap top"><div class="brand">✦ SMART LAB / ІНФОРМАТИКА</div><span class="pill">2026/2027 · 5 клас · урок №42</span></div>
+<div class="wrap hero"><div><span class="pill">Модуль: текстові документи</span><h1>Знайди. <span>Замінюй.</span><br>Перевіряй!</h1>
+<p class="lead">Як швидко виправити повторювану помилку в цілому документі — і не зіпсувати текст? Навчимося керувати пошуком, одиничною та масовою заміною.</p>
+<div class="row"><span class="pill">🔎 Живий пошук</span><span class="pill">🧩 2 вправи</span><span class="pill">📝 20 тестів</span></div>
+<p class="tiny muted">Дата за КТП: 11.02.2027. Тема: «Автоматичний пошук і замінювання фрагментів тексту».</p>
+<p><a class="btn" href="https://www.geneza.ua/product/1093" target="_blank" rel="noopener noreferrer">📘 Підручник Й. Ривкінда · 5 клас</a></p></div>
+<svg viewBox="0 0 460 360" role="img" aria-label="Схематичний документ: пошук слова і його заміна"><rect x="22" y="22" width="405" height="309" rx="28" fill="#fff" stroke="#b9d8ed" stroke-width="3"/><rect x="22" y="22" width="405" height="47" rx="25" fill="#e9f5ff"/><circle cx="55" cy="45" r="6" fill="#7bd0d2"/><circle cx="75" cy="45" r="6" fill="#8aa8e5"/><rect x="56" y="102" width="330" height="22" rx="8" fill="#e3eefa"/><rect x="56" y="142" width="270" height="22" rx="8" fill="#d8e9f6"/><rect x="56" y="182" width="320" height="22" rx="8" fill="#d8e9f6"/><rect x="140" y="140" width="100" height="27" rx="8" fill="#ffe3a0"/><rect x="56" y="237" width="350" height="64" rx="15" fill="#eaf9f4" stroke="#a4dccc"/><text x="78" y="264" font-size="18" font-weight="800" fill="#245b7a">сад</text><text x="154" y="264" font-size="25" fill="#258f91">→</text><text x="215" y="264" font-size="18" font-weight="800" fill="#17734e">парк</text><circle cx="362" cy="156" r="33" fill="#dbeafe" stroke="#1f61b9" stroke-width="7"/><path d="M383 178l29 29" stroke="#1f61b9" stroke-width="10" stroke-linecap="round"/></svg></div></header>
+<nav aria-label="Навігація уроком"><div class="wrap links"><a href="#theory">Теорія</a><a href="#video">Відео</a><a href="#practice">Практична</a><a href="#exercise1">Вправа 1</a><a href="#exercise2">Вправа 2</a><a href="#simulation">Симулятор</a><a href="#quiz">Тест</a><a href="#home">Домашнє</a><a href="#reflection">Рефлексія</a><a href="#sources">Джерела</a></div></nav>
+<main class="wrap">
+<section class="section" id="theory"><h2>🔎 Теорія: пошук і замінювання</h2>
+<div class="grid2"><article class="card"><h3>1. Пошук (Ctrl+F)</h3><p>Команда <strong>«Знайти»</strong> відшукує в документі слово, частину слова або фразу. Вона <strong>не змінює</strong> текст. Можна переходити між збігами.</p><p><strong>Приклад:</strong> знайди всі входження слова «школа» у великому тексті.</p></article>
+<article class="card"><h3>2. Заміна</h3><p>Команда <strong>«Замінити»</strong> змінює одне поточне входження. <strong>«Замінити все»</strong> змінює всі відповідні входження одразу.</p><p><strong>Приклад:</strong> «книга» → «підручник» — перевір, чи кожна така заміна доречна.</p></article>
+<article class="card"><h3>3. Точність пошуку</h3><p><strong>«Враховувати регістр»</strong> розрізняє великі й малі літери. <strong>«Лише цілі слова»</strong> не шукає «ліс» усередині слова «лісник».</p><p>Не плутай <strong>частину слова</strong> з <strong>окремим словом</strong>.</p></article>
+<article class="card warn"><h3>4. Типові помилки</h3><p>Не натискай «Замінити все», доки не перевіриш контекст. Збережи копію важливого документа. Після заміни перечитай результат: автоматична дія не розуміє змісту речень.</p></article></div>
+<div class="card good"><strong>Мініприклад:</strong> текст «У нашому саду квіти. Сад відкритий.»; пошук «сад» без урахування регістру знайде частину «саду» та слово «Сад». Якщо ввімкнути «Лише цілі слова», «саду» не буде збігом.</div></section>
+<section class="section" id="video"><h2>▶ Український відеоурок і перевірка</h2>
+<p>«Урок №25. Пошук та заміна фрагментів текстового документа | Інформатика 5 клас (2022) (НУШ)», автор Сергій Лутай. Номер у назві відео не збігається з локальним КТП.</p>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/2W93yMmnLAQ" title="Відеоурок українською: пошук і заміна тексту, 5 клас" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<p class="tiny">Якщо програвач недоступний, <a href="https://www.youtube.com/watch?v=2W93yMmnLAQ" target="_blank" rel="noopener noreferrer">відкрий відео на YouTube</a>. Відео тематично перевірено за відкритими метаданими; фактичне звучання українською та можливість вбудованого відтворення ще не перевірені.</p>
+<fieldset class="exercise"><legend><strong>Запитання 1.</strong> Чи змінює команда «Знайти» текст?</legend><label class="choice"><input type="radio" name="v1" value="yes"> Так</label><label class="choice"><input type="radio" name="v1" value="no"> Ні</label></fieldset>
+<fieldset class="exercise"><legend><strong>Запитання 2.</strong> Коли доречно застосувати «Замінити все»?</legend><label class="choice"><input type="radio" name="v2" value="check"> Після перевірки всіх типових збігів</label><label class="choice"><input type="radio" name="v2" value="blind"> Завжди без перевірки</label></fieldset>
+<button class="btn" id="checkVideo">Перевірити відповіді</button><div id="videoFeedback" class="feedback" aria-live="polite"></div></section>
+<section class="section" id="practice"><h2>💻 Практична робота «Афіша шкільного ярмарку»</h2><p>Мета: навчитися знаходити й коректно замінювати слова в текстовому документі. Використай Word, LibreOffice Writer або інший доступний текстовий процесор.</p>
+<ol><li>Створи документ «Ярмарок добрих справ» і збережи його у своїй папці.</li><li>Уведи заголовок та 4–5 речень про подію, використавши слово «ярмарок» тричі.</li><li>Відкрий пошук <strong>Ctrl+F</strong> і знайди всі входження «ярмарок».</li><li>Перевір, як впливає параметр врахування регістру.</li><li>Відкрий заміну та заміни одне входження «ярмарок» на «благодійний ярмарок».</li><li>Знайди повторювану помилку в окремому тренувальному фрагменті, перевір збіги й застосуй «Замінити все».</li><li>Перечитай текст, виправ зайві повтори, перевір правопис і оформлення.</li><li>Збережи документ із назвою <strong>5клас_ярмарок_прізвище</strong> та надішли вчителю визначеним способом.</li></ol>
+<div class="grid3"><div class="card good"><strong>4 бали</strong><br>Коректний текст і файл</div><div class="card good"><strong>4 бали</strong><br>Пошук і заміни</div><div class="card good"><strong>4 бали</strong><br>Перевірка, охайність, самостійність</div></div>
+<p class="tiny muted">Працюй за правилами безпеки: не відкривай невідомі файли, роби перерви для очей, не публікуй персональні дані.</p></section>
+<section class="section" id="exercise1"><h2>🧩 Вправа 1 «Пошуковий патруль»</h2><p>Розв’яжи 8 ситуацій: обери найбезпечнішу дію редактора. Після кожної відповіді прочитай пояснення.</p><div id="scenarioCard" class="exercise"></div><button id="scenarioCheck" class="btn">Перевірити ситуацію</button> <button id="scenarioNext" class="btn alt" disabled>Наступна ситуація</button><div id="scenarioFeedback" class="feedback" aria-live="polite"></div></section>
+<section class="section" id="exercise2"><h2>🧩 Вправа 2 «Маршрут уважного редактора»</h2><p>Розташуй сім дій у правильній послідовності кнопками ↑ і ↓. Керування доступне з клавіатури.</p><div id="sequenceList"></div><button class="btn" id="checkSequence">Перевірити послідовність</button><button class="btn alt" id="resetSequence">Перемішати ще раз</button><div id="sequenceFeedback" class="feedback" aria-live="polite"></div></section>
+<section class="section" id="simulation"><h2>🧪 Предметна симуляція «Лабораторія пошуку і заміни»</h2>
+<p>Досліди, як налаштування змінюють збіги. Усі операції виконуються <strong>лише в браузері</strong> над навчальним текстом.</p>
+<div class="editor"><label class="field">Текст для редагування<textarea id="simText" spellcheck="false">Наш сад квітне. Сад дарує радість. У саду ростуть дерева. Поруч садівник поливає квіти. Наш сад — зелений куточок.</textarea></label>
+<div class="simgrid"><label class="field">Знайти<input id="findText" value="сад" autocomplete="off"></label><label class="field">Замінити на<input id="replaceText" value="парк" autocomplete="off"></label></div>
+<div class="row"><label><input type="checkbox" id="matchCase"> Враховувати регістр</label><label><input type="checkbox" id="wholeWords"> Лише цілі слова</label></div>
+<div class="row" style="margin-top:14px"><button class="btn" id="findNext">Знайти наступне</button><button class="btn" id="replaceOne">Замінити поточне</button><button class="btn" id="replaceAll">Замінити все</button><button class="btn alt" id="undoSim">↶ Скасувати</button><button class="btn outline" id="resetSim">Скинути</button></div>
+<div class="stat"><span id="matchCount">Збігів: 0</span><span id="simStatus">Готово до пошуку</span></div><h3>Попередній перегляд збігів</h3><div id="simPreview" class="preview" aria-live="polite"></div>
+<h3>Демонстрація: 6 кроків</h3><p class="tiny muted">Кнопка «Крок» показує наступний приклад із поясненням. «Авто» запускає показ, «Пауза» зупиняє.</p>
+<div class="row"><button class="btn" id="demoStep">Крок →</button><button class="btn alt" id="demoAuto">▶ Авто</button><button class="btn outline" id="demoPause">Ⅱ Пауза</button><button class="btn outline" id="demoReset">↺ Скинути демонстрацію</button></div><div id="demoInfo" class="feedback" aria-live="polite"></div></div></section>
+<section class="section" id="quiz"><h2>📝 Підсумкове тестування — 20 запитань</h2><p>Є завдання з однією, кількома правильними відповідями, на відповідність і послідовність. Результат — до 12 балів. Після перевірки з’являться пояснення.</p><form id="quizForm" novalidate></form><div class="quizactions"><button type="button" class="btn" id="gradeQuiz">Перевірити 20 відповідей</button><button type="button" class="btn alt" id="resetQuiz">Скинути тест</button></div><div id="quizResult" class="result" aria-live="polite"></div></section>
+<section class="section" id="home"><h2>🏠 Домашнє завдання: обери рівень</h2>
+<div class="grid3"><article class="card"><h3>🌱 Базовий</h3><p>Створи короткий текст (5 речень), знайди слово «урок» і запиши кількість входжень.</p></article><article class="card"><h3>🌿 Достатній</h3><p>Створи текст із повторюваним словом, виконай контрольовану заміну та поясни, чому не завжди підходить «Замінити все».</p></article><article class="card"><h3>🌳 Високий</h3><p>Порівняй пошук із регістром і без нього, з опцією «ціле слово» й без неї. Зроби короткий висновок з прикладами.</p></article></div>
+<h3>Самоперевірка вдома — 9 запитань</h3><form id="homeForm" novalidate></form><div class="quizactions"><button class="btn" type="button" id="gradeHome">Перевірити домашній тест</button><button class="btn alt" type="button" id="resetHome">Скинути</button></div><div id="homeResult" class="result" aria-live="polite"></div></section>
+<section class="section" id="reflection"><h2>💬 Рефлексія</h2><div class="grid3"><label class="field">Сьогодні я навчився / навчилася…<textarea id="reflect1"></textarea></label><label class="field">Найскладнішим було…<textarea id="reflect2"></textarea></label><label class="field">Перш ніж натиснути «Замінити все», я…<textarea id="reflect3"></textarea></label></div><div class="row"><button class="btn" id="saveReflection">Зберегти на пристрої</button><button class="btn alt" id="exportReflection">Експортувати TXT</button><button class="btn outline" id="printPage">Друк / PDF</button></div><div id="reflectionFeedback" class="feedback" aria-live="polite"></div></section>
+<section class="section" id="integrity"><h2>🛡️ Академічна доброчесність і безпека</h2><p>Виконуй вправи самостійно, позначай використані джерела, не копіюй чужу роботу як власну. Не вводь у тренажер паролі, адреси чи персональні дані інших людей. Перш ніж замінювати багато фрагментів, перевір зміст і збережи резервну копію.</p></section>
+<section class="section" id="sources"><h2>📚 Джерела та перевірка</h2><div class="grid2"><div class="source"><strong>Підручник Й. Ривкінда та співавторів, «Інформатика. 5 клас».</strong><p>Офіційна сторінка видавництва «Генеза», українське видання. <a href="https://www.geneza.ua/product/1093" target="_blank" rel="noopener noreferrer">Відкрити підручник 5 класу</a>. Конкретний параграф потребує перевірки за виданням, тому його не вказано.</p></div>
+<div class="source"><strong>Тематичний відеоурок Сергія Лутая.</strong><p><a href="https://www.youtube.com/watch?v=2W93yMmnLAQ" target="_blank" rel="noopener noreferrer">«Пошук та заміна фрагментів текстового документа»</a>. Існування й відповідність темі підтверджено метаданими; фактичне українське озвучення та відтворення iframe залишаються неперевіреними.</p></div></div></section>
+</main><footer>SMART LAB · Інформатика · 5 клас · Урок №42 · 2026/2027</footer>
+<script>
+
+"use strict";
+const $=id=>document.getElementById(id);
+const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeText=(id,msg)=>$(id).textContent=msg;
+$("checkVideo").addEventListener("click",()=>{
+ const a=document.querySelector('input[name="v1"]:checked');
+ const b=document.querySelector('input[name="v2"]:checked');
+ const n=Number(a&&a.value==="no")+Number(b&&b.value==="check");
+ safeText("videoFeedback","Правильних: "+n+"/2. Пошук не редагує текст. Масову заміну виконуй після перевірки збігів.");
+});
+const scenarios=[{"q":"У тексті 20 разів написано «екскурсія», потрібно знайти всі місця.","o":["Знайти","Замінити","Друк"],"a":0,"e":"Пошук лише знаходить."},{"q":"У заголовку слово «план» треба змінити лише один раз.","o":["Замінити все","Замінити поточне","Видалити документ"],"a":1,"e":"Поточна заміна не зачіпає інші входження."},{"q":"У документі 12 однакових помилок «ученьн». Після перевірки потрібно виправити всі.","o":["Знайти","Змінити розмір шрифту","Замінити все"],"a":2,"e":"Масова заміна виправить усі відповідні збіги."},{"q":"Потрібно знайти «Львів», але не «львів».","o":["Враховувати регістр","Лише ціле слово","Змінити мову"],"a":0,"e":"Регістр розрізняє великі та малі літери."},{"q":"Пошук «мак» не повинен знаходити «макет».","o":["Замінити все","Лише цілі слова","Копіювати"],"a":1,"e":"Потрібен пошук повного слова."},{"q":"Після масової заміни текст став неправильним.","o":["Залишити помилку","Натиснути друк","Скасувати дію й уточнити запит"],"a":2,"e":"Скасування і уточнення запиту допомагають виправити помилку."},{"q":"Перед заміною назви школи в усьому документі варто...","o":["Створити резервну копію","Видалити файл","Заборонити пошук"],"a":0,"e":"Резервна копія захистить важливий документ."},{"q":"Після редагування потрібно передати остаточний файл учителю.","o":["Лише закрити вкладку","Перевірити текст і зберегти файл","Очистити кошик"],"a":1,"e":"Перевірка та збереження завершують роботу."}];
+let scenarioIndex=0,scenarioScore=0,scenarioAnswered=false;
+function renderScenario(){
+ const s=scenarios[scenarioIndex];
+ $("scenarioCard").innerHTML="<strong>Ситуація "+(scenarioIndex+1)+" із "+scenarios.length+"</strong><p>"+escapeHtml(s.q)+"</p>"+s.o.map((v,i)=>'<label class="choice"><input type="radio" name="scenario" value="'+i+'"> '+escapeHtml(v)+"</label>").join("");
+ $("scenarioCheck").disabled=false;$("scenarioNext").disabled=true;
+ $("scenarioNext").textContent=scenarioIndex===scenarios.length-1?"Завершити":"Наступна ситуація";
+ safeText("scenarioFeedback","");scenarioAnswered=false;
+}
+$("scenarioCheck").addEventListener("click",()=>{
+ if(scenarioAnswered)return;
+ const a=document.querySelector('input[name="scenario"]:checked');
+ if(!a){safeText("scenarioFeedback","Спочатку обери відповідь.");return}
+ const s=scenarios[scenarioIndex],ok=Number(a.value)===s.a;
+ if(ok)scenarioScore++;
+ scenarioAnswered=true;$("scenarioCheck").disabled=true;$("scenarioNext").disabled=false;
+ safeText("scenarioFeedback",(ok?"Правильно! ":"Спробуй запам’ятати: ")+s.e+" Результат: "+scenarioScore+"/"+(scenarioIndex+1)+".");
+});
+$("scenarioNext").addEventListener("click",()=>{
+ if(scenarioIndex===scenarios.length-1){safeText("scenarioFeedback","Вправу завершено: "+scenarioScore+"/"+scenarios.length+".");$("scenarioNext").disabled=true;return}
+ scenarioIndex++;renderScenario();
+});
+renderScenario();
+const correctSequence=["Зберегти копію документа","Відкрити вікно пошуку й заміни","Увести слово для пошуку","Увести новий текст","Переглянути кілька збігів у контексті","Виконати потрібну заміну","Перевірити зміст і зберегти результат"];
+let sequence=[];
+function resetSequence(){
+ sequence=[3,0,5,1,6,2,4];renderSequence();safeText("sequenceFeedback","");
+}
+function renderSequence(){
+ $("sequenceList").replaceChildren();
+ sequence.forEach((ix,pos)=>{
+ const div=document.createElement("div");div.className="sequence-item";
+ const label=document.createElement("span");label.textContent=(pos+1)+". "+correctSequence[ix];
+ const up=document.createElement("button");up.type="button";up.textContent="↑";up.disabled=pos===0;up.setAttribute("aria-label","Перемістити дію вгору: "+correctSequence[ix]);
+ const down=document.createElement("button");down.type="button";down.textContent="↓";down.disabled=pos===sequence.length-1;down.setAttribute("aria-label","Перемістити дію вниз: "+correctSequence[ix]);
+ up.addEventListener("click",()=>{[sequence[pos-1],sequence[pos]]=[sequence[pos],sequence[pos-1]];renderSequence()});
+ down.addEventListener("click",()=>{[sequence[pos+1],sequence[pos]]=[sequence[pos],sequence[pos+1]];renderSequence()});
+ div.append(label,up,down);$("sequenceList").append(div);
+ });
+}
+$("checkSequence").addEventListener("click",()=>{
+ const n=sequence.filter((v,i)=>v===i).length;
+ safeText("sequenceFeedback",n===7?"Чудово! Усі 7 кроків на місці.":"Правильно розташовано "+n+"/7 кроків. Спочатку зроби копію, потім перевір збіги, лише після цього замінюй.");
+});
+$("resetSequence").addEventListener("click",resetSequence);resetSequence();
+const initialText="Наш сад квітне. Сад дарує радість. У саду ростуть дерева. Поруч садівник поливає квіти. Наш сад — зелений куточок.";
+const sim={undo:[],cursor:0,selected:null,demoIndex:0,timer:null};
+const wordChar=c=>!!c&&/[\p{L}\p{N}_]/u.test(c);
+function matches(){
+ const raw=$("simText").value,query=$("findText").value;
+ if(!query)return [];
+ const text=$("matchCase").checked?raw:raw.toLocaleLowerCase("uk");
+ const needle=$("matchCase").checked?query:query.toLocaleLowerCase("uk");
+ const hits=[];let start=0;
+ while(start<=text.length-needle.length){
+  const at=text.indexOf(needle,start);if(at<0)break;
+  const end=at+needle.length;
+  if(!$("wholeWords").checked||(!wordChar(raw[at-1])&&!wordChar(raw[end])))hits.push({start:at,end});
+  start=at+Math.max(needle.length,1);
+ }
+ return hits;
+}
+function updatePreview(message){
+ const raw=$("simText").value,hits=matches();let out="",pos=0;
+ for(const hit of hits){out+=escapeHtml(raw.slice(pos,hit.start))+"<mark>"+escapeHtml(raw.slice(hit.start,hit.end))+"</mark>";pos=hit.end}
+ out+=escapeHtml(raw.slice(pos));$("simPreview").innerHTML=out||"<em>Документ порожній</em>";
+ safeText("matchCount","Збігів: "+hits.length);
+ if(message!==undefined)safeText("simStatus",message);
+}
+function remember(){sim.undo.push($("simText").value);if(sim.undo.length>20)sim.undo.shift()}
+function selectHit(hit){
+ $("simText").focus();$("simText").setSelectionRange(hit.start,hit.end);sim.selected=hit;sim.cursor=hit.end;
+}
+function findNext(){
+ const hits=matches();if(!hits.length){sim.selected=null;updatePreview("Збігів немає.");return}
+ const hit=hits.find(h=>h.start>=sim.cursor)||hits[0];selectHit(hit);updatePreview("Знайдено входження з позиції "+(hit.start+1)+".");
+}
+function replaceOne(){
+ const hits=matches();
+ let hit=sim.selected&&hits.find(h=>h.start===sim.selected.start&&h.end===sim.selected.end);
+ if(!hit){hit=hits.find(h=>h.start>=sim.cursor)||hits[0]}
+ if(!hit){updatePreview("Немає входжень для заміни.");return}
+ remember();const raw=$("simText").value,replacement=$("replaceText").value;
+ $("simText").value=raw.slice(0,hit.start)+replacement+raw.slice(hit.end);
+ sim.cursor=hit.start+replacement.length;sim.selected=null;
+ updatePreview("Замінено одне входження.");$("simText").focus();$("simText").setSelectionRange(sim.cursor,sim.cursor);
+}
+function replaceAll(){
+ const hits=matches();if(!hits.length){updatePreview("Немає входжень для заміни.");return}
+ remember();let raw=$("simText").value,replacement=$("replaceText").value;
+ for(let i=hits.length-1;i>=0;i--){const h=hits[i];raw=raw.slice(0,h.start)+replacement+raw.slice(h.end)}
+ $("simText").value=raw;sim.cursor=0;sim.selected=null;
+ updatePreview("Замінено "+hits.length+" входжень. Перечитай зміст!");
+}
+function stopDemo(){if(sim.timer!==null){clearInterval(sim.timer);sim.timer=null}}
+function resetSim(){
+ stopDemo();$("simText").value=initialText;$("findText").value="сад";$("replaceText").value="парк";
+ $("matchCase").checked=false;$("wholeWords").checked=false;sim.undo=[];sim.cursor=0;sim.selected=null;
+ updatePreview("Початковий текст відновлено.");
+}
+$("findNext").addEventListener("click",findNext);
+$("replaceOne").addEventListener("click",replaceOne);
+$("replaceAll").addEventListener("click",replaceAll);
+$("undoSim").addEventListener("click",()=>{if(!sim.undo.length){updatePreview("Немає дій для скасування.");return}$("simText").value=sim.undo.pop();sim.cursor=0;sim.selected=null;updatePreview("Останню зміну скасовано.")});
+$("resetSim").addEventListener("click",resetSim);
+["simText","findText","replaceText","matchCase","wholeWords"].forEach(id=>$(id).addEventListener("input",()=>{sim.cursor=0;sim.selected=null;updatePreview("Умови пошуку оновлено.")}));
+const demo=[
+{txt:"Наш сад квітне. Сад дарує радість. У саду ростуть дерева.",find:"сад",rep:"парк",whole:false,cas:false,act:"find",why:"1/6. Пошук без параметрів знаходить також «сад» у слові «саду»."},
+{txt:"Наш сад квітне. Сад дарує радість. У саду ростуть дерева.",find:"сад",rep:"парк",whole:true,cas:false,act:"find",why:"2/6. «Ціле слово» виключає частину слова «саду»."},
+{txt:"Наш сад квітне. Сад дарує радість.",find:"Сад",rep:"Парк",whole:true,cas:true,act:"find",why:"3/6. З урахуванням регістру знайдено лише «Сад» з великої літери."},
+{txt:"Наш сад квітне. Сад дарує радість.",find:"сад",rep:"парк",whole:true,cas:false,act:"one",why:"4/6. Заміна поточного входження залишає інше без змін."},
+{txt:"Наш сад квітне. Сад дарує радість.",find:"сад",rep:"парк",whole:true,cas:false,act:"all",why:"5/6. Масова заміна змінює обидва окремі слова; перевір зміст."},
+{txt:"Ми любимо ліс. Лісник береже ліс.",find:"ліс",rep:"гай",whole:true,cas:false,act:"all",why:"6/6. Пошук цілого слова не змінює частину «ліс» у слові «Лісник»."}
+];
+function demoStep(){
+ if(sim.demoIndex>=demo.length){stopDemo();safeText("demoInfo","Демонстрацію завершено. Натисни «Скинути демонстрацію», щоб повторити.");return}
+ const d=demo[sim.demoIndex++];$("simText").value=d.txt;$("findText").value=d.find;$("replaceText").value=d.rep;$("wholeWords").checked=d.whole;$("matchCase").checked=d.cas;
+ sim.cursor=0;sim.selected=null;sim.undo=[];updatePreview();
+ if(d.act==="find")findNext();else if(d.act==="one")replaceOne();else replaceAll();
+ safeText("demoInfo",d.why);
+ if(sim.demoIndex>=demo.length)stopDemo();
+}
+$("demoStep").addEventListener("click",()=>{stopDemo();demoStep()});
+$("demoAuto").addEventListener("click",()=>{if(sim.timer!==null)return;if(sim.demoIndex>=demo.length)sim.demoIndex=0;demoStep();if(sim.demoIndex<demo.length)sim.timer=setInterval(demoStep,2400)});
+$("demoPause").addEventListener("click",()=>{stopDemo();safeText("demoInfo","Автопоказ зупинено. Продовжуй кнопкою «Крок».")});
+$("demoReset").addEventListener("click",()=>{sim.demoIndex=0;resetSim();safeText("demoInfo","Демонстрацію скинуто. Готово до першого кроку.")});
+updatePreview();
+const quiz=[{"t":"single","q":"Для чого призначена команда «Знайти»?","o":["Щоб змінити шрифт","Щоб відшукати потрібний фрагмент","Щоб видалити документ","Щоб зберегти файл"],"a":1,"e":"Пошук знаходить входження, не змінюючи текст."},{"t":"single","q":"Яке сполучення клавіш зазвичай відкриває пошук у текстовому редакторі?","o":["Ctrl+P","Ctrl+V","Ctrl+F","Ctrl+S"],"a":2,"e":"Ctrl+F відкриває пошук у багатьох редакторах."},{"t":"single","q":"Що робить команда «Замінити все»?","o":["Замінює всі знайдені входження","Лише виділяє перше слово","Видаляє всі абзаци","Перейменовує файл"],"a":0,"e":"Вона замінює всі входження, що відповідають умовам пошуку."},{"t":"single","q":"Чим «Замінити» відрізняється від «Замінити все»?","o":["Видаляє форматування","Працює тільки з числами","Завжди зберігає документ","Змінює одне поточне входження"],"a":3,"e":"Одинична заміна дає змогу контролювати кожне входження."},{"t":"single","q":"Що означає «Враховувати регістр»?","o":["Шукати лише в заголовку","Розрізняти великі й малі літери","Змінювати розмір сторінки","Шукати лише цифри"],"a":1,"e":"Наприклад, «Київ» і «київ» можуть розглядатися як різні записи."},{"t":"single","q":"Потрібно знайти лише окреме слово «ліс», а не частину «лісник». Яку опцію обрати?","o":["Лише слово повністю","Друк","Масштаб","Колір тла"],"a":0,"e":"Пошук цілих слів відкидає збіги всередині інших слів."},{"t":"single","q":"Що варто зробити перед масовою заміною у важливому документі?","o":["Вимкнути екран","Видалити всі копії","Перевірити зразки збігів і мати резервну копію","Відразу надрукувати"],"a":2,"e":"Перевірка збігів і резервна копія допомагають уникнути втрати змісту."},{"t":"single","q":"Як знайти наступне входження після першого?","o":["Змінити мову системи","Закрити документ","Натиснути Delete","Скористатися «Знайти далі»"],"a":3,"e":"Команда переходить до наступного знайденого фрагмента."},{"t":"single","q":"У документі є «Кіт», «кіт» і «КОТ». Який пошук знайде «кіт» без урахування регістру?","o":["Тільки «кіт»","«Кіт» та «кіт», але не «КОТ»","Усі три слова","Жодного"],"a":2,"e":"Регістр не впливає на збіг, але різні літери «і» та «о» залишаються різними: «КОТ» не дорівнює «кіт»."},{"t":"single","q":"Який результат матиме заміна «сад» → «парк» у реченні «Наш сад квітне»?","o":["Наш парк квітне","Наш сад парк","Парк наш сад","Наш квітне"],"a":0,"e":"Змінюється лише знайдений фрагмент."},{"t":"single","q":"Чи обов’язково «Знайти» змінює текст документа?","o":["Так, завжди","Ні, пошук сам по собі не редагує текст","Так, видаляє пробіли","Так, змінює мову"],"a":1,"e":"Пошук лише показує збіги."},{"t":"single","q":"Що треба зробити після редагування, щоб зберегти зміни у файлі?","o":["Відкрити нову вкладку","Натиснути Esc","Змінити яскравість","Зберегти документ"],"a":3,"e":"Зміни слід зберегти у файлі, наприклад Ctrl+S."},{"t":"multi","q":"Які дії допомагають безпечно виконати масову заміну?","o":["Переглянути контекст знайдених слів","Зберегти резервну копію","Замінювати без перевірки в усіх документах","Перевірити результат після заміни"],"a":[0,1,3],"e":"Контекст, копія і контроль результату знижують ризик помилок."},{"t":"multi","q":"Які налаштування можуть впливати на результати пошуку?","o":["Врахування регістру","Пошук цілих слів","Колір корпусу комп’ютера","Текст пошукового запиту"],"a":[0,1,3],"e":"Результат залежить від запиту та параметрів пошуку."},{"t":"multi","q":"Що можна знайти інструментом пошуку в тексті?","o":["Слово","Послідовність символів","Фразу","Місце розташування курсора миші на столі"],"a":[0,1,2],"e":"Шукають текстові фрагменти різної довжини."},{"t":"multi","q":"Які твердження про команду «Замінити» правильні?","o":["Може змінити вибране входження","Потребує пошукового зразка","Завжди змінює всі входження","Корисна для виправлення повторюваних помилок"],"a":[0,1,3],"e":"Окрема заміна змінює поточний збіг, а не обов'язково всі."},{"t":"match","q":"Установи відповідність між інструментом і призначенням.","l":["Знайти","Замінити","Замінити все"],"r":["Змінити одне поточне входження","Знайти потрібний текст","Змінити всі відповідні входження"],"a":[1,0,2],"e":"Пошук показує, заміна редагує одне, заміна всього — усі входження."},{"t":"match","q":"Установи відповідність між налаштуванням і результатом.","l":["Враховувати регістр","Лише цілі слова","Без урахування регістру"],"r":["Не розрізняти «Ліс» і «ліс»","Не знаходити «ліс» усередині «лісник»","Розрізняти «Ліс» і «ліс»"],"a":[2,1,0],"e":"Параметри пошуку уточнюють потрібні збіги."},{"t":"order","q":"Розташуй кроки обережної масової заміни.","o":["Перевірити результат","Ввести текст пошуку та заміни","Зберегти резервну копію","Переглянути збіги","Натиснути «Замінити все»"],"a":[2,1,3,4,0],"e":"Спочатку захисти дані, потім налаштуй і перевір пошук, виконай та проконтролюй заміну."},{"t":"order","q":"Упорядкуй дії пошуку наступного слова.","o":["Перейти до наступного входження","Ввести слово у поле пошуку","Відкрити пошук Ctrl+F","Оглянути перший знайдений збіг"],"a":[2,1,3,0],"e":"Спочатку відкриваємо пошук і вводимо запит, далі перевіряємо збіги."}];
+const home=[{"t":"single","q":"Що робить Ctrl+F?","o":["Відкриває пошук","Друкує","Видаляє файл"],"a":0,"e":"Це стандартне скорочення для пошуку."},{"t":"single","q":"Коли доречно обрати «Замінити все»?","o":["Коли потрібно змінити лише один збіг","Коли перевірено всі збіги й потрібно змінити їх усі","Коли потрібно змінити колір"],"a":1,"e":"Масову заміну використовують після перевірки."},{"t":"single","q":"Пошук без урахування регістру...","o":["Не розрізняє великі й малі літери","Шукає тільки цифри","Не працює українською"],"a":0,"e":"Великі й малі літери вважаються однаковими."},{"t":"single","q":"Опція «Ціле слово» допомагає...","o":["Знайти фрагмент у довшому слові","Виключити збіги всередині інших слів","Змінити шрифт"],"a":1,"e":"Так можна уникнути небажаних збігів."},{"t":"single","q":"Що робити після заміни?","o":["Перевірити зміст і зберегти документ","Закрити без збереження","Видалити всі абзаци"],"a":0,"e":"Перевірка потрібна для якості тексту."},{"t":"single","q":"Що змінює команда «Замінити»?","o":["Усі документи на комп’ютері","Поточне знайдене входження","Роздільність монітора"],"a":1,"e":"Одна заміна — одне поточне входження."},{"t":"multi","q":"Що є складовими безпечного редагування?","o":["Резервна копія","Перевірка збігів","Випадкові заміни"],"a":[0,1],"e":"Резервна копія та перевірка захищають зміст."},{"t":"match","q":"Зістав дію та команду.","l":["Знайти слово","Змінити один збіг"],"r":["Замінити","Знайти"],"a":[1,0],"e":"Пошук не редагує, заміна змінює."},{"t":"order","q":"Розташуй три кроки пошуку.","o":["Перевірити знайдений фрагмент","Ввести запит","Відкрити пошук"],"a":[2,1,0],"e":"Спочатку відкрий інструмент, потім введи запит."}];
+function renderTest(items,formId){
+ const form=$(formId);form.replaceChildren();
+ items.forEach((q,i)=>{
+  const field=document.createElement("fieldset");field.className="qcard";field.id=formId+"-q"+i;
+  const legend=document.createElement("legend");legend.textContent=(i+1)+". "+q.q;field.append(legend);
+  if(q.t==="single"||q.t==="multi"){
+   q.o.forEach((o,j)=>{const label=document.createElement("label");label.className="choice";const input=document.createElement("input");input.type=q.t==="single"?"radio":"checkbox";input.name=formId+"-answer"+i;input.value=j;label.append(input,document.createTextNode(" "+o));field.append(label)});
+  }else if(q.t==="match"){
+   q.l.forEach((label,j)=>{const row=document.createElement("div");row.className="matchrow";const span=document.createElement("span");span.textContent=label;const sel=document.createElement("select");sel.setAttribute("aria-label","Відповідність для "+label);sel.dataset.match=j;sel.append(new Option("Обери відповідність",""));q.r.forEach((v,k)=>sel.append(new Option(v,String(k))));row.append(span,sel);field.append(row)});
+  }else if(q.t==="order"){
+   q.o.forEach((v,j)=>{const row=document.createElement("div");row.className="orderrow";const span=document.createElement("span");span.textContent=(j+1)+".";const sel=document.createElement("select");sel.dataset.order=j;sel.setAttribute("aria-label","Позиція для дії "+v);sel.append(new Option("Порядок",""));q.o.forEach((_,k)=>sel.append(new Option(String(k+1),String(k))));const label=document.createElement("label");label.textContent=v;label.append(sel);row.append(span,label);field.append(row)});
+  }
+  const explanation=document.createElement("p");explanation.className="tiny muted";explanation.hidden=true;explanation.dataset.explain="";field.append(explanation);form.append(field);
+ });
+}
+function testAnswer(q,field){
+ if(q.t==="single"||q.t==="multi"){
+  const selected=[...field.querySelectorAll("input:checked")].map(e=>Number(e.value)).sort((a,b)=>a-b);
+  const expected=(Array.isArray(q.a)?q.a:[q.a]).slice().sort((a,b)=>a-b);
+  return selected.length===expected.length&&selected.every((v,i)=>v===expected[i]);
+ }
+ if(q.t==="match"){
+  const selections=[...field.querySelectorAll("select")].map(e=>e.value);
+  return selections.every((v,i)=>v!==""&&Number(v)===q.a[i]);
+ }
+ if(q.t==="order"){
+  const selections=[...field.querySelectorAll("select")].map(e=>e.value);
+  return selections.every((v,i)=>v!==""&&Number(v)===q.a.indexOf(i));
+ }
+ return false;
+}
+function grade(items,formId,resultId){
+ let correct=0;
+ items.forEach((q,i)=>{
+  const field=$(formId+"-q"+i),ok=testAnswer(q,field);if(ok)correct++;
+  field.classList.toggle("correct",ok);field.classList.toggle("incorrect",!ok);
+  const exp=field.querySelector("[data-explain]");exp.hidden=false;exp.textContent=(ok?"✓ Правильно. ":"✕ Потрібно повторити. ")+q.e;
+ });
+ const points=Math.round(correct/items.length*12);
+ safeText(resultId,"Правильних відповідей: "+correct+"/"+items.length+". Орієнтовна оцінка: "+points+"/12. Прочитай пояснення до кожного запитання.");
+}
+function resetTest(items,formId,resultId){renderTest(items,formId);safeText(resultId,"")}
+renderTest(quiz,"quizForm");renderTest(home,"homeForm");
+$("gradeQuiz").addEventListener("click",()=>grade(quiz,"quizForm","quizResult"));
+$("gradeHome").addEventListener("click",()=>grade(home,"homeForm","homeResult"));
+$("resetQuiz").addEventListener("click",()=>resetTest(quiz,"quizForm","quizResult"));
+$("resetHome").addEventListener("click",()=>resetTest(home,"homeForm","homeResult"));
+const reflectionKey="smartlab-5-42-reflection";
+function getReflection(){return ["reflect1","reflect2","reflect3"].map(id=>$(id).value.trim())}
+function saveReflection(){try{localStorage.setItem(reflectionKey,JSON.stringify(getReflection()));safeText("reflectionFeedback","Відповіді збережено лише в цьому браузері.")}catch(e){safeText("reflectionFeedback","Браузер не дозволив локальне збереження. Скористайся експортом TXT.")}}
+$("saveReflection").addEventListener("click",saveReflection);
+$("exportReflection").addEventListener("click",()=>{
+ const v=getReflection(),content="SMART LAB · 5 клас · урок 42\nРефлексія\n\n1. Навчився/навчилася: "+v[0]+"\n2. Складність: "+v[1]+"\n3. Перед масовою заміною: "+v[2]+"\n";
+ const blob=new Blob([content],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="refleksiia_5_urok_42.txt";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
+ safeText("reflectionFeedback","TXT-файл підготовлено до збереження.");
+});
+$("printPage").addEventListener("click",()=>window.print());
+try{const saved=JSON.parse(localStorage.getItem(reflectionKey)||"null");if(Array.isArray(saved))["reflect1","reflect2","reflect3"].forEach((id,i)=>$(id).value=saved[i]||"")}catch(e){}
+
+</script></body></html>
