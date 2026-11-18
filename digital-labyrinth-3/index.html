@@ -17,6 +17,16 @@
 @keyframes dice-tumble{0%{transform:scale(.25) rotateX(0deg) rotateY(0deg) rotateZ(0deg);opacity:.2}25%{transform:scale(1.2) rotateX(240deg) rotateY(150deg) rotateZ(120deg);opacity:1}60%{transform:scale(1.6) rotateX(560deg) rotateY(440deg) rotateZ(350deg)}100%{transform:scale(1.12) rotateX(900deg) rotateY(720deg) rotateZ(720deg)}}
 @keyframes dice-pop{0%{transform:scale(1.3) rotateZ(-15deg)}65%{transform:scale(1.65) rotateZ(7deg)}100%{transform:scale(1.3) rotateZ(0deg)}}
 @media(prefers-reduced-motion:reduce){.cinematic-die,.cinematic-die.dice-landed{animation:none}.dice-cinematic{backdrop-filter:none}}
+</style><style>
+.cube-scene{width:190px;height:190px;perspective:850px;display:grid;place-items:center}
+.dice-cube{position:relative;width:144px;height:144px;transform-style:preserve-3d;animation:real-dice-spin 1.6s cubic-bezier(.18,.65,.32,1) both;transition:transform .65s cubic-bezier(.16,1,.3,1)}
+.dice-cube.cube-settled{animation:none}
+.cube-face{position:absolute;inset:0;border-radius:22px;border:4px solid #fff;background:linear-gradient(145deg,#fff 10%,#e8d8fa 85%);box-shadow:inset -9px -10px 20px #bda4d366,inset 5px 5px 12px #fff,0 0 5px #67418a55;backface-visibility:visible;display:grid;place-items:center}
+.face-front{transform:translateZ(72px)}.face-back{transform:rotateY(180deg) translateZ(72px)}.face-right{transform:rotateY(90deg) translateZ(72px)}.face-left{transform:rotateY(-90deg) translateZ(72px)}.face-top{transform:rotateX(90deg) translateZ(72px)}.face-bottom{transform:rotateX(-90deg) translateZ(72px)}
+.pip-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:9px;width:105px;height:105px}
+.pip{border-radius:50%;background:radial-gradient(circle at 30% 25%,#9d78d0,#5b318a 65%,#3b205e);box-shadow:inset 1px 2px 3px #3c195c88,1px 1px 1px white}
+@keyframes real-dice-spin{0%{transform:scale(.25) rotateX(0deg) rotateY(0deg) rotateZ(0deg)}35%{transform:scale(1.35) rotateX(440deg) rotateY(320deg) rotateZ(120deg)}75%{transform:scale(1.55) rotateX(920deg) rotateY(760deg) rotateZ(350deg)}100%{transform:scale(1.35) rotateX(1080deg) rotateY(1080deg) rotateZ(360deg)}}
+@media(prefers-reduced-motion:reduce){.dice-cube{animation:none!important;transition:none!important}}
 </style></head><body><div class="wrap"><header><div class="book-logo">📖</div><h1>Цифровий лабіринт</h1><div class="subtitle">Місія знавців інформації • 3 клас</div><p>Віртуальні бібліотеки • Довідники • Енциклопедії • Словники • Авторське право</p></header><main class="layout"><aside class="panel"><h3>📜 Правила гри</h3><ol class="rules"><li>Оберіть 2–4 команди та натисніть «Нова гра».</li><li>Команди по черзі кидають кубик.</li><li>Кубик показує кількість кроків; фішка чекає правильної відповіді.</li><li>Виконайте завдання за 30–60 секунд.</li><li>За правильну відповідь: 🟢 1, 🔵 2, 🟣 3 бали.</li><li>Після кидка кубика відкривається запитання клітинки, до якої можна перейти після правильної відповіді.</li><li>Правильно — рухаєтесь на випалу кількість кроків та отримуєте бали; неправильно або час вийшов — залишаєтесь на місці.</li><li>Переможе команда з найбільшою кількістю балів після фінішу всіх команд.</li></ol><h3>🏆 Умови перемоги</h3><p class="hint">Збери найбільше зірочок і стань майстром цифрових знань!</p><h3>📊 Таблиця балів</h3><div id="players" class="players"></div><p class="hint">Після натискання «Перевірити» відповідь і пояснення видно всім. Для усних завдань рішення ухвалює вчитель.</p></aside><section class="panel gamepanel"><div class="legend"><span>🟢 Легкий • 1 бал</span><span>🔵 Середній • 2 бали</span><span>🟣 Складний • 3 бали</span><span>🎁 Бонусна тема — також із запитанням</span></div><div class="board-frame"><div class="board" id="board" aria-label="Ігрове поле на 25 клітинок"></div></div><div class="game-accessories" aria-label="Ігрові фішки, кубик і кубок"><div class="accessory-heading">🚩 ФІШКИ КОМАНД — СТАРТ</div><div class="accessory-pawns" id="startPawns"></div><div class="accessory-tools"><div class="accessory-die" aria-label="Ігровий кубик">🎲 <small>КУБИК</small></div><div class="accessory-cup" aria-label="Кубок переможця">🏆 <small>КУБОК ПЕРЕМОЖЦЯ</small></div></div><div class="accessory-levels">Рівні складності: 🟢 1 бал · 🔵 2 бали · 🟣 3 бали</div></div><div class="status" id="status" role="status">Налаштуйте команди та починайте гру!</div><div class="row controls"><button class="btn" id="roll">🎲 Кинути кубик</button><button class="btn secondary" id="cards">📚 Переглянути картки</button><button class="btn secondary" id="finish">🏆 Підсумки</button></div></section><aside class="panel"><h3>🃏 Картки із завданнями</h3><div class="deck" aria-hidden="true"><div class="deck-card"><span>✧ 📖 ✧</span><strong>Цифровий<br>лабіринт</strong><small>Місія знавців інформації</small></div></div><h3>🎮 Керування</h3><div class="stack"><label>Кількість команд<select id="teamCount"><option value="2">2 команди</option><option value="3">3 команди</option><option value="4">4 команди</option></select></label><button class="btn" id="newGame">✨ Нова гра</button><div class="dice" id="dice" aria-label="Кубик">⚄</div><div class="hint" id="turnText">Хід команди 1</div><button class="btn secondary" id="next" disabled>➡️ Наступна команда</button><button class="btn secondary" id="teacher">🔑 Відповіді для вчителя</button><button class="btn secondary" onclick="window.print()">🖨️ Друк поля</button><button class="btn warn" id="clear">🗑️ Скинути прогрес</button></div><h3 style="margin-top:22px">🃏 Картки</h3><p class="hint">15 завдань трьох рівнів. Питання повторюються лише після використання всіх п'яти карток свого рівня.</p><p class="hint">➕ Оберіть 2, 3 або 4 команди: фішки одразу з’являться на старті, рахунок почнеться з нуля. Кожна фішка рухається окремо після правильної відповіді.</p><p class="hint">💾 Прогрес автоматично зберігається в цьому браузері.</p></aside></main><div class="footer">Навчальна гра для уроку інформатики • Усі матеріали українською мовою • Працює без інтернету</div></div>
 <div class="modal-back" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><div class="row"><h2 id="modalTitle">Завдання</h2><button class="btn secondary" style="flex:0 0 auto" id="closeModal">✕</button></div><div id="modalBody"></div></div></div>
 <script>
@@ -59,20 +69,21 @@ function showDiceAnimation(result){
   layer.className='dice-cinematic';
   layer.setAttribute('role','status');
   layer.setAttribute('aria-live','polite');
-  layer.innerHTML='<div class="dice-cinematic-inner"><div class="cinematic-die">⚄</div><div class="cinematic-caption">🎲 Кубик обертається…</div></div>';
+  const dots={1:[5],2:[1,9],3:[1,5,9],4:[1,3,7,9],5:[1,3,5,7,9],6:[1,3,4,6,7,9]};
+  const faces=[['front',1],['back',6],['right',3],['left',4],['top',2],['bottom',5]];
+  layer.innerHTML='<div class="dice-cinematic-inner"><div class="cube-scene"><div class="dice-cube">'+faces.map(([side,n])=>'<div class="cube-face face-'+side+'"><div class="pip-grid">'+Array.from({length:9},(_,i)=>'<i class="'+(dots[n].includes(i+1)?'pip':'')+'"></i>').join('')+'</div></div>').join('')+'</div></div><div class="cinematic-caption">🎲 Кубик обертається…</div></div>';
   document.body.appendChild(layer);
-  const die=layer.querySelector('.cinematic-die');
+  const cube=layer.querySelector('.dice-cube');
   const caption=layer.querySelector('.cinematic-caption');
-  let ticks=0;
-  const interval=setInterval(()=>{die.textContent=diceFaces[Math.floor(Math.random()*6)];ticks++},95);
+  const rotations={1:[0,0],2:[-90,0],3:[0,-90],4:[0,90],5:[90,0],6:[0,180]};
   setTimeout(()=>{
-   clearInterval(interval);
-   die.textContent=diceFaces[result-1];
-   die.classList.add('dice-landed');
+   cube.classList.add('cube-settled');
+   const [x,y]=rotations[result];
+   cube.style.transform='rotateX('+x+'deg) rotateY('+y+'deg)';
    caption.textContent='Випало '+result+' — '+result+' '+(result===1?'крок':result<5?'кроки':'кроків')+'!';
    $('dice').textContent=diceFaces[result-1];
-   setTimeout(()=>{layer.classList.add('dice-fade');setTimeout(()=>{layer.remove();resolve()},520)},1100);
-  },1450);
+   setTimeout(()=>{layer.classList.add('dice-fade');setTimeout(()=>{layer.remove();resolve()},520)},1300);
+  },1600);
  });
 }
 async function roll(){
