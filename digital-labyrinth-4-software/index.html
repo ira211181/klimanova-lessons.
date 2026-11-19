@@ -1,0 +1,274 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Цифровий лабіринт — 4 клас</title><style>
+:root{font-family:'Segoe UI',Arial,sans-serif;color:#42315f;background:#f7efff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 10%,#fff7e9,transparent 40%),linear-gradient(135deg,#f4e9ff,#fcebf5);min-height:100vh}.wrap{max-width:1400px;margin:auto;padding:20px}header{text-align:center}h1{font-size:clamp(26px,4vw,45px);margin:4px;color:#51318a}h2{margin:5px 0 12px}.subtitle{background:#7745ac;color:white;border-radius:40px;display:inline-block;padding:7px 28px;font-weight:bold}.layout{display:grid;grid-template-columns:240px minmax(400px,1fr) 235px;gap:16px;margin-top:18px}.panel{background:#fffafeea;border:2px solid #e3d0f1;border-radius:22px;padding:16px;box-shadow:0 8px 24px #6c42941b}.panel h3{margin:0 0 12px}.rules{font-size:14px;line-height:1.55}.rules li{margin-bottom:8px}.board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}.tile{position:relative;min-height:105px;border:2px solid #d8bce9;border-radius:15px;background:#f1e4ff;color:#553480;padding:6px;cursor:pointer;text-align:center;transition:transform .15s,box-shadow .15s}.tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 4px 10px #7246a044;outline:2px solid #9364c7}.tile:nth-child(odd){background:#fbe9f4}.tile[data-type=bonus]{background:#fff0bd}.tile[data-type=challenge]{background:#e0d0ff}.tile[data-type=start]{background:#fbe7a3}.tile[data-type=finish]{background:#f8dfa3}.num{font-size:19px;font-weight:900}.tile-name{font-size:12px;font-weight:650;line-height:1.2}.pawns{position:absolute;bottom:4px;left:3px;right:3px;display:flex;justify-content:center;gap:2px;flex-wrap:wrap}.pawn{height:18px;width:18px;border:2px solid white;border-radius:50%;box-shadow:0 2px 4px #0004}.players{display:grid;gap:9px}.player{padding:10px;border-radius:12px;background:#f2e7fc;border:2px solid transparent}.player.active{border-color:#874cbd;background:#fff5d9}.player strong{display:block}.small{font-size:12px;color:#745b87}.score{font-size:21px;font-weight:900}.btn{background:#7641b5;color:white;border:0;border-radius:11px;padding:11px 13px;font-weight:750;cursor:pointer}.btn:hover{filter:brightness(1.08)}.btn:disabled{opacity:.45;cursor:not-allowed}.btn.secondary{background:#e7d9f2;color:#4c3474}.btn.warn{background:#b84d77}.stack{display:grid;gap:9px}select,input{border:1px solid #bfa7d5;border-radius:9px;padding:9px;background:white;color:#3e2d5b;width:100%}.dice{font-size:48px;text-align:center;padding:10px}.hint{font-size:13px;line-height:1.5}.legend{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin:10px 0;color:#644785;font-size:12px}.status{padding:10px;background:#efe3fa;border-radius:12px;margin:10px 0;font-weight:600;text-align:center}.modal-back{position:fixed;inset:0;background:#271636aa;display:none;align-items:center;justify-content:center;z-index:10;padding:15px}.modal-back.show{display:flex}.modal{width:min(620px,100%);max-height:94vh;overflow:auto;background:#fffafc;border:3px solid #e3c8f1;border-radius:24px;padding:23px;box-shadow:0 18px 70px #180d304d}.modal h2{color:#6636a3}.timer-track{height:10px;border-radius:12px;background:#e9d7f4;overflow:hidden;margin:9px 0 18px}.timer-fill{height:100%;width:100%;background:#8d56d0;transition:width .25s linear}.answers{display:grid;gap:8px}.choice{display:block;border:2px solid #e2d1ef;border-radius:12px;padding:11px;background:#f9f3ff;cursor:pointer}.choice:has(input:checked){border-color:#7b47bb;background:#eee1ff}.choice input{width:auto;margin-right:8px}.feedback{background:#f2e8fb;padding:12px;border-radius:12px;margin:12px 0;line-height:1.5}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.footer{text-align:center;font-size:12px;color:#7d658e;margin:18px}.hidden{display:none!important}@media(max-width:1050px){.layout{grid-template-columns:1fr 1fr}.gamepanel{grid-column:1/-1;grid-row:1}.tile{min-height:90px}}@media(max-width:580px){.wrap{padding:9px}.layout{grid-template-columns:1fr}.gamepanel{grid-column:auto;grid-row:auto}.tile{min-height:72px;padding:3px}.tile-name{font-size:10px}.num{font-size:15px}.pawn{height:13px;width:13px}.panel{padding:10px}.board{gap:4px}}@media print{.layout{display:block}.panel:not(.gamepanel),.controls,.status,.footer{display:none!important}.tile{min-height:120px}body{background:white}.gamepanel{box-shadow:none}}
+
+/* Оновлений дизайн за зразком настільного лабіринту */
+:root{color:#4d3469;background:#f8eafa}body{background:radial-gradient(ellipse at 5% 3%,#ffe9d7 0,transparent 32%),radial-gradient(ellipse at 92% 83%,#f4d5fa 0,transparent 36%),linear-gradient(140deg,#f7e7fa,#f9e8ed 55%,#f0ddfa)}
+.wrap{max-width:1520px;padding:14px 20px 24px}header{position:relative;padding:5px 0 8px}header h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(35px,4.5vw,59px);letter-spacing:-1px;text-shadow:0 2px #fff;margin:0;color:#463059}.book-logo{position:absolute;left:10%;top:0;font-size:64px;transform:rotate(-12deg);filter:drop-shadow(2px 5px 3px #a880b080)}.subtitle{font-family:Georgia,serif;font-size:22px;padding:4px 33px;background:#79509c;box-shadow:0 3px 0 #d3b2dc}header p{font-size:13px;margin:9px 0 0;color:#82648e}.layout{grid-template-columns:minmax(205px,.85fr) minmax(550px,2.65fr) minmax(205px,.9fr);gap:13px;margin-top:12px;align-items:stretch}.panel{border:2px solid #d9badf;border-radius:18px;background:#fff9f5df;box-shadow:0 5px 15px #654b7122;padding:14px}.panel h3{font-family:Georgia,serif;font-size:18px;color:#63417f}.gamepanel{background:#f6e8f2aa;padding:13px 14px}.board-frame{padding:5px;border-radius:18px;background:#f1d9ed;border:2px solid #d8b7d7}.board{gap:6px}.tile{min-height:95px;border:1.5px solid #d3b0d5;border-radius:16px;background:#eed8e9;box-shadow:inset 0 -3px 0 #b994b52b,0 2px 3px #96759a2b;color:#56376e}.tile:nth-child(odd){background:#f4dce9}.tile[data-type=challenge],.tile:nth-child(4n+1){background:#8050a4;color:white;border-color:#9b74b5}.tile[data-type=bonus],.tile[data-type=start],.tile[data-type=finish]{background:#ffe49a;color:#644e3a;border-color:#d8b77d}.tile-name{font-size:12px;font-weight:750}.num{font-size:18px}.pawns{bottom:3px}.pawn{height:21px;width:21px;border-radius:45% 45% 38% 38%;border:2px solid #fff;box-shadow:0 3px 2px #54395366;position:relative}.pawn:before{content:'';position:absolute;top:-8px;left:4px;width:10px;height:10px;border-radius:50%;background:inherit;border:1px solid #fff}.legend{margin:0 0 9px}.pawn-shelf{display:flex;align-items:center;gap:7px;font-size:28px;padding:9px 3px}.pawn-shelf span{margin-left:auto;font-size:11px;color:#785d85}.rules{padding-left:23px}.rules li{margin-bottom:6px}.rules li::marker{color:#8252ac;font-weight:bold}.players{gap:6px}.player{padding:7px 9px;background:#f9edf5}.player strong{font-size:13px}.score{font-size:17px}.deck{margin:7px auto 18px;width:170px;max-width:100%;height:205px;position:relative;filter:drop-shadow(4px 7px 3px #70467d55)}.deck:before,.deck:after{content:'';position:absolute;inset:7px 0 0 7px;background:#9c6bb3;border:3px solid #f7dff6;border-radius:14px;transform:rotate(4deg)}.deck:after{inset:4px 3px 3px 4px;transform:rotate(-3deg);background:#a87bc3}.deck-card{position:absolute;z-index:1;inset:0;border-radius:14px;border:5px double #e7cbea;background:linear-gradient(155deg,#784b9f,#a779bd 60%,#6d448c);color:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:12px;padding:12px}.deck-card span{font-size:34px}.deck-card strong{font: bold 21px/1.15 Georgia,serif}.deck-card small{font-size:11px}.btn{border-radius:9px;background:#7a4a9c}.status{background:#eee0f4;margin:7px 0}.modal{border-radius:20px;background:#fff9f3;box-shadow:0 20px 60px #25113566}.modal h2{font-family:Georgia,serif}.timer-fill{background:#9560c4}.footer{font-size:11px}
+@media(max-width:1100px){.layout{grid-template-columns:1fr 1fr}.gamepanel{grid-column:1/-1;grid-row:1}.book-logo{left:0}.tile{min-height:95px}}@media(max-width:620px){.wrap{padding:8px}.layout{grid-template-columns:1fr}.gamepanel{grid-column:auto;grid-row:auto}.book-logo{position:static;font-size:35px}.tile{min-height:69px;border-radius:9px;padding:2px}.tile-name{font-size:9px}.num{font-size:13px}.pawn{height:12px;width:12px}.pawn:before{width:6px;height:6px;top:-5px;left:2px}.pawn-shelf{font-size:19px}.pawn-shelf span{font-size:9px}.deck{height:155px}}@media print{@page{size:A4 landscape;margin:9mm}.wrap{max-width:100%}.layout{display:block}.gamepanel{display:block!important}.board{gap:4px}.tile{min-height:92px}.pawn-shelf,.book-logo{display:none}.gamepanel .controls,.gamepanel .status{display:none!important}}
+</style><style>
+.game-accessories{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:12px 14px;margin-top:12px;border:2px solid #d7b2e0;border-radius:19px;background:linear-gradient(110deg,#fff6f5,#f1dff7);box-shadow:0 4px 10px #694a8020}.accessory-heading{font-weight:900;color:#6c4489;font-size:14px;flex-basis:100%}.accessory-pawns{display:flex;gap:10px;flex-wrap:wrap;flex:1;min-width:200px}.accessory-team{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:72px;gap:2px;padding:6px 5px;border-radius:13px;background:#ffffffa8;border:1px solid #e2c7eb}.accessory-current{outline:2px solid #9d6cc5}.accessory-team span{font-size:11px;font-weight:800;color:#583d76}.accessory-team small{font-size:10px;color:#765b89}.accessory-figure{position:relative;width:37px;height:49px;filter:drop-shadow(2px 3px 2px #6e4c7777)}.accessory-figure i{position:absolute;top:1px;left:11px;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff9,var(--figure-color) 55%,#543b70);z-index:1}.accessory-figure b{position:absolute;bottom:3px;left:5px;width:28px;height:31px;border-radius:45% 45% 25% 25%;background:linear-gradient(110deg,#fff8,var(--figure-color) 40%,#3e285e);clip-path:polygon(35% 0,65% 0,75% 30%,100% 90%,95% 100%,5% 100%,0 90%,25% 30%)}.accessory-tools{display:flex;gap:9px}.accessory-die,.accessory-cup{min-width:78px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff9;box-shadow:0 2px 5px #79508c33;border:1px solid #dec4e5;border-radius:12px;padding:6px;font-size:37px}.accessory-tools small{font-size:9px;font-weight:900;color:#664784;text-align:center}.accessory-levels{flex-basis:100%;text-align:right;font-size:12px;color:#79538e}.tile[data-type=start] .pawns{bottom:5px}.tile[data-type=start] .pawn{height:25px;width:21px}.tile[data-type=start] .pawn:before{top:-9px}.tile[data-type=start] .tile-name:after{content:' • 🚩 СТАРТ';font-weight:900}@media(max-width:620px){.accessory-pawns{min-width:100%;justify-content:center}.accessory-tools{margin:auto}.accessory-levels{text-align:center}.accessory-team{min-width:63px}}@media print{.game-accessories{display:none}}
+</style><style>
+.dice-cinematic{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(43,23,71,.42);backdrop-filter:blur(5px);opacity:1;transition:opacity .52s ease;pointer-events:all}
+.dice-cinematic-inner{text-align:center;display:grid;gap:20px;justify-items:center}
+.cinematic-die{width:170px;height:170px;display:grid;place-items:center;font-size:145px;line-height:1;color:#fff;background:linear-gradient(145deg,#fff,#e7d8ff);border:7px solid #fff;border-radius:34px;box-shadow:0 20px 65px #351d6388, inset 0 0 22px #9c72c455;animation:dice-tumble 1.45s cubic-bezier(.25,.1,.2,1) both;transform-style:preserve-3d}
+.cinematic-caption{font-size:clamp(22px,4vw,36px);font-weight:900;color:white;text-shadow:0 3px 12px #342047;min-height:44px}
+.cinematic-die.dice-landed{animation:dice-pop .45s ease-out both}
+.dice-cinematic.dice-fade{opacity:0;pointer-events:none}
+@keyframes dice-tumble{0%{transform:scale(.25) rotateX(0deg) rotateY(0deg) rotateZ(0deg);opacity:.2}25%{transform:scale(1.2) rotateX(240deg) rotateY(150deg) rotateZ(120deg);opacity:1}60%{transform:scale(1.6) rotateX(560deg) rotateY(440deg) rotateZ(350deg)}100%{transform:scale(1.12) rotateX(900deg) rotateY(720deg) rotateZ(720deg)}}
+@keyframes dice-pop{0%{transform:scale(1.3) rotateZ(-15deg)}65%{transform:scale(1.65) rotateZ(7deg)}100%{transform:scale(1.3) rotateZ(0deg)}}
+@media(prefers-reduced-motion:reduce){.cinematic-die,.cinematic-die.dice-landed{animation:none}.dice-cinematic{backdrop-filter:none}}
+</style><style>
+.cube-scene{width:190px;height:190px;perspective:850px;display:grid;place-items:center}
+.dice-cube{position:relative;width:144px;height:144px;transform-style:preserve-3d;animation:real-dice-spin 1.6s cubic-bezier(.18,.65,.32,1) both;transition:transform .65s cubic-bezier(.16,1,.3,1)}
+.dice-cube.cube-settled{animation:none}
+.cube-face{position:absolute;inset:0;border-radius:22px;border:4px solid #fff;background:linear-gradient(145deg,#fff 10%,#e8d8fa 85%);box-shadow:inset -9px -10px 20px #bda4d366,inset 5px 5px 12px #fff,0 0 5px #67418a55;backface-visibility:visible;display:grid;place-items:center}
+.face-front{transform:translateZ(72px)}.face-back{transform:rotateY(180deg) translateZ(72px)}.face-right{transform:rotateY(90deg) translateZ(72px)}.face-left{transform:rotateY(-90deg) translateZ(72px)}.face-top{transform:rotateX(90deg) translateZ(72px)}.face-bottom{transform:rotateX(-90deg) translateZ(72px)}
+.pip-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:9px;width:105px;height:105px}
+.pip{border-radius:50%;background:radial-gradient(circle at 30% 25%,#9d78d0,#5b318a 65%,#3b205e);box-shadow:inset 1px 2px 3px #3c195c88,1px 1px 1px white}
+@keyframes real-dice-spin{0%{transform:scale(.25) rotateX(0deg) rotateY(0deg) rotateZ(0deg)}35%{transform:scale(1.35) rotateX(440deg) rotateY(320deg) rotateZ(120deg)}75%{transform:scale(1.55) rotateX(920deg) rotateY(760deg) rotateZ(350deg)}100%{transform:scale(1.35) rotateX(1080deg) rotateY(1080deg) rotateZ(360deg)}}
+@media(prefers-reduced-motion:reduce){.dice-cube{animation:none!important;transition:none!important}}
+</style></head><body><div class="wrap"><header><div class="book-logo">📖</div><h1>Цифровий лабіринт</h1><div class="subtitle">Місія знавців інформації • 3 клас</div><p>Віртуальні бібліотеки • Довідники • Енциклопедії • Словники • Авторське право</p></header><main class="layout"><aside class="panel"><h3>📜 Правила гри</h3><ol class="rules"><li>Оберіть 2–4 команди та натисніть «Нова гра».</li><li>Команди по черзі кидають кубик.</li><li>Кубик показує кількість кроків; фішка чекає правильної відповіді.</li><li>Виконайте завдання за 30–60 секунд.</li><li>За правильну відповідь: 🟢 1, 🔵 2, 🟣 3 бали.</li><li>Після кидка кубика відкривається запитання клітинки, до якої можна перейти після правильної відповіді.</li><li>Правильно — рухаєтесь на випалу кількість кроків та отримуєте бали; неправильно або час вийшов — залишаєтесь на місці.</li><li>Переможе команда з найбільшою кількістю балів після фінішу всіх команд.</li></ol><h3>🏆 Умови перемоги</h3><p class="hint">Збери найбільше зірочок і стань майстром цифрових знань!</p><h3>📊 Таблиця балів</h3><div id="players" class="players"></div><p class="hint">Після натискання «Перевірити» відповідь і пояснення видно всім. Для усних завдань рішення ухвалює вчитель.</p></aside><section class="panel gamepanel"><div class="legend"><span>🟢 Легкий • 1 бал</span><span>🔵 Середній • 2 бали</span><span>🟣 Складний • 3 бали</span><span>🎁 Бонусна тема — також із запитанням</span></div><div class="board-frame"><div class="board" id="board" aria-label="Ігрове поле на 25 клітинок"></div></div><div class="game-accessories" aria-label="Ігрові фішки, кубик і кубок"><div class="accessory-heading">🚩 ФІШКИ КОМАНД — СТАРТ</div><div class="accessory-pawns" id="startPawns"></div><div class="accessory-tools"><div class="accessory-die" aria-label="Ігровий кубик">🎲 <small>КУБИК</small></div><div class="accessory-cup" aria-label="Кубок переможця">🏆 <small>КУБОК ПЕРЕМОЖЦЯ</small></div></div><div class="accessory-levels">Рівні складності: 🟢 1 бал · 🔵 2 бали · 🟣 3 бали</div></div><div class="status" id="status" role="status">Налаштуйте команди та починайте гру!</div><div class="row controls"><button class="btn" id="roll">🎲 Кинути кубик</button><button class="btn secondary" id="cards">📚 Переглянути картки</button><button class="btn secondary" id="finish">🏆 Підсумки</button></div></section><aside class="panel"><h3>🃏 Картки із завданнями</h3><div class="deck" aria-hidden="true"><div class="deck-card"><span>✧ 📖 ✧</span><strong>Цифровий<br>лабіринт</strong><small>Місія знавців інформації</small></div></div><h3>🎮 Керування</h3><div class="stack"><label>Кількість команд<select id="teamCount"><option value="2">2 команди</option><option value="3">3 команди</option><option value="4">4 команди</option></select></label><button class="btn" id="newGame">✨ Нова гра</button><div class="dice" id="dice" aria-label="Кубик">⚄</div><div class="hint" id="turnText">Хід команди 1</div><button class="btn secondary" id="next" disabled>➡️ Наступна команда</button><button class="btn secondary" id="teacher">🔑 Відповіді для вчителя</button><button class="btn secondary" onclick="window.print()">🖨️ Друк поля</button><button class="btn warn" id="clear">🗑️ Скинути прогрес</button></div><h3 style="margin-top:22px">🃏 Картки</h3><p class="hint">15 завдань трьох рівнів. Питання повторюються лише після використання всіх п'яти карток свого рівня.</p><p class="hint">➕ Оберіть 2, 3 або 4 команди: фішки одразу з’являться на старті, рахунок почнеться з нуля. Кожна фішка рухається окремо після правильної відповіді.</p><p class="hint">💾 Прогрес автоматично зберігається в цьому браузері.</p></aside></main><div class="footer">Навчальна гра для уроку інформатики • Усі матеріали українською мовою • Працює без інтернету</div></div>
+<div class="modal-back" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><div class="row"><h2 id="modalTitle">Завдання</h2><button class="btn secondary" style="flex:0 0 auto" id="closeModal">✕</button></div><div id="modalBody"></div></div></div>
+<script>
+const Q=[
+ {
+  "l": 1,
+  "q": "Що називають програмним забезпеченням комп’ютера?",
+  "o": [
+   "Усі програми, які використовує комп’ютер",
+   "Монітор і клавіатуру",
+   "Лише дроти"
+  ],
+  "a": [
+   0
+  ],
+  "why": "Програмне забезпечення — це програми, які допомагають комп’ютеру працювати й виконувати завдання."
+ },
+ {
+  "l": 1,
+  "q": "Яка з цих назв позначає програму?",
+  "o": [
+   "Миша",
+   "Графічний редактор",
+   "Принтер"
+  ],
+  "a": [
+   1
+  ],
+  "why": "Графічний редактор — програма для створення та редагування малюнків."
+ },
+ {
+  "l": 1,
+  "q": "Для чого потрібен текстовий редактор?",
+  "o": [
+   "Для набору та редагування тексту",
+   "Для друку на папері без комп’ютера",
+   "Для очищення екрана"
+  ],
+  "a": [
+   0
+  ],
+  "why": "У текстовому редакторі створюють і змінюють тексти."
+ },
+ {
+  "l": 1,
+  "q": "Яка програма допомагає переглядати вебсторінки?",
+  "o": [
+   "Браузер",
+   "Калькулятор",
+   "Будильник"
+  ],
+  "a": [
+   0
+  ],
+  "why": "Браузер відкриває вебсторінки в інтернеті."
+ },
+ {
+  "l": 1,
+  "q": "Що з переліченого є пристроєм, а не програмою?",
+  "o": [
+   "Клавіатура",
+   "Браузер",
+   "Текстовий редактор"
+  ],
+  "a": [
+   0
+  ],
+  "why": "Клавіатура — фізичний пристрій комп’ютера."
+ },
+ {
+  "l": 2,
+  "q": "Треба намалювати листівку. Яку програму обереш?",
+  "o": [
+   "Графічний редактор",
+   "Аудіоплеєр",
+   "Архіватор"
+  ],
+  "a": [
+   0
+  ],
+  "why": "Графічний редактор призначений для роботи із зображеннями."
+ },
+ {
+  "l": 2,
+  "q": "Треба підготувати повідомлення для уроку. Яка програма підійде?",
+  "o": [
+   "Текстовий редактор",
+   "Музичний плеєр",
+   "Годинник"
+  ],
+  "a": [
+   0
+  ],
+  "why": "Текстовий редактор допомагає набрати й оформити текст."
+ },
+ {
+  "l": 2,
+  "q": "Обери ДВІ правильні твердження про операційну систему.",
+  "o": [
+   "Допомагає керувати роботою комп’ютера",
+   "Є різновидом клавіатури",
+   "Допомагає запускати програми"
+  ],
+  "a": [
+   0,
+   2
+  ],
+  "why": "Операційна система керує роботою комп’ютера та допомагає запускати інші програми."
+ },
+ {
+  "l": 2,
+  "q": "Для чого призначена програма для створення презентацій?",
+  "o": [
+   "Для створення слайдів",
+   "Для заміни монітора",
+   "Для заряджання ноутбука"
+  ],
+  "a": [
+   0
+  ],
+  "why": "У програмі для презентацій створюють слайди з текстом, малюнками та іншими об’єктами."
+ },
+ {
+  "l": 2,
+  "q": "Яка дія є безпечнішою під час встановлення програми?",
+  "o": [
+   "Завантажити з випадкового рекламного вікна",
+   "Попросити дорослого перевірити надійне джерело",
+   "Вимкнути всі попередження"
+  ],
+  "a": [
+   1
+  ],
+  "why": "Нові програми слід встановлювати лише з надійних джерел і з дозволу дорослих."
+ },
+ {
+  "l": 3,
+  "q": "Поясни різницю між апаратним і програмним забезпеченням.",
+  "oral": "Назви по два приклади кожного.",
+  "why": "Апаратне забезпечення — фізичні пристрої (монітор, миша). Програмне — програми (браузер, графічний редактор)."
+ },
+ {
+  "l": 3,
+  "q": "Тобі треба зробити запрошення з малюнком і текстом. Які програми можуть допомогти?",
+  "oral": "Назви два види програм і поясни вибір.",
+  "why": "Графічний редактор — для малюнка; текстовий редактор або програма презентацій — для тексту й оформлення."
+ },
+ {
+  "l": 3,
+  "q": "Комп’ютер увімкнувся, але програма не відповідає. Як діяти безпечно?",
+  "oral": "Назви два розумні кроки.",
+  "why": "Трохи зачекати; звернутися до вчителя або дорослого. Не натискати безладно кнопки й не вимикати живлення без потреби."
+ },
+ {
+  "l": 3,
+  "q": "Чому операційна система важлива для комп’ютера?",
+  "oral": "Поясни своїми словами та наведи приклад.",
+  "why": "Вона організовує роботу пристроїв і програм, допомагає користувачу працювати з файлами та запускати застосунки."
+ },
+ {
+  "l": 3,
+  "q": "Друг пропонує встановити невідому гру з випадкового сайту. Що ти зробиш?",
+  "oral": "Поясни своє рішення.",
+  "why": "Не встановлювати самостійно. Порадитися з дорослим, перевірити джерело та дозвіл на встановлення."
+ }
+];
+const names=["СТАРТ","Програма","Пристрої","Текстовий редактор","Бонус","Графічний редактор","Малюнок","Браузер","Вебсторінка","Завдання","Операційна система","Робочий стіл","Запуск програм","Файли","Бонус","Презентація","Слайди","Безпечне джерело","Встановлення","Бонус","Вибір програми","Перевірка знань","Майстер програм","Цифровий експерт","ФІНІШ"];
+const colors=['#8e56c5','#ff9a43','#4dbab5','#df65a3'];const icons=['🟣','🟠','🟢','🔴'];const KEY='digitalMaze4grade_software_v1';
+let state,interval=null,activeQ=null,seconds=0,phase='roll',viewMode=false;
+const $=id=>document.getElementById(id);const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function fresh(n){return {teams:Array.from({length:n},(_,i)=>({name:'Команда '+(i+1),pos:0,score:0,done:false})),turn:0,used:{1:[],2:[],3:[]},history:[],lastDice:1,waiting:false,answered:false,previousPos:0,targetPos:0,finished:false}};
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function load(){try{let x=JSON.parse(localStorage.getItem(KEY));if(x&&x.teams?.length>=2&&x.teams?.length<=4&&x.used&&x.history){x.answered=x.answered??false;x.previousPos=x.previousPos??0;x.targetPos=x.targetPos??0;if(x.waiting&&!x.answered){x.waiting=false;x.teams[x.turn].pos=x.previousPos}return x}}catch(e){}return fresh(2)}
+function levelFor(n){return n<=5?1:n<=10?2:n<=15?1:n<=20?2:3}function tileType(n){return n===1?'start':n===25?'finish':[5,15,20].includes(n)?'bonus':[10,14,18,22,24].includes(n)?'challenge':'normal'}
+function draw(){const b=$('board');b.innerHTML='';for(let row=0;row<5;row++)for(let col=0;col<5;col++){const n=row*5+(row%2?5-col:col+1),type=tileType(n),lv=levelFor(n);const el=document.createElement('button');el.className='tile';el.dataset.type=type;el.title=`Клітинка ${n}: ${names[n-1]}`;el.innerHTML=`<div class="num">${n} ${n===1?'🚩':n===25?'🏆':type==='bonus'?'🎁':lv===3?'🟣':lv===2?'🔵':'🟢'}</div><div class="tile-name">${names[n-1]}</div><div class="pawns">${state.teams.map((t,i)=>(t.pos===n||(n===1&&t.pos===0))?`<span class="pawn" title="${escapeHTML(t.name)}" style="background:${colors[i]}"></span>`:'').join('')}</div>`;el.onclick=()=>previewTile(n);b.append(el)}
+$('startPawns').innerHTML=state.teams.map((t,i)=>`<div class="accessory-team ${i===state.turn?'accessory-current':''}" title="${escapeHTML(t.name)}"><div class="accessory-figure" style="--figure-color:${colors[i]}"><i></i><b></b></div><span>${escapeHTML(t.name)}</span><small>${t.pos===0?'🚩 На старті':t.done?'🏆 Фініш':'Клітинка '+t.pos}</small></div>`).join('');$('players').innerHTML=state.teams.map((t,i)=>`<div class="player ${i===state.turn&&!state.finished?'active':''}"><strong>${icons[i]} ${escapeHTML(t.name)}</strong><span class="small">${t.pos===0?'СТАРТ':`Клітинка ${t.pos}`} ${t.done?'• Фініш':''}</span><div class="score">⭐ ${t.score} балів</div></div>`).join('');$('dice').textContent=['⚀','⚁','⚂','⚃','⚄','⚅'][state.lastDice-1];$('turnText').textContent=state.finished?'Гру завершено':`Зараз грає: ${state.teams[state.turn].name}`;$('roll').disabled=state.waiting||state.finished;$('next').disabled=!state.waiting||!state.answered||state.finished;$('status').textContent=state.finished?'🏆 Гру завершено! Перегляньте підсумки.':state.waiting?(state.answered?'Хід завершено. Натисніть «Наступна команда».':'Дайте відповідь на запитання, щоб завершити хід.'):`🎲 Хід команди «${state.teams[state.turn].name}». Киньте кубик!`;save()}
+function pick(l){let ids=Q.map((q,i)=>q.l===l?i:-1).filter(i=>i>=0);let free=ids.filter(i=>!state.used[l].includes(i));if(!free.length){state.used[l]=[];free=ids}let i=free[Math.floor(Math.random()*free.length)];state.used[l].push(i);return i}
+function openModal(title,html){$('modalTitle').textContent=title;$('modalBody').innerHTML=html;$('overlay').classList.add('show')}
+function stopTimer(){if(interval)clearInterval(interval);interval=null}function closeModal(){if(activeQ!==null&&!viewMode&&(phase==='question'||phase==='oral')){return}stopTimer();$('overlay').classList.remove('show');activeQ=null;viewMode=false}
+function previewTile(n){if(state.waiting&&!state.answered)return;const type=tileType(n);openModal(`Клітинка ${n}: ${names[n-1]}`,`<p>Рівень: ${levelFor(n)} • ${type==='bonus'?'🎁 Бонусна клітинка':type==='finish'?'🏆 Фініш':'📖 Клітинка із завданням'}</p><p class="hint">Для проходження клітинки киньте кубик під час ходу команди.</p><button class="btn secondary" onclick="closeModal()">Закрити</button>`);viewMode=true}
+let diceAnimating=false;
+const diceFaces=['⚀','⚁','⚂','⚃','⚄','⚅'];
+function showDiceAnimation(result){
+ return new Promise(resolve=>{
+  const layer=document.createElement('div');
+  layer.className='dice-cinematic';
+  layer.setAttribute('role','status');
+  layer.setAttribute('aria-live','polite');
+  const dots={1:[5],2:[1,9],3:[1,5,9],4:[1,3,7,9],5:[1,3,5,7,9],6:[1,3,4,6,7,9]};
+  const faces=[['front',1],['back',6],['right',3],['left',4],['top',2],['bottom',5]];
+  layer.innerHTML='<div class="dice-cinematic-inner"><div class="cube-scene"><div class="dice-cube">'+faces.map(([side,n])=>'<div class="cube-face face-'+side+'"><div class="pip-grid">'+Array.from({length:9},(_,i)=>'<i class="'+(dots[n].includes(i+1)?'pip':'')+'"></i>').join('')+'</div></div>').join('')+'</div></div><div class="cinematic-caption">🎲 Кубик обертається…</div></div>';
+  document.body.appendChild(layer);
+  const cube=layer.querySelector('.dice-cube');
+  const caption=layer.querySelector('.cinematic-caption');
+  const rotations={1:[0,0],2:[-90,0],3:[0,-90],4:[0,90],5:[90,0],6:[0,180]};
+  setTimeout(()=>{
+   cube.classList.add('cube-settled');
+   const [x,y]=rotations[result];
+   cube.style.transform='rotateX('+x+'deg) rotateY('+y+'deg)';
+   caption.textContent='Випало '+result+' — '+result+' '+(result===1?'крок':result<5?'кроки':'кроків')+'!';
+   $('dice').textContent=diceFaces[result-1];
+   setTimeout(()=>{layer.classList.add('dice-fade');setTimeout(()=>{layer.remove();resolve()},520)},1300);
+  },1600);
+ });
+}
+async function roll(){
+ if(state.waiting||state.finished||diceAnimating)return;
+ diceAnimating=true;
+ $('roll').disabled=true;
+ const d=Math.floor(Math.random()*6)+1;
+ try{
+  await showDiceAnimation(d);
+  state.lastDice=d;
+  const t=state.teams[state.turn];
+  state.previousPos=t.pos;
+  state.targetPos=Math.min(25,t.pos+d);
+  state.waiting=true;
+  state.answered=false;
+  draw();
+  let l=levelFor(state.targetPos);
+  if(state.targetPos===25)l=3;
+  ask(pick(l),false);
+  $('modalTitle').textContent='🎲 Випало '+d+' • Завдання клітинки '+state.targetPos;
+  $('status').textContent='🎲 Випало '+d+'. Дайте правильну відповідь, щоб перейти на '+d+' клітинок уперед (до №'+state.targetPos+').';
+ }finally{diceAnimating=false;if(!state.waiting&&!state.finished)$('roll').disabled=false}
+}
+
+function ask(id,preview){stopTimer();activeQ=id;viewMode=preview;phase='question';let q=Q[id];seconds=q.l===3?60:q.l===2?45:30;let html=`<p><b>${preview?'Перегляд картки':escapeHTML(state.teams[state.turn].name)} • ${['','🟢 Легкий — 1 бал','🔵 Середній — 2 бали','🟣 Складний — 3 бали'][q.l]}</b></p><h3>${escapeHTML(q.q)}</h3>${q.oral?`<p>${escapeHTML(q.oral)}</p>`:`<div class="answers">${q.o.map((o,i)=>`<label class="choice"><input type="${q.a.length>1?'checkbox':'radio'}" name="answer" value="${i}"> ${escapeHTML(o)}</label>`).join('')}</div>`}<p id="timerLabel">⏱️ ${seconds} с</p><div class="timer-track"><div id="timerFill" class="timer-fill"></div></div><div id="feedback"></div><div class="row" id="questionActions">${q.oral?'<button class="btn" onclick="revealOral()">📖 Показати відповідь</button>':`<button class="btn" onclick="checkAnswer()">✅ Перевірити</button>`}${preview?'<button class="btn secondary" onclick="closeModal()">Закрити</button>':''}</div>`;openModal('📚 Картка №'+(id+1),html);interval=setInterval(()=>{seconds=Math.max(0,seconds-1);let label=$('timerLabel'),bar=$('timerFill');if(label)label.textContent=`⏱️ ${seconds} с`;if(bar)bar.style.width=(seconds/(q.l===3?60:q.l===2?45:30)*100)+'%';if(seconds===0){stopTimer();if(q.oral)revealOral();else checkAnswer(true)}},1000)}
+function award(correct){if(!viewMode){
+ let q=Q[activeQ],t=state.teams[state.turn];
+ if(correct){t.pos=state.targetPos;t.score+=q.l;state.history.push(`${t.name}: правильна відповідь, +${state.lastDice} кроків до клітинки ${t.pos}, +${q.l} бал(и)`);if(t.pos===25)t.done=true}
+ else{state.history.push(`${t.name}: неправильна відповідь, залишається на ${t.pos===0?'старті':`клітинці ${t.pos}`}`)}
+ state.answered=true;draw();
+}}
+function result(correct,detail){stopTimer();phase='result';award(correct);$('feedback').innerHTML=`<div class="feedback"><strong>${correct?'🌟 Правильно! Фішка рухається вперед на кількість кроків, що випала на кубику.':'💡 Неправильно. Фішка залишається на попередньому місці.'}</strong><p>${escapeHTML(detail)}</p></div>`;$('questionActions').innerHTML=`<button class="btn" onclick="closeModal()">Продовжити</button>`;document.querySelectorAll('#modalBody input').forEach(e=>e.disabled=true)}
+function checkAnswer(timeout=false){if(phase!=='question')return;let q=Q[activeQ];let selected=[...document.querySelectorAll('#modalBody input:checked')].map(x=>+x.value).sort();if(!timeout&&!selected.length){$('feedback').innerHTML='<p class="hint">Спочатку оберіть відповідь.</p>';return}let correct=!timeout&&JSON.stringify(selected)===JSON.stringify([...q.a].sort());result(correct,`${q.why}${timeout?' Час вийшов.':''}`)}
+function revealOral(){if(phase!=='question')return;stopTimer();phase='oral';$('feedback').innerHTML=`<div class="feedback"><b>Відповідь для вчителя:</b><p>${escapeHTML(Q[activeQ].why)}</p></div>`;$('questionActions').innerHTML=viewMode?'<button class="btn secondary" onclick="closeModal()">Закрити</button>':'<button class="btn" onclick="markOral(true)">✅ Зарахувати 3 бали</button><button class="btn secondary" onclick="markOral(false)">Не зараховувати</button>'}
+function markOral(ok){if(phase!=='oral')return;phase='result';award(ok);$('questionActions').innerHTML='<button class="btn" onclick="closeModal()">Продовжити</button>'}
+function next(){if(!state.waiting||!state.answered||state.finished)return;let next=state.turn,found=false;for(let i=0;i<state.teams.length;i++){next=(next+1)%state.teams.length;if(!state.teams[next].done){found=true;break}}if(!found){state.finished=true;summary();}else{state.turn=next;state.waiting=false;state.answered=false;draw()}}
+function summary(){let ranking=[...state.teams].sort((a,b)=>b.score-a.score);let best=ranking[0].score,winners=ranking.filter(x=>x.score===best).map(x=>x.name);openModal('🏆 Підсумки експедиції',`<h3>Переможець: ${escapeHTML(winners.join(' та '))}</h3><ol>${ranking.map(x=>`<li>${escapeHTML(x.name)} — ⭐ ${x.score} балів (клітинка ${x.pos})</li>`).join('')}</ol><p>Якщо бали однакові, учитель може запропонувати додаткове запитання про авторське право.</p><button class="btn" onclick="closeModal()">Закрити</button>`);viewMode=true}
+function cards(){openModal('🃏 Картки із завданнями',`<p>Оберіть картку для перегляду. У цьому режимі бали не нараховуються.</p><div class="answers">${Q.map((q,i)=>`<button class="btn secondary" onclick="ask(${i},true)">${i+1}. ${['','🟢','🔵','🟣'][q.l]} ${escapeHTML(q.q)}</button>`).join('')}</div>`);viewMode=true}
+function teacher(){openModal('🔑 Відповіді для вчителя',`<div class="stack">${Q.map((q,i)=>`<div class="feedback"><b>${i+1}. ${escapeHTML(q.q)}</b><p>${escapeHTML(q.why)}</p>${q.a?`<small>Правильний варіант: ${q.a.map(a=>["А","Б","В"][a]).join(', ')}</small>`:''}</div>`).join('')}</div><button class="btn" onclick="closeModal()">Закрити</button>`);viewMode=true}
+
+$('teamCount').addEventListener('change',()=>{const n=Number($('teamCount').value);stopTimer();closeModal();state=fresh(n);draw();$('status').textContent=`✅ Обрано ${n} команди. На старті ${n} фішки. Починає команда 1.`});$('roll').onclick=roll;$('next').onclick=next;$('cards').onclick=cards;$('teacher').onclick=teacher;$('finish').onclick=summary;$('closeModal').onclick=closeModal;$('newGame').onclick=()=>{if(confirm('Почати нову гру? Поточний прогрес буде втрачено.')){stopTimer();state=fresh(+$('teamCount').value);closeModal();draw()}};$('clear').onclick=()=>{if(confirm('Скинути збережений прогрес?')){stopTimer();localStorage.removeItem(KEY);state=fresh(+$('teamCount').value);closeModal();draw()}};state=load();$('teamCount').value=String(state.teams.length);draw();
+</script></body></html>
